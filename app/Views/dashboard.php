@@ -72,7 +72,7 @@
           </li>
         </ul>
       </div>
-      <div class="content"> Hello World
+      <div class="content">
       </div>
     </div>
   </body>
