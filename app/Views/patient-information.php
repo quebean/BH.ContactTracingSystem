@@ -33,8 +33,8 @@
           </h1>
         </div>
         <ul class="list-unstyled px-2 pt-4">
-          <li class="active my-3">
-            <a href="#" class="text-decoration-none d-block px-3 py-2"
+          <li class="my-3">
+            <a href="<?php echo "dashboard.php";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-house me-3"></i>Dashboard</a
             >
           </li>
@@ -49,7 +49,7 @@
               ><i class="fa-solid fa-id-card me-3"></i>Employee Information</a
             >
           </li>
-          <li class="mb-3">
+          <li class="active mb-3">
             <a href="<?php echo "patient-information.php";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-hospital-user me-3"></i>Patient
               Information</a

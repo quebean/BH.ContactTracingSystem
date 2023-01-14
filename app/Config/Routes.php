@@ -30,8 +30,15 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/login', 'login::index');
+$routes->get('/dashboard.php', 'Dashboard::index');
+$routes->get('/login.php', 'Login::index');
+$routes->get('/visitor-information.php', 'VisitorInformation::index');
+$routes->get('/employee-information.php', 'EmployeeInformation::index');
+$routes->get('/patient-information.php', 'PatientInformation::index');
+$routes->get('/compose-message.php', 'ComposeMessage::index');
+$routes->get('/generate-qrcode.php', 'GenerateQrCode::index');
+$routes->get('/activity-tracker.php', 'ActivityTracker::index');
+
 
 /*
  * --------------------------------------------------------------------
