@@ -34,23 +34,23 @@
         </div>
         <ul class="list-unstyled px-2 pt-4">
           <li class="my-3">
-            <a href="<?php echo "dashboard.php";?>" class="text-decoration-none d-block px-3 py-2"
+            <a href="<?php echo "dashboard";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-house me-3"></i>Dashboard</a
             >
           </li>
           <li class="mb-3">
-            <a href="<?php echo "visitor-information.php";?>" class="text-decoration-none d-block px-3 py-2"
+            <a href="<?php echo "visitor-information";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-users me-3"></i>Visitor Information</a
               
             >
           </li>
           <li class="mb-3">
-            <a href="<?php echo "employee-information.php";?>" class="text-decoration-none d-block px-3 py-2"
+            <a href="<?php echo "employee-information";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-id-card me-3"></i>Employee Information</a
             >
           </li>
           <li class="mb-3">
-            <a href="<?php echo "patient-information.php";?>" class="text-decoration-none d-block px-3 py-2"
+            <a href="<?php echo "patient-information";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-hospital-user me-3"></i>Patient
               Information</a
             >
@@ -61,12 +61,12 @@
             >
           </li>
           <li class="mb-3">
-            <a href="<?php echo "generate-qrcode.php";?>" class="text-decoration-none d-block px-3 py-2"
+            <a href="<?php echo "generate-qrcode";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-qrcode me-3"></i>Generate QR Code</a
             >
           </li>
           <li class="mb-3">
-            <a href="<?php echo "activity-tracker.php";?>" class="text-decoration-none d-block px-3 py-2"
+            <a href="<?php echo "activity-tracker";?>" class="text-decoration-none d-block px-3 py-2"
               ><i class="fa-solid fa-chart-line me-3"></i>Personnel Activity
               Tracker</a
             >
