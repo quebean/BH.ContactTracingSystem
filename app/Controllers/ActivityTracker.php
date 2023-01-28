@@ -6,6 +6,7 @@ class ActivityTracker extends BaseController
 {
     public function index()
     {
-        return view('activity-tracker');
+        $data['pageTitle'] = 'Personnel Activity Tracker';
+        return view('activity-tracker', $data);
     }
 }
