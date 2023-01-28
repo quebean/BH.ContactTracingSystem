@@ -45,7 +45,7 @@
         </li>
         <li class="mb-3">
           <a href="<?php echo "generate-qrcode"; ?>" class="text-decoration-none d-block px-3 py-2"><i
-              class="fa-solid fa-qrcode me-3"></i>Manage Location</a>
+              class="fa-solid fa-qrcode me-3"></i>Manage Locations</a>
         </li>
         <li class="mb-3">
           <a href="<?php echo "activity-tracker"; ?>" class="text-decoration-none d-block px-3 py-2"><i
@@ -58,6 +58,9 @@
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">Dashboard</span>
+          <div><a href="#" class="text-decoration-none me-2">Logout <i
+                class="fa-solid fa-right-from-bracket ms-1"></i></a>
+          </div>
         </div>
       </nav>
     </div>
