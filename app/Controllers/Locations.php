@@ -10,6 +10,7 @@ class Locations extends BaseController
     {
         $locationModel = new LocationModel();
         $data['locations'] = $locationModel->findAll();
+        $data['pageTitle'] = 'Manage Locations';
         return view('locations', $data);
     }
 

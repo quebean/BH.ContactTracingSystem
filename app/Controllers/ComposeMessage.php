@@ -6,6 +6,7 @@ class ComposeMessage extends BaseController
 {
     public function index()
     {
-        return view('compose-message');
+        $data['pageTitle'] = 'Compose Message';
+        return view('compose-message', $data);
     }
 }

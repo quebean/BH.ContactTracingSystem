@@ -6,6 +6,7 @@ class Login extends BaseController
 {
     public function index()
     {
-        return view('loginform');
+        $data['pageTitle'] = 'Activity Tracker';
+        return view('login-form', $data);
     }
 }

@@ -6,6 +6,7 @@ class VisitorInformation extends BaseController
 {
     public function index()
     {
-        return view('visitor-information');
+        $data['pageTitle'] = 'Visitor Information';
+        return view('visitor-information', $data);
     }
 }

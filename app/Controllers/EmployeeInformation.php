@@ -6,6 +6,7 @@ class EmployeeInformation extends BaseController
 {
     public function index()
     {
-        return view('employee-information');
+        $data['pageTitle'] = 'Employee Information';
+        return view('employee-information', $data);
     }
 }
