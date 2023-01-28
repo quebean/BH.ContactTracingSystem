@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="login-style.css" />
-    <title>Document</title>
+    <title>Bautista Hospital</title>
   </head>
 
   <body>
