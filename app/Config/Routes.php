@@ -36,7 +36,7 @@ $routes->get('/visitor-information', 'VisitorInformation::index');
 $routes->get('/employee-information', 'EmployeeInformation::index');
 $routes->get('/patient-information', 'PatientInformation::index');
 $routes->get('/compose-message', 'ComposeMessage::index');
-$routes->get('/generate-qrcode', 'GenerateQrCode::index');
+$routes->get('/manage-locations', 'Locations::index');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
 
 

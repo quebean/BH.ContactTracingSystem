@@ -60,8 +60,8 @@
             >
           </li>
           <li class="mb-3">
-            <a href="<?php echo "generate-qrcode";?>" class="text-decoration-none d-block px-3 py-2"
-              ><i class="fa-solid fa-qrcode me-3"></i>Generate QR Code</a
+            <a href="<?php echo "manage-locations";?>" class="text-decoration-none d-block px-3 py-2"
+              ><i class="fa-solid fa-qrcode me-3"></i>Manage Locations</a
             >
           </li>
           <li class="mb-3">
