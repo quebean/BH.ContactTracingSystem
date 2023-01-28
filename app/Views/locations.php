@@ -1,9 +1,10 @@
-<?php include("shared/top.php");?>
+<?php include("shared/top.php"); ?>
 
 <div class="main-container d-flex">
-    <?php include("shared/sidenav.php");?>
+  <?php include("shared/sidenav.php"); ?>
   <div class="content">
-    <?php include("shared/header.php");?>
+    <?php include("shared/header.php"); ?>
+    <!-- start coding below this comment -->
     <div class="rounded m-2 p-2">
       <div>
         <div class="bg-white m-4 p-4 rounded">
@@ -21,21 +22,25 @@
                 </tr>
               </thead>
               <tbody>
-              <?php
-              foreach($locations as $row){
-              ?>
-              <tr id="<?php echo $row['locationID']; ?>">
-                  <td><?php echo $row['locationID']; ?></td>
-                  <td><?php echo $row['locationName']; ?></td>
-                  <td class="text-center">
-                    <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                    <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
-                    <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
-                  </td>
-              </tr>
-              <?php
-              }
-              ?>
+                <?php
+                foreach ($locations as $row) {
+                  ?>
+                  <tr id="<?php echo $row['locationID']; ?>">
+                    <td>
+                      <?php echo $row['locationID']; ?>
+                    </td>
+                    <td>
+                      <?php echo $row['locationName']; ?>
+                    </td>
+                    <td class="text-center">
+                      <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>
+                  <?php
+                }
+                ?>
               </tbody>
             </table>
           </div>
@@ -77,4 +82,4 @@
   });
 </script>
 
-<?php include("shared/bottom.php");?>
+<?php include("shared/bottom.php"); ?>
