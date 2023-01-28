@@ -96,15 +96,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="text-center">12123</td>
-                    <td class="text-center">Sample Name</td>
+                <?php
+                foreach($locations as $row){
+                ?>
+                <tr id="<?php echo $row['locationID']; ?>">
+                    <td><?php echo $row['locationID']; ?></td>
+                    <td><?php echo $row['locationName']; ?></td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
                       <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                     </td>
-                  </tr>
+                </tr>
+                <?php
+                }
+                ?>
                 </tbody>
               </table>
               </div>
