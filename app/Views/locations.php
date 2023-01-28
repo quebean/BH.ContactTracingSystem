@@ -83,8 +83,8 @@
                 foreach($locations as $row){
                 ?>
                 <tr id="<?php echo $row['locationID']; ?>">
-                    <td><?php echo $row['locationID']; ?></td>
-                    <td><?php echo $row['locationName']; ?></td>
+                    <td class="text-center"><?php echo $row['locationID']; ?></td>
+                    <td class="text-center"><?php echo $row['locationName']; ?></td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
@@ -110,6 +110,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
+          
           <h5 class="modal-title" id="exampleModalLabel">Create New Location</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -117,15 +118,15 @@
           <form>
             <div class="mb-3">
               <label for="formLocation" class="form-label">Location Name</label>
-              <input type="email" class="form-control" id="formLocation" aria-describedby="locationHelp">
+              <input type="text" class="form-control" id="formLocation" name="formLocation" aria-describedby="locationHelp">
               <div id="locationHelp" class="form-text">Input unique locations.</div>
             </div>
+        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" id="submitBtn" class="btn btn-primary">Save changes</button>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>
@@ -134,11 +135,59 @@
     integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  
+
   <script>
-    $(document).ready(function () {
+    $(document).ready( function () {
       $('#locationsTable').DataTable();
     });
+
+    // $(document).on('click', '#submitBtn', function(){
+    // let locationName = document.querySelector("#formLocation").
+    //       $.ajax({
+    //           method: "POST",
+    //           url:"studentAJAX/editData",
+    //           data: {
+    //               'locationName': formLocation.value,
+    //           }
+    //       });
+    //   });
+
+    
   </script>
+
+
+  <script>
+
+      var dataTable = $('#locationsTable').DataTable();
+
+      document.querySelector('#submitBtn').addEventListener('click', async (event) => {
+          event.preventDefault();
+          getData()
+      });
+
+    async function getData() {
+      try {
+          const result = await fetch('<?php echo base_url('add-location')?>', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  locationName: locationName.value
+              })
+          })
+
+          const data = await result.json();
+          if (data) {
+              console.log(data);
+          }
+      } catch (error) {
+          
+      }
+  }
+  </script>
+
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

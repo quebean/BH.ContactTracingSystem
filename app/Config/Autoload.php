@@ -17,6 +17,7 @@ use CodeIgniter\Config\AutoloadConfig;
  */
 class Autoload extends AutoloadConfig
 {
+    
     /**
      * -------------------------------------------------------------------
      * Namespaces
@@ -95,3 +96,6 @@ class Autoload extends AutoloadConfig
      */
     public $helpers = [];
 }
+
+$autoload['libraries'] = array('form_validation');
+$autoload['helper'] = array('url', 'form');
