@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="dashboard-style.css" />
-    <title>Dashboard</title>
+    <title>Activity Tracker</title>
   </head>
   <body>
     <div class="main-container d-flex">
