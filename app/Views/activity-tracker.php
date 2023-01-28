@@ -58,7 +58,7 @@
     <div class="content">
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbrand navbar-brand mb-0 fs-5">Activity Tracker</span>
+          <span class="navbrand navbar-brand mb-0 fs-5">Personnel Activity Tracker</span>
         </div>
       </nav>
     </div>
