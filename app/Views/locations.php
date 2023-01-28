@@ -10,7 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <script
       src="https://kit.fontawesome.com/f38a62f9ed.js"
       crossorigin="anonymous"
@@ -63,7 +63,7 @@
           </li>
           <li class="active mb-3">
             <a href="<?php echo "manage-locations";?>" class="text-decoration-none d-block px-3 py-2"
-              ><i class="fa-solid fa-qrcode me-3"></i>Manage Locations</a
+              ><i class="fa-solid fa-location-dot me-3"></i>Manage Locations</a
             >
           </li>
           <li class="mb-3">
@@ -75,13 +75,52 @@
         </ul>
       </div>
       <div class="content">
-
-
-
-
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbrand navbar-brand mb-0 fs-5">Employee Information</span>
+        </div>
+      </nav>
+      <div class="rounded m-2 p-2">
+        <div>
+          <div class="bg-white m-4 p-4 rounded">
+            <div class="pb-3 mb-2">
+              <button class="btn btn-primary"><i class="fa-solid fa-pen"></i> &nbsp Create new Location</button>
+            </div>
+            <div class="border p-2 rounded">
+              <table id="locationsTable"  class="display" style="width:100%">
+                <thead>
+                  <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-center">12123</td>
+                    <td class="text-center">Sample Name</td>
+                    <td class="text-center">
+                      <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
-    <script src="https//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+          $('#locationsTable').DataTable();
+      });
+    </script>
   </body>
 
   <script
