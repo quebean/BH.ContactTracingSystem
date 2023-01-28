@@ -9,5 +9,5 @@ class Locations extends BaseController
         return view('locations');
     }
 
-    
+
 }

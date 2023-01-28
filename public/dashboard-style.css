@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap");
 :root {
-  --font-logo: 'Alfa Slab One', cursive;
-  --sidebar-color: #40613A;
+  --font-logo: "Alfa Slab One", cursive;
+  --sidebar-color: #40613a;
   --sidebar-header-color: #395934;
-  --main-font: 'Roboto', sans-serif;
+  --main-font: "Roboto", sans-serif;
 }
 
 body {
   background: #eee;
 }
-
-
 
 #side_nav {
   background: var(--sidebar-color);
@@ -41,7 +39,7 @@ body {
   min-height: 90px;
 }
 
-.logo-x{
+.logo-x {
   position: absolute;
   top: 35px;
   left: 35px;
@@ -52,7 +50,7 @@ body {
   z-index: 2;
 }
 
-.logo-y{
+.logo-y {
   position: absolute;
   top: 35px;
   left: 35px;
@@ -65,7 +63,7 @@ body {
 }
 
 .logo-y::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0px;
   left: 0px;
@@ -78,7 +76,7 @@ body {
 }
 
 .logo-x::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -1px;
   left: -1px;
@@ -94,7 +92,8 @@ body {
   background: #fff;
   border-radius: 5px;
 }
-.sidebar ul li:hover, .sidebar li a:hover {
+.sidebar ul li:hover,
+.sidebar li a:hover {
   cursor: pointer;
   background: #fff;
   color: #242424;
@@ -104,8 +103,7 @@ body {
 .sidebar li a {
   color: #fff;
   font-family: var(--main-font) !important;
-  transition: all .2s;
-
+  transition: all 0.2s;
 }
 
 .sidebar li.active a {
@@ -113,6 +111,7 @@ body {
   font-weight: bold;
 }
 
-
-
-
+.navbrand {
+  font-size: 1.5rem !important;
+  
+}
