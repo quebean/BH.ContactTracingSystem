@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 03:28 PM
+-- Generation Time: Jan 28, 2023 at 04:35 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -20,17 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_bautistahospital`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `locations`
---
-
-CREATE TABLE `locations` (
-  `locationID` int(11) NOT NULL,
-  `locationName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -98,6 +87,26 @@ CREATE TABLE `tblhealthdeclaration` (
   `diarrhea` tinyint(1) NOT NULL,
   `physicianID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbllocations`
+--
+
+CREATE TABLE `tbllocations` (
+  `locationID` int(11) NOT NULL,
+  `locationName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbllocations`
+--
+
+INSERT INTO `tbllocations` (`locationID`, `locationName`) VALUES
+(1, 'Bautista Pharmacy'),
+(2, 'Bautista Hospital'),
+(3, 'Bautista Clinic');
 
 -- --------------------------------------------------------
 
@@ -177,12 +186,6 @@ CREATE TABLE `tblvisitlogs` (
 --
 
 --
--- Indexes for table `locations`
---
-ALTER TABLE `locations`
-  ADD PRIMARY KEY (`locationID`);
-
---
 -- Indexes for table `tblcontactinformation`
 --
 ALTER TABLE `tblcontactinformation`
@@ -205,6 +208,12 @@ ALTER TABLE `tblemployeeinfo`
 --
 ALTER TABLE `tblhealthdeclaration`
   ADD PRIMARY KEY (`healthDeclarationID`);
+
+--
+-- Indexes for table `tbllocations`
+--
+ALTER TABLE `tbllocations`
+  ADD PRIMARY KEY (`locationID`);
 
 --
 -- Indexes for table `tblnurse`
@@ -241,12 +250,6 @@ ALTER TABLE `tblvisitlogs`
 --
 
 --
--- AUTO_INCREMENT for table `locations`
---
-ALTER TABLE `locations`
-  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tblcontactinformation`
 --
 ALTER TABLE `tblcontactinformation`
@@ -269,6 +272,12 @@ ALTER TABLE `tblemployeeinfo`
 --
 ALTER TABLE `tblhealthdeclaration`
   MODIFY `healthDeclarationID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbllocations`
+--
+ALTER TABLE `tbllocations`
+  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tblnurse`
