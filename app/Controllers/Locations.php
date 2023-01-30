@@ -18,19 +18,17 @@ class Locations extends BaseController
     {
         $locationModel = new LocationModel();
         $data = [
-            'locationName' => $this->request->getVar('locationName')
+            'locationName' => $this->request->getPost('formLocation')
         ];
-        
-        $save = $locationModel->insert($data);
-        if($save != false)
-        {
-            $data = $model->where('id', $save)->first();
-            echo json_encode(array("status" => true , 'data' => $data));
-        }
-        else{
-            echo json_encode(array("status" => false , 'data' => $data));
-        }
-
+        $locationModel->insert($data);
+        // if($save != false)
+        // {
+        //     $data = $model->where('id', $save)->first();
+        //     echo json_encode(array("status" => true , 'data' => $data));
+        // }
+        // else{
+        //     echo json_encode(array("status" => false , 'data' => $data));
+        // 
         return redirect()->back();
     }
 
