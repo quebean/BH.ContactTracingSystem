@@ -36,6 +36,7 @@ $routes->get('/employee-information', 'EmployeeInformation::index');
 $routes->get('/patient-information', 'PatientInformation::index');
 $routes->get('/compose-message', 'ComposeMessage::index');
 $routes->get('/manage-locations', 'Locations::index');
+$routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
 
 
