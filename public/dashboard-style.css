@@ -15,6 +15,7 @@ body {
   background: var(--sidebar-color);
   min-width: 290px;
   max-width: 290px;
+  min-height: 100vh;
 }
 
 .content {

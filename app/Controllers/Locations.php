@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\LocationModel;
 
 class Locations extends BaseController
