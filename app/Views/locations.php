@@ -66,13 +66,13 @@
             <input type="text" class="form-control" id="formLocation" name="formLocation" aria-describedby="locationHelp">
             <div id="locationHelp" class="form-text">Input unique locations.</div>
           </div>
-      </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
           </div>
         </form>
-    </div>
   </div>
 </div>
 

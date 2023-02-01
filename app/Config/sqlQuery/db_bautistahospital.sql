@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 04:35 PM
+-- Generation Time: Feb 01, 2023 at 09:44 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -61,6 +61,13 @@ CREATE TABLE `tblemployeeinfo` (
   `personalInfoID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tblemployeeinfo`
+--
+
+INSERT INTO `tblemployeeinfo` (`employeeID`, `employeeNumber`, `isPositive`, `isArchived`, `personID`, `personalInfoID`) VALUES
+(1, 'BHEID-001', 0, 0, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -104,9 +111,12 @@ CREATE TABLE `tbllocations` (
 --
 
 INSERT INTO `tbllocations` (`locationID`, `locationName`) VALUES
-(1, 'Bautista Pharmacy'),
+(1, 'fdsfdsfsd'),
 (2, 'Bautista Hospital'),
-(3, 'Bautista Clinic');
+(3, 'Bautista Hospital'),
+(4, ''),
+(5, 'Bautista Hospital'),
+(6, 'fdsfdsfds');
 
 -- --------------------------------------------------------
 
@@ -140,6 +150,13 @@ CREATE TABLE `tblpersonalinfo` (
   `philHealthNumber` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tblpersonalinfo`
+--
+
+INSERT INTO `tblpersonalinfo` (`personalInfoID`, `weight`, `height`, `address`, `barangay`, `city`, `province`, `country`, `zipcode`, `sssNumber`, `philHealthNumber`) VALUES
+(1, 100, 100, '269 Di Makita', '21 - Lapu', 'Cavite City', 'Cavite', 'Philippines', '4100', '002324328674', '343905327583');
+
 -- --------------------------------------------------------
 
 --
@@ -152,8 +169,16 @@ CREATE TABLE `tblpersons` (
   `middleName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
   `birthDate` datetime NOT NULL,
-  `contactInformationID` int(11) NOT NULL
+  `sex` char(1) NOT NULL,
+  `contactInformationID` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblpersons`
+--
+
+INSERT INTO `tblpersons` (`personID`, `firstName`, `middleName`, `lastName`, `birthDate`, `sex`, `contactInformationID`) VALUES
+(1, 'Jed', 'Lester', 'Jose', '2023-02-01 09:36:05', 'M', '09978324567');
 
 -- --------------------------------------------------------
 
@@ -265,7 +290,7 @@ ALTER TABLE `tbldepartment`
 -- AUTO_INCREMENT for table `tblemployeeinfo`
 --
 ALTER TABLE `tblemployeeinfo`
-  MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblhealthdeclaration`
@@ -277,7 +302,7 @@ ALTER TABLE `tblhealthdeclaration`
 -- AUTO_INCREMENT for table `tbllocations`
 --
 ALTER TABLE `tbllocations`
-  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblnurse`
@@ -289,13 +314,13 @@ ALTER TABLE `tblnurse`
 -- AUTO_INCREMENT for table `tblpersonalinfo`
 --
 ALTER TABLE `tblpersonalinfo`
-  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblpersons`
 --
 ALTER TABLE `tblpersons`
-  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblphysicians`

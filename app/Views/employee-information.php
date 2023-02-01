@@ -5,7 +5,7 @@
   <div class="content">
     <?php include("shared/header.php"); ?>
     <!-- start coding below this comment -->
-
+    
   </div>
 </div>
 
