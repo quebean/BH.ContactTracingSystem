@@ -16,7 +16,7 @@
             <table id="locationsTable" class="display" style="width:100%">
               <thead>
                 <tr>
-                  <th class="text-center">Id</th>
+                  <th class="text-center">ID</th>
                   <th class="text-center">Name</th>
                   <th class="text-center">Actions</th>
                 </tr>
@@ -26,10 +26,10 @@
                 foreach ($locations as $row) {
                   ?>
                   <tr id="<?php echo $row['locationID']; ?>">
-                    <td>
+                    <td class="text-center">
                       <?php echo $row['locationID']; ?>
                     </td>
-                    <td>
+                    <td class="text-center">
                       <?php echo $row['locationName']; ?>
                     </td>
                     <td class="text-center">
@@ -60,19 +60,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url('add-location');?>" method="post">
+        <form action="<?php echo base_url('add-location'); ?>" method="post">
           <div class="mb-3">
             <label for="formLocation" class="form-label">Location Name</label>
-            <input type="text" class="form-control" id="formLocation" name="formLocation" aria-describedby="locationHelp">
+            <input type="text" class="form-control" id="formLocation" name="formLocation"
+              aria-describedby="locationHelp">
             <div id="locationHelp" class="form-text">Input unique locations.</div>
           </div>
-          </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-          </div>
-        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
   </div>
 </div>
 
