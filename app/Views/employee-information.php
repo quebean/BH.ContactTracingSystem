@@ -45,6 +45,8 @@
         <h5 class="modal-title" id="exampleModalLabel">Create New Employee</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
+      <!-- Modal Personal Information -->
       <div class="modal-body">
         <form action="<?php echo base_url('add-location'); ?>" class="form-floating" method="post">
           <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
@@ -92,83 +94,167 @@
             <div class="col-4">
               <div class="form-floating">
                 <select class="form-select" id="floatingSelectGrid" aria-label="Sex">
-                  <option selected value="M">Male</option>
-                  <option value="F">Female</option>
+                  <option selected value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
                 <label for="floatingSelectGrid">Sex</label>
               </div>
             </div>
           </div>
-
-          <h5 class="modal-title mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-3">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInput" placeholder="Address">
-              <label for="floatingInput">Address</label>
-            </div>
-          </div>
-          <div class="row gx-3 mb-3">
-            <div class="col">
+            <div class="col-4">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="First Name">
-                <label for=" floatingInput">First Name</label>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Middle Name">
-                <label for=" floatingInput">Middle Name</label>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Last Name">
-                <label for=" floatingInput">Last Name</label>
-              </div>
-            </div>
-          </div>
-          <div class="row g-3 mb-3">
-            <div class="col-8">
-              <div class="form-floating">
-                <input type="date" class="form-control" id="floatingInput" placeholder="Birthdate">
-                <label for=" floatingInput">Birthdate</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Height">
+                <label for=" floatingInput">Height (m)</label>
               </div>
             </div>
             <div class="col-4">
               <div class="form-floating">
-                <select class="form-select" id="floatingSelectGrid" aria-label="Sex">
-                  <option selected value="M">Male</option>
-                  <option value="F">Female</option>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Weight">
+                <label for=" floatingInput">Weight (kg)</label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Blood Type">
+                  <option selected value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
                 </select>
-                <label for="floatingSelectGrid">Sex</label>
+                <label for="floatingSelectGrid">Blood Type</label>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Citizenship">
+                <label for=" floatingInput">Citizenship</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Marital Status">
+                  <option selected value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Widowed">Widowed</option>
+                  <option value="Divorced">Divorced</option>
+                </select>
+                <label for="floatingSelectGrid">Marital Status</label>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="SSS Number">
+                <label for=" floatingInput">SSS Number</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="PhilHealth Number">
+                <label for=" floatingInput">PhilHealth Number</label>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-6">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Registered Nurse">
+                  <option selected value="No">No</option>
+                  <option value="No">Yes</option>
+                </select>
+                <label for="floatingSelectGrid">Registered Nurse</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="License Number" disabled>
+                <label class="text-muted" for=" floatingInput">License Number</label>
               </div>
             </div>
           </div>
 
+          <!-- Modal Contact Information -->
 
-
-
-
-
-          <!-- <div class="mb-3">
-            <label for="formEmployee" class="form-label">First Name</label>
-            <input type="text" class="form-control form-floating" id="formFirstName" name="formFirstName"
-              aria-describedby="employeeHelp" placeholder="Enter First Name">
-
+          <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <div class="row g-3 mb-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Address">
+              <label class="ps-3" for="floatingInput">Address <span class="text-muted">(house number and street
+                  name)</span></label>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="formEmployee" class="form-label">Middle Name</label>
-            <input type="text" class="form-control" id="formMiddleName" name="formMiddleName"
-              aria-describedby="employeeHelp">
-
+          <div class="row gx-3 mb-3">
+            <div class="col-4">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Country">
+                  <option selected value="Philippines">Philippines</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Japan">Japan</option>
+                </select>
+                <label for="floatingSelectGrid">Country</label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Provice">
+                  <option selected value="Philippines">Cavite</option>
+                  <option value="Metro Manila">Metro Manila</option>
+                  <option value="Batangas">Batangas</option>
+                </select>
+                <label for="floatingSelectGrid">Province</label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Zip Code">
+                <label for=" floatingInput">Zip Code</label>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="formEmployee" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="formLastName" name="formLastName"
-              aria-describedby="employeeHelp">
-
-          </div> -->
-
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="City">
+                  <option selected value="Cavite City">Cavite City</option>
+                  <option value="Dasmariñas City">Dasmariñas City</option>
+                  <option value="Bacoor City">Bacoor City</option>
+                </select>
+                <label for="floatingSelectGrid">City</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelectGrid" aria-label="Barangay">
+                  <option selected value="Barangay 1">Barangay 1</option>
+                  <option value="Barangay 2">Barangay 2</option>
+                  <option value="Barangay 3">Barangay 3</option>
+                </select>
+                <label for="floatingSelectGrid">Barangay</label>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Contact Number">
+                <label for="floatingInput">Contact Number</label>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Email Address">
+                <label for="floatingInput">Email Address</label>
+              </div>
+            </div>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
