@@ -53,22 +53,22 @@
           <div class="row gx-3 mb-3">
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Employee Number">
-                <label for=" floatingInput">Employee Number</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Employee Number*">
+                <label for=" floatingInput">Employee Number<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Position">
-                <label for="floatingInput">Position</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Position*">
+                <label for="floatingInput">Position<span class="required">*</span></label>
               </div>
             </div>
           </div>
           <div class="row gx-3 mb-3">
             <div class="col">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="First Name">
-                <label for=" floatingInput">First Name</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="First Name*">
+                <label for=" floatingInput">First Name<span class="required">*</span></label>
               </div>
             </div>
             <div class="col">
@@ -79,16 +79,16 @@
             </div>
             <div class="col">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Last Name">
-                <label for=" floatingInput">Last Name</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Last Name*">
+                <label for=" floatingInput">Last Name<span class="required">*</span></label>
               </div>
             </div>
           </div>
           <div class="row g-3 mb-3">
             <div class="col-8">
               <div class="form-floating">
-                <input type="date" class="form-control" id="floatingInput" placeholder="Birthdate">
-                <label for=" floatingInput">Birthdate</label>
+                <input type="date" class="form-control" id="floatingInput" placeholder="Birthdate*">
+                <label for=" floatingInput">Birthdate<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-4">
@@ -104,14 +104,14 @@
           <div class="row g-3 mb-3">
             <div class="col-4">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Height">
-                <label for=" floatingInput">Height (m)</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Height*">
+                <label for=" floatingInput">Height (m)<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-4">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Weight">
-                <label for=" floatingInput">Weight (kg)</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Weight*">
+                <label for=" floatingInput">Weight (kg)<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-4">
@@ -133,8 +133,8 @@
           <div class="row g-3 mb-3">
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Citizenship">
-                <label for=" floatingInput">Citizenship</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Citizenship*">
+                <label for=" floatingInput">Citizenship<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-6">
@@ -152,14 +152,14 @@
           <div class="row gx-3 mb-3">
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="SSS Number">
-                <label for=" floatingInput">SSS Number</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="SSS Number*">
+                <label for=" floatingInput">SSS Number<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="PhilHealth Number">
-                <label for=" floatingInput">PhilHealth Number</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="PhilHealth Number*">
+                <label for=" floatingInput">PhilHealth Number<span class="required">*</span></label>
               </div>
             </div>
           </div>
@@ -175,8 +175,8 @@
             </div>
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="License Number" disabled>
-                <label class="text-muted" for=" floatingInput">License Number</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="License Number*" disabled>
+                <label class="text-muted" for=" floatingInput">License Number<span class="required">*</span></label>
               </div>
             </div>
           </div>
@@ -186,9 +186,9 @@
           <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-3">
             <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInput" placeholder="Address">
+              <input type="text" class="form-control" id="floatingInput" placeholder="Address*">
               <label class="ps-3" for="floatingInput">Address <span class="text-muted">(house number and street
-                  name)</span></label>
+                  name)<span class="required">*</span></span></label>
             </div>
           </div>
           <div class="row gx-3 mb-3">
@@ -214,8 +214,8 @@
             </div>
             <div class="col-4">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Zip Code">
-                <label for=" floatingInput">Zip Code</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Zip Code*">
+                <label for=" floatingInput">Zip Code<span class="required">*</span></label>
               </div>
             </div>
           </div>
@@ -244,14 +244,14 @@
           <div class="row g-3 mb-3">
             <div class="col-6">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Contact Number">
-                <label for="floatingInput">Contact Number</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Contact Number*">
+                <label for="floatingInput">Contact Number<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-6 mb-3">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Email Address">
-                <label for="floatingInput">Email Address</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Email Address*">
+                <label for="floatingInput">Email Address<span class="required">*</span></label>
               </div>
             </div>
           </div>
