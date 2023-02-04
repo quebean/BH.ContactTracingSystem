@@ -116,3 +116,7 @@ body {
   font-size: 1.5rem !important;
   
 }
+
+div label span.required {
+  color: red;
+}

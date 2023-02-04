@@ -16,6 +16,7 @@ class EmployeeInformation extends BaseController
         var_dump($result);
         $data["result"] = $result;
         $data['pageTitle'] = 'Employee Information';
+        // $data['employee'] = $employeeModel->findAll();
         return view('employee-information', $data);
 
     }
