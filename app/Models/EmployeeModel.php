@@ -8,5 +8,5 @@ class EmployeeModel extends Model
 {
     protected $table = 'tblemployeeinfo';
     protected $primaryKey = 'employeeID';
-    protected $allowedFields = ['employeeNumber,isPositive, isArchived, personID, personalInfoID'];
+    protected $allowedFields = ['employeeNumber,isPositive, isArchived, personID, personalInfoID, personalInformationID'];
 }
