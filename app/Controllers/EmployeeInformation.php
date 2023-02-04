@@ -13,7 +13,7 @@ class EmployeeInformation extends BaseController
         $builder->join('tblpersons', 'tblpersons.personID= tblemployeeinfo.personID');
         $query = $builder->get();
         $result = $query->getResult();
-        var_dump($result);
+        // var_dump($result);
         $data["result"] = $result;
         $data['pageTitle'] = 'Employee Information';
         // $data['employee'] = $employeeModel->findAll();

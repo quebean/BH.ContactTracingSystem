@@ -25,7 +25,34 @@
                 </tr>
               </thead>
               <tbody>
-
+              <?php
+                foreach ($result as $row) {
+                  ?>
+                  <tr id="<?php echo $row->employeeID ?>">
+                    <td class="text-center">
+                      <?php echo $row->employeeNumber ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->fullName ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->position ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->sex ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->address ?>
+                    </td>
+                    <td class="text-center">
+                      <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>
+                  <?php
+                }
+                ?>
               </tbody>
             </table>
           </div>
@@ -39,7 +66,7 @@
 <!-- Modal -->
 
 <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Create New Employee</h5>
