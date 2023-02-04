@@ -16,7 +16,7 @@
             <table id="employeeTable" class="display" style="width:100%">
               <thead>
                 <tr>
-                  <th class="text-center">Patiend ID</th>
+                  <th class="text-center">Patient ID</th>
                   <th class="text-center">Patient Name</th>
                   <th class="text-center">Contact Number</th>
                   <th class="text-center">Referred By</th>

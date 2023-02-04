@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2023 at 09:44 AM
+-- Generation Time: Feb 04, 2023 at 10:27 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -58,15 +58,16 @@ CREATE TABLE `tblemployeeinfo` (
   `isPositive` tinyint(1) NOT NULL,
   `isArchived` tinyint(1) NOT NULL,
   `personID` int(11) NOT NULL,
-  `personalInfoID` int(11) NOT NULL
+  `personalInfoID` int(11) NOT NULL,
+  `position` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblemployeeinfo`
 --
 
-INSERT INTO `tblemployeeinfo` (`employeeID`, `employeeNumber`, `isPositive`, `isArchived`, `personID`, `personalInfoID`) VALUES
-(1, 'BHEID-001', 0, 0, 1, 1);
+INSERT INTO `tblemployeeinfo` (`employeeID`, `employeeNumber`, `isPositive`, `isArchived`, `personID`, `personalInfoID`, `position`) VALUES
+(1, 'BHEID-001', 0, 0, 1, 1, 'Guard');
 
 -- --------------------------------------------------------
 
@@ -133,6 +134,28 @@ CREATE TABLE `tblnurse` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblpatient`
+--
+
+CREATE TABLE `tblpatient` (
+  `patientID` int(11) NOT NULL,
+  `patientNumber` varchar(255) NOT NULL,
+  `referredBy` varchar(255) NOT NULL,
+  `nextConsultation` datetime NOT NULL,
+  `personID` int(11) NOT NULL,
+  `personalInformationID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblpatient`
+--
+
+INSERT INTO `tblpatient` (`patientID`, `patientNumber`, `referredBy`, `nextConsultation`, `personID`, `personalInformationID`) VALUES
+(1, 'BHPID-001', 'Dr. Kayaba Akihiko', '2023-04-29 17:22:22', 2, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblpersonalinfo`
 --
 
@@ -155,7 +178,8 @@ CREATE TABLE `tblpersonalinfo` (
 --
 
 INSERT INTO `tblpersonalinfo` (`personalInfoID`, `weight`, `height`, `address`, `barangay`, `city`, `province`, `country`, `zipcode`, `sssNumber`, `philHealthNumber`) VALUES
-(1, 100, 100, '269 Di Makita', '21 - Lapu', 'Cavite City', 'Cavite', 'Philippines', '4100', '002324328674', '343905327583');
+(1, 100, 100, '269 Di Makita', '21 - Lapu', 'Cavite City', 'Cavite', 'Philippines', '4100', '002324328674', '343905327583'),
+(2, 112, 55, '134 Lapu-Lapu St. Caridad Cavite City', '25-Ilang-ilang', 'Cavite City', 'Cavite', 'Philippines', '4100', '43534563465346', '35465676796745');
 
 -- --------------------------------------------------------
 
@@ -169,7 +193,7 @@ CREATE TABLE `tblpersons` (
   `middleName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
   `birthDate` datetime NOT NULL,
-  `sex` char(1) NOT NULL,
+  `sex` varchar(255) NOT NULL,
   `contactInformationID` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -178,7 +202,8 @@ CREATE TABLE `tblpersons` (
 --
 
 INSERT INTO `tblpersons` (`personID`, `firstName`, `middleName`, `lastName`, `birthDate`, `sex`, `contactInformationID`) VALUES
-(1, 'Jed', 'Lester', 'Jose', '2023-02-01 09:36:05', 'M', '09978324567');
+(1, 'Jed', 'Lester', 'Jose', '2023-02-01 09:36:05', 'Male', '09978324567'),
+(2, 'John', 'Pascua', 'Lemon', '1995-01-18 17:23:25', 'Male', '09452349874');
 
 -- --------------------------------------------------------
 
@@ -247,6 +272,12 @@ ALTER TABLE `tblnurse`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tblpatient`
+--
+ALTER TABLE `tblpatient`
+  ADD PRIMARY KEY (`patientID`);
+
+--
 -- Indexes for table `tblpersonalinfo`
 --
 ALTER TABLE `tblpersonalinfo`
@@ -311,16 +342,22 @@ ALTER TABLE `tblnurse`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tblpatient`
+--
+ALTER TABLE `tblpatient`
+  MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tblpersonalinfo`
 --
 ALTER TABLE `tblpersonalinfo`
-  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblpersons`
 --
 ALTER TABLE `tblpersons`
-  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblphysicians`
