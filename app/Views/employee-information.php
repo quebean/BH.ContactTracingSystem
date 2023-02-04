@@ -64,24 +64,24 @@
 
 
 <!-- Modal -->
-
 <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Employee</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create New Patient</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
 
       <!-- Modal Personal Information -->
       <div class="modal-body">
-        <form action="<?php echo base_url('add-location'); ?>" class="form-floating" method="post">
+        <form action="" class="form-floating" method="post">
           <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-3">
             <div class="col-6">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Employee Number*">
-                <label for=" floatingInput">Employee Number<span class="required">*</span></label>
+                <label for=" floatingInput">Patient Number<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-6">
@@ -112,7 +112,7 @@
             </div>
           </div>
           <div class="row g-3 mb-3">
-            <div class="col-8">
+            <div class="col-4">
               <div class="form-floating">
                 <input type="date" class="form-control" id="floatingInput" placeholder="Birthdate*">
                 <label for=" floatingInput">Birthdate<span class="required">*</span></label>
@@ -125,20 +125,6 @@
                   <option value="Female">Female</option>
                 </select>
                 <label for="floatingSelectGrid">Sex</label>
-              </div>
-            </div>
-          </div>
-          <div class="row g-3 mb-3">
-            <div class="col-4">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Height*">
-                <label for=" floatingInput">Height (m)<span class="required">*</span></label>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Weight*">
-                <label for=" floatingInput">Weight (kg)<span class="required">*</span></label>
               </div>
             </div>
             <div class="col-4">
@@ -156,6 +142,21 @@
                 <label for="floatingSelectGrid">Blood Type</label>
               </div>
             </div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Height*">
+                <label for=" floatingInput">Height (m)<span class="required">*</span></label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Weight*">
+                <label for=" floatingInput">Weight (kg)<span class="required">*</span></label>
+              </div>
+            </div>
+            
           </div>
           <div class="row g-3 mb-3">
             <div class="col-6">
@@ -180,13 +181,13 @@
             <div class="col-6">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="SSS Number*">
-                <label for=" floatingInput">SSS Number<span class="required">*</span></label>
+                <label for=" floatingInput">SSS Number</label>
               </div>
             </div>
             <div class="col-6">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="PhilHealth Number*">
-                <label for=" floatingInput">PhilHealth Number<span class="required">*</span></label>
+                <label for=" floatingInput">PhilHealth Number</label>
               </div>
             </div>
           </div>
@@ -219,17 +220,7 @@
             </div>
           </div>
           <div class="row gx-3 mb-3">
-            <div class="col-4">
-              <div class="form-floating">
-                <select class="form-select" id="floatingSelectGrid" aria-label="Country">
-                  <option selected value="Philippines">Philippines</option>
-                  <option value="Singapore">Singapore</option>
-                  <option value="Japan">Japan</option>
-                </select>
-                <label for="floatingSelectGrid">Country</label>
-              </div>
-            </div>
-            <div class="col-4">
+            <div class="col-6">
               <div class="form-floating">
                 <select class="form-select" id="floatingSelectGrid" aria-label="Provice">
                   <option selected value="Philippines">Cavite</option>
@@ -239,7 +230,7 @@
                 <label for="floatingSelectGrid">Province</label>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Zip Code*">
                 <label for=" floatingInput">Zip Code<span class="required">*</span></label>
@@ -278,7 +269,7 @@
             <div class="col-6 mb-3">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Email Address*">
-                <label for="floatingInput">Email Address<span class="required">*</span></label>
+                <label for="floatingInput">Email Address</label>
               </div>
             </div>
           </div>
@@ -295,6 +286,7 @@
     $(document).ready(function () {
       $('#employeeTable').DataTable();
     });
+
   </script>
 
   <?php include("shared/bottom.php"); ?>
