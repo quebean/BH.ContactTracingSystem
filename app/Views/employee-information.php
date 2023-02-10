@@ -219,7 +219,7 @@
           <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-4">
             <div class="form-group">
-              <label class="ps-3" for="floatingInput">Address <span class="text-muted">(house number and street name)<span class="required">*</span></span></label>
+              <label class="" for="floatingInput">Address <span class="text-muted">(house number and street name)<span class="required">*</span></span></label>
               <input type="text" class="form-control"  name="txtEmpAddress" placeholder="Address">
 
             </div>
