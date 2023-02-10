@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2023 at 10:27 AM
+-- Generation Time: Feb 10, 2023 at 10:48 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -33,6 +33,23 @@ CREATE TABLE `tblcontactinformation` (
   `emailAddress` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tblcontactinformation`
+--
+
+INSERT INTO `tblcontactinformation` (`contactInfoID`, `cellphoneNumber`, `emailAddress`) VALUES
+(1, '09975461468', 'jedjose1999@gmail.com'),
+(2, '09456281697', 'johnlemon@gmail.com'),
+(9, 'fdsfdsfds', 'fdsfdsfds'),
+(10, '09564190289', 'johnlester@gmail.com'),
+(11, 'fdfdsfds', 'dfsfdsdfs'),
+(12, 'tretre', 'tretre'),
+(13, 'rewrewrew', 'erwrew'),
+(14, '', ''),
+(15, '', ''),
+(16, '', ''),
+(17, '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -59,15 +76,26 @@ CREATE TABLE `tblemployeeinfo` (
   `isArchived` tinyint(1) NOT NULL,
   `personID` int(11) NOT NULL,
   `personalInfoID` int(11) NOT NULL,
-  `position` varchar(255) NOT NULL
+  `position` varchar(255) NOT NULL,
+  `isNurse` varchar(255) NOT NULL,
+  `nurseID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblemployeeinfo`
 --
 
-INSERT INTO `tblemployeeinfo` (`employeeID`, `employeeNumber`, `isPositive`, `isArchived`, `personID`, `personalInfoID`, `position`) VALUES
-(1, 'BHEID-001', 0, 0, 1, 1, 'Guard');
+INSERT INTO `tblemployeeinfo` (`employeeID`, `employeeNumber`, `isPositive`, `isArchived`, `personID`, `personalInfoID`, `position`, `isNurse`, `nurseID`) VALUES
+(1, 'BHEID-001', 0, 0, 1, 1, 'Guard', '', 0),
+(8, 'fdfdsfdfds', 0, 0, 14, 7, 'fdsfds', 'No', 0),
+(9, 'BHEID-002', 0, 0, 15, 8, 'Guard', 'No', 0),
+(10, 'fdsfds', 0, 0, 16, 9, 'fdsfdsfds', 'No', 0),
+(11, 'fdsfdsfds', 0, 0, 17, 10, 'fdsfdsfdsfd', 'No', 0),
+(12, 'rewerw', 0, 0, 18, 11, 'rewewr', 'No', 0),
+(13, 'eeqw', 0, 0, 19, 12, '', 'No', 0),
+(14, '', 0, 0, 20, 13, '', 'No', 0),
+(15, '', 0, 0, 21, 14, '', 'No', 0),
+(16, '', 0, 0, 23, 15, '', 'No', 0);
 
 -- --------------------------------------------------------
 
@@ -168,6 +196,8 @@ CREATE TABLE `tblpersonalinfo` (
   `city` varchar(255) NOT NULL,
   `province` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
+  `citizenship` varchar(255) NOT NULL,
+  `maritalStatus` varchar(255) NOT NULL,
   `zipcode` varchar(255) NOT NULL,
   `sssNumber` varchar(255) NOT NULL,
   `philHealthNumber` varchar(255) NOT NULL
@@ -177,9 +207,22 @@ CREATE TABLE `tblpersonalinfo` (
 -- Dumping data for table `tblpersonalinfo`
 --
 
-INSERT INTO `tblpersonalinfo` (`personalInfoID`, `weight`, `height`, `address`, `barangay`, `city`, `province`, `country`, `zipcode`, `sssNumber`, `philHealthNumber`) VALUES
-(1, 100, 100, '269 Di Makita', '21 - Lapu', 'Cavite City', 'Cavite', 'Philippines', '4100', '002324328674', '343905327583'),
-(2, 112, 55, '134 Lapu-Lapu St. Caridad Cavite City', '25-Ilang-ilang', 'Cavite City', 'Cavite', 'Philippines', '4100', '43534563465346', '35465676796745');
+INSERT INTO `tblpersonalinfo` (`personalInfoID`, `weight`, `height`, `address`, `barangay`, `city`, `province`, `country`, `citizenship`, `maritalStatus`, `zipcode`, `sssNumber`, `philHealthNumber`) VALUES
+(1, 100, 100, '269 Di Makita', '21 - Lapu', 'Cavite City', 'Cavite', 'Philippines', 'Filipino', 'Single', '4100', '002324328674', '343905327583'),
+(2, 112, 55, '134 Lapu-Lapu St. Caridad Cavite City', '25-Ilang-ilang', 'Cavite City', 'Cavite', 'Philippines', 'Filipino', 'Single', '4100', '43534563465346', '35465676796745'),
+(3, 0, 0, 'fdfdsfds', 'Barangay 1', 'Cavite City', 'Philippines', '', 'fdsfdsfds', 'Single', '', 'fdsfdsfds', 'fdsfds'),
+(4, 0, 0, 'fdsfdsfds', 'Barangay 1', 'Cavite City', 'Philippines', '', 'fdsfds', 'Single', '', 'fdsfdsdfs', ''),
+(5, 0, 0, 'fdsfdsfds', 'Barangay 1', 'Cavite City', 'Philippines', '', 'fdsfds', 'Single', '', 'fdsfdsdfs', ''),
+(6, 0, 0, 'fdsfdsfds', 'Barangay 1', 'Cavite City', 'Philippines', '', 'fdsfds', 'Single', '', 'fdsfdsdfs', ''),
+(7, 0, 0, 'fdsfdsfds', 'Barangay 1', 'Cavite City', 'Philippines', '', 'fdsfds', 'Single', '', 'fdsfdsdfs', ''),
+(8, 200, 100, '268 Barlan Cor. Mabini', 'Barangay 3', 'Cavite City', 'Philippines', '', 'Filipino', 'Single', '4100', '2000', '112313'),
+(9, 342432, 423243, 'rewrewrrew', 'Barangay 1', 'Cavite City', 'Philippines', '', 'rereer', 'Single', '45343543', 'rewrewrew', 'rewrerew'),
+(10, 45435, 564564, 'rtetretre', 'Barangay 1', 'Cavite City', 'Philippines', '', 'trrtetre', 'Single', 'rttertre', 'tretre', 'trrtetre'),
+(11, 4343, 34432, 'rewreew', 'Barangay 1', 'Cavite City', 'Philippines', '', 'erwrewrwe', 'Single', '234324', 'rew', 'rewrew'),
+(12, 0, 0, '', 'Barangay 1', 'Cavite City', 'Philippines', '', '', 'Single', '', '', ''),
+(13, 0, 0, '', 'Barangay 1', 'Cavite City', 'Philippines', '', '', 'Single', '', '', ''),
+(14, 0, 0, '', 'Barangay 1', 'Cavite City', 'Philippines', '', '', 'Single', '', '', ''),
+(15, 0, 0, '', 'Barangay 1', 'Cavite City', 'Philippines', '', '', 'Single', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -194,16 +237,32 @@ CREATE TABLE `tblpersons` (
   `lastName` varchar(100) NOT NULL,
   `birthDate` datetime NOT NULL,
   `sex` varchar(255) NOT NULL,
-  `contactInformationID` varchar(11) NOT NULL
+  `contactInformationID` varchar(11) NOT NULL,
+  `bloodType` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblpersons`
 --
 
-INSERT INTO `tblpersons` (`personID`, `firstName`, `middleName`, `lastName`, `birthDate`, `sex`, `contactInformationID`) VALUES
-(1, 'Jed', 'Lester', 'Jose', '2023-02-01 09:36:05', 'Male', '09978324567'),
-(2, 'John', 'Pascua', 'Lemon', '1995-01-18 17:23:25', 'Male', '09452349874');
+INSERT INTO `tblpersons` (`personID`, `firstName`, `middleName`, `lastName`, `birthDate`, `sex`, `contactInformationID`, `bloodType`) VALUES
+(1, 'Jed', 'Lester', 'Jose', '2023-02-01 09:36:05', 'Male', '1', 'A'),
+(2, 'John', 'Pascua', 'Lemon', '1995-01-18 17:23:25', 'Male', '2', 'A'),
+(9, 'bcvbvcbcv', 'bcv', 'bcvbcvbcvbvc', '2023-02-10 00:00:00', 'Male', '', 'A+'),
+(10, 'fdsfds', 'fdsf', 'dsfds', '2023-02-08 00:00:00', 'Male', '', 'A+'),
+(11, 'fds', 'fdsfds', 'fdsfds', '2023-02-03 00:00:00', 'Male', '', 'A+'),
+(12, 'fds', 'fdsfds', 'fdsfds', '2023-02-03 00:00:00', 'Male', '', 'A+'),
+(13, 'fds', 'fdsfds', 'fdsfds', '2023-02-03 00:00:00', 'Male', '', 'A+'),
+(14, 'fds', 'fdsfds', 'fdsfds', '2023-02-03 00:00:00', 'Male', '', 'A+'),
+(15, 'John Lester', 'Dos', 'Uno', '2023-02-15 00:00:00', 'Male', '', 'B-'),
+(16, 'fdsfds', 'fdsfdsfds', 'fdsfdsfds', '2023-02-16 00:00:00', 'Male', '', 'A+'),
+(17, 'sfds', 'fdsfds', 'fdsfds', '2023-02-23 00:00:00', 'Male', '', 'A+'),
+(18, 'rewrew', 'rewrew', 'rewre', '0000-00-00 00:00:00', 'Male', '', 'A+'),
+(19, '', '', '', '0000-00-00 00:00:00', 'Male', '', 'A+'),
+(20, '', '', '', '0000-00-00 00:00:00', 'Male', '', 'A+'),
+(21, '', '', '', '0000-00-00 00:00:00', 'Male', '', 'A+'),
+(22, '', '', '', '0000-00-00 00:00:00', 'Male', '', 'A+'),
+(23, '', '', '', '0000-00-00 00:00:00', 'Male', '', 'A+');
 
 -- --------------------------------------------------------
 
@@ -309,7 +368,7 @@ ALTER TABLE `tblvisitlogs`
 -- AUTO_INCREMENT for table `tblcontactinformation`
 --
 ALTER TABLE `tblcontactinformation`
-  MODIFY `contactInfoID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `contactInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbldepartment`
@@ -321,7 +380,7 @@ ALTER TABLE `tbldepartment`
 -- AUTO_INCREMENT for table `tblemployeeinfo`
 --
 ALTER TABLE `tblemployeeinfo`
-  MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tblhealthdeclaration`
@@ -351,13 +410,13 @@ ALTER TABLE `tblpatient`
 -- AUTO_INCREMENT for table `tblpersonalinfo`
 --
 ALTER TABLE `tblpersonalinfo`
-  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tblpersons`
 --
 ALTER TABLE `tblpersons`
-  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tblphysicians`
