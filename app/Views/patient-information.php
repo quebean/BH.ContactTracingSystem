@@ -13,7 +13,7 @@
                 class="fa-solid fa-pen me-2"></i>Create New Patient</button>
           </div>
           <div class="border p-2 rounded">
-            <table id="employeeTable" class="display" style="width:100%">
+            <table id="patientTable" class="display" style="width:100%">
               <thead>
                 <tr>
                   <th class="text-center">Patient ID</th>
@@ -25,7 +25,34 @@
                 </tr>
               </thead>
               <tbody>
-              
+              <?php
+                foreach ($result as $row) {
+                  ?>
+                  <tr id="<?php echo $row->patientID ?>">
+                    <td class="text-center">
+                      <?php echo $row->patientID ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->fullName ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->cellphoneNumber?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->referredBy ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->nextConsultation ?>
+                    </td>
+                    <td class="text-center">
+                      <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>
+                  <?php
+                }
+                ?>
               </tbody>
             </table>
           </div>
@@ -175,7 +202,7 @@
             </div>
             <div class="col-6">
               <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInput" placeholder="Next Appointment" >
+              <input type="datetime-local" class="form-control" id="floatingInput2" placeholder="Next Appointment" >
               <label for=" floatingInput">Next Appointment<span class="required">*</span></label>
               </div>
             </div>
@@ -254,6 +281,18 @@
     </div>
   </div>
 
+  <script defer type="text/javascript">
+    $(document).ready(function () {
+      $('#patientTable').DataTable();
+    });
+
+    const element = document.querySelector('#floatingInput2')
+    
+    element.addEventListener('change', () => {
+      console.log(new Date(element.value).toISOString());
+    })
+
+  </script>
 
 
 <?php include("shared/bottom.php"); ?>
