@@ -120,12 +120,9 @@ body {
 div label span.required {
   color: red;
 }
-/* label.error {
+label.error {
   display: block;
-  position: absolute;
   float: none;
   color: red;
   padding-left: .5em;
-  top: 50px;
-  bottom: 50px;
-} */
+}
