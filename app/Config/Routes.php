@@ -33,12 +33,12 @@ $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/visitor-information', 'VisitorInformation::index');
 $routes->get('/employee-information', 'EmployeeInformation::index');
+$routes->post('/add-employee', 'EmployeeInformation::addEmployee');
 $routes->get('/patient-information', 'PatientInformation::index');
 $routes->get('/compose-message', 'ComposeMessage::index');
 $routes->get('/manage-locations', 'Locations::index');
 $routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
-
 
 /*
  * --------------------------------------------------------------------
