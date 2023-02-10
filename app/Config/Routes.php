@@ -40,7 +40,6 @@ $routes->get('/manage-locations', 'Locations::index');
 $routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
 
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing

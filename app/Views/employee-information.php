@@ -30,7 +30,7 @@
                 </tr>
               </thead>
               <tbody>
-              <?php
+                <?php
                 foreach ($result as $row) {
                   ?>
                   <tr id="<?php echo $row->employeeID ?>">
@@ -76,7 +76,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Create New Patient</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
+
 
       <!-- Modal Personal Information -->
       <div class="modal-body">
@@ -161,7 +161,7 @@
                 <input type="text" class="form-control" name="txtEmpWeight" placeholder="Weight">
               </div>
             </div>
-            
+
           </div>
           <div class="row g-3 mb-4">
             <div class="col-6">
