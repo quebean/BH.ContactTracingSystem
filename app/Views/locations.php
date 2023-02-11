@@ -35,7 +35,7 @@
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
-                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                      <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row['locationID']; ?>" class="btn btn-outline-danger btnDelete"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                   <?php
@@ -77,10 +77,44 @@
   </div>
 </div>
 
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <input type="hidden" name="hdnlocationID" id="hdnlocationID"/>
+            <h5>Do you want to delete the selected location?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary btnConfirmDelete">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script defer type="text/javascript">
   $(document).ready(function () {
     $('#locationsTable').DataTable();
   });
+
+  $('body').on('click', '.btnDelete', function () {
+        var locationID = $(this).attr('data-id');
+        $('#deleteModal #hdnlocationID').val(locationID);
+  });
+
+  $('body').on('click', '.btnConfirmDelete', function () {
+        var locationID = $("#hdnlocationID").val();
+        $.get('manage-locations/delete/'+locationID, function (data) {
+            $('#locationsTable tbody #'+ locationID).remove();
+        })
+        $('#deleteModal').modal('hide');
+  });
+  
+  
 </script>
 
 <?php include("shared/bottom.php"); ?>

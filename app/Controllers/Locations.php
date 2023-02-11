@@ -25,4 +25,21 @@ class Locations extends BaseController
         return redirect()->back();
     }
 
+    public function deleteLocation($id = null)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbllocations');
+        $builder->where('locationID', $id);
+        $builder->delete();
+
+        // $delete = $builder->where('id', $id)->delete();
+
+        // $delete = $model->where('id', $id)->delete();
+        // if ($delete) {
+        //     echo json_encode(array("status" => true));
+        // } else {
+        //     echo json_encode(array("status" => false));
+        // }
+    }
+
 }
