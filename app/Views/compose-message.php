@@ -20,7 +20,7 @@
                 <tr>
                   <th class="text-center">Message ID</th>
                   <th class="text-center">Recepient Name</th>
-                  <th class="text-center">Recepient Number</th>
+                  <th class="text-center">Contact Details</th>
                   <th class="text-center">Sender</th>
                   <th class="text-center">Time Sent</th>
                   <th class="text-center">Actions</th>
@@ -49,7 +49,7 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Contact Details:</label>
+            <label for="recipient-name" class="col-form-label">Recepient Number:</label>
             <input type="text" class="form-control" id="smsRecipient" placeholder="Enter Recipient Number">
           </div>
           <div class="mb-3">
