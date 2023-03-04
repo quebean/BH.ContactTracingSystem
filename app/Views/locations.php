@@ -60,17 +60,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url('add-location'); ?>" method="post">
+        <form id="locationForm">
           <div class="mb-3">
             <label for="formLocation" class="form-label">Location Name</label>
-            <input type="text" class="form-control" id="formLocation" name="formLocation"
-              aria-describedby="locationHelp">
+            <input type="text" class="form-control" id="formLocation" name="formLocation" aria-describedby="locationHelp">
             <div id="locationHelp" class="form-text">Input unique locations.</div>
+            <span id="locationError" class="text-danger"></span>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary" id="locationSubmit">Save changes</button>
       </div>
       </form>
     </div>
@@ -113,7 +113,64 @@
         })
         $('#deleteModal').modal('hide');
   });
-  
+ /**  $(document).ready(function () {
+    $('#locationsTable').DataTable();
+
+    // AJAX call to check if location already exists
+   $('#formLocation').on('blur', function() {
+      var locationName = $(this).val();
+      $.ajax({
+        url: ' ',
+        type: 'POST',
+        data: { locationName: locationName },
+        success: function(data) {
+          if (data == 'exists') {
+            $('#locationError').html('Location already exists.');
+            $('#locationSubmit').prop('disabled', true);
+          } else {
+            $('#locationError').html('');
+            $('#locationSubmit').prop('disabled', false);
+          }
+        }
+      });
+    });
+  });**/
+  var prevText = "";
+  $('#formLocation').keyup(function(event) {
+ 
+    newText = event.target.value;
+    if(prevText == newText && prevText != ""){
+ 
+            $('#locationSubmit').prop('disabled', true);
+    }else{
+      $('#locationError').html('');
+      $('#locationSubmit').prop('disabled', false);
+    }
+  });
+
+   $('#locationSubmit').on('click', function(e) {
+
+    var locationName = $("#formLocation").val();
+      $.ajax({
+        url: '<?php echo base_url('check-location'); ?>',
+        type: 'POST',
+        data: { locationName: locationName },
+        success: function(data) {
+          if (data == 'exists') {
+            prevText = $("#formLocation").val();
+            $('#locationError').html('Location already exists.');
+            $('#locationSubmit').prop('disabled', true);
+          } else {
+            $('#locationError').html('');
+            $('#locationSubmit').prop('disabled', false);
+            location.reload();
+          }
+        }
+      });
+      return false; 
+  }); 
+
+
   
 </script>
 

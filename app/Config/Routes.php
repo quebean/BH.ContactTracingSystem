@@ -40,6 +40,7 @@ $routes->get('/manage-locations', 'Locations::index');
 $routes->get('/manage-locations/delete/(:num)', 'Locations::deleteLocation/$1');
 $routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
+$routes->post('/check-location', 'Locations::checkLocation');
 
 /*
  * --------------------------------------------------------------------
