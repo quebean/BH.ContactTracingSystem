@@ -34,8 +34,11 @@
                     </td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i class="fa-solid fa-eye"></i></button>
-                      <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row['locationID']; ?>" class="btn btn-outline-danger btnDelete"><i class="fa-solid fa-trash"></i></button>
+                      <button class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i
+                          class="fa-solid fa-eye"></i></button>
+                      <button data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        data-id="<?php echo $row['locationID']; ?>" class="btn btn-outline-danger btnDelete"><i
+                          class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                   <?php
@@ -60,17 +63,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url('add-location'); ?>" method="post">
+        <form id="locationForm">
           <div class="mb-3">
             <label for="formLocation" class="form-label">Location Name</label>
             <input type="text" class="form-control" id="formLocation" name="formLocation"
               aria-describedby="locationHelp">
             <div id="locationHelp" class="form-text">Input unique locations.</div>
+            <span id="locationError" class="text-danger"></span>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary" id="locationSubmit">Save changes</button>
       </div>
       </form>
     </div>
@@ -85,8 +89,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <input type="hidden" name="hdnlocationID" id="hdnlocationID"/>
-            <p>Do you want to delete the selected location?</p>
+        <input type="hidden" name="hdnlocationID" id="hdnlocationID" />
+        <p>Do you want to delete the selected location?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -106,9 +110,9 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-          <input type="hidden" name="hdnlocationID" id="hdnlocationID"/>
+            <input type="hidden" name="hdnlocationID" id="hdnlocationID" />
             <label for="formLocation" class="form-label">Location Name</label>
-            <input type="text" class="form-control" id="formLocation"  name="formLocation">
+            <input type="text" class="form-control" id="formLocation" name="formLocation">
           </div>
       </div>
       <div class="modal-footer">
@@ -125,33 +129,91 @@
   });
 
   $('body').on('click', '.btnDelete', function () {
-        var locationID = $(this).attr('data-id');
-        $('#deleteModal #hdnlocationID').val(locationID);
+    var locationID = $(this).attr('data-id');
+    $('#deleteModal #hdnlocationID').val(locationID);
   });
 
   $('body').on('click', '.btnConfirmDelete', function () {
-        var locationID = $("#hdnlocationID").val();
-        $.get('manage-locations/delete/'+locationID, function (data) {
-            $('#locationsTable tbody #'+ locationID).remove();
-        })
-        $('#deleteModal').modal('hide');
+    var locationID = $("#hdnlocationID").val();
+    $.get('manage-locations/delete/' + locationID, function (data) {
+      $('#locationsTable tbody #' + locationID).remove();
+    })
+    $('#deleteModal').modal('hide');
   });
-  
+
   $('body').on('click', '.btnView', function () {
     var locationID = $(this).attr('data-id');
     $('#viewlocationModal #hdnlocationID').val(locationID);
-        $.ajax({
-            url: 'manage-locations/view/'+locationID,
-            type: "GET",
-            dataType: 'json',
-            success: function (res) {
-                $('#viewlocationModal').modal('show');
-                $('#viewlocationModal #formLocation').val(res.data.locationName); 
-            },
-                error: function (data) {
-            }
-        });
+    $.ajax({
+      url: 'manage-locations/view/' + locationID,
+      type: "GET",
+      dataType: 'json',
+      success: function (res) {
+        $('#viewlocationModal').modal('show');
+        $('#viewlocationModal #formLocation').val(res.data.locationName);
+      },
+      error: function (data) {
+      }
     });
+  });
+
+  /**  $(document).ready(function () {
+  $('#locationsTable').DataTable();
+
+  // AJAX call to check if location already exists
+ $('#formLocation').on('blur', function() {
+    var locationName = $(this).val();
+    $.ajax({
+      url: ' ',
+      type: 'POST',
+      data: { locationName: locationName },
+      success: function(data) {
+        if (data == 'exists') {
+          $('#locationError').html('Location already exists.');
+          $('#locationSubmit').prop('disabled', true);
+        } else {
+          $('#locationError').html('');
+          $('#locationSubmit').prop('disabled', false);
+        }
+      }
+    });
+  });
+});**/
+  var prevText = "";
+  $('#formLocation').keyup(function (event) {
+
+    newText = event.target.value;
+    if (prevText == newText && prevText != "") {
+
+      $('#locationSubmit').prop('disabled', true);
+    } else {
+      $('#locationError').html('');
+      $('#locationSubmit').prop('disabled', false);
+    }
+  });
+
+  $('#locationSubmit').on('click', function (e) {
+
+    var locationName = $("#formLocation").val();
+    $.ajax({
+      url: '<?php echo base_url('check-location'); ?>',
+      type: 'POST',
+      data: { locationName: locationName },
+      success: function (data) {
+        if (data == 'exists') {
+          prevText = $("#formLocation").val();
+          $('#locationError').html('Location already exists.');
+          $('#locationSubmit').prop('disabled', true);
+        } else {
+          $('#locationError').html('');
+          $('#locationSubmit').prop('disabled', false);
+          location.reload();
+        }
+      }
+    });
+    return false;
+  });
+
 
 </script>
 

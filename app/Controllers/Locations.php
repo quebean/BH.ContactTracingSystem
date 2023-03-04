@@ -6,7 +6,6 @@ use App\Models\LocationModel;
 
 class Locations extends BaseController
 {
-
     public function index()
     {
         $locationModel = new LocationModel();
@@ -25,21 +24,31 @@ class Locations extends BaseController
         return redirect()->back();
     }
 
+    public function checkLocation()
+    {
+        $db = \Config\Database::connect();
+        $locationName = $this->request->getPost('locationName');
+        $location = $db->table('tbllocations')->getWhere(['locationName' => $locationName])->getRow();
+
+        if ($location) {
+            echo 'exists';
+        } else {
+            $data = [
+                'locationName' => $this->request->getPost('locationName')
+            ];
+            $db->table('tbllocations')->insert($data);
+            echo '';
+            // return redirect()->back(); 
+        }
+
+    }
+
     public function deleteLocation($id = null)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('tbllocations');
         $builder->where('locationID', $id);
         $builder->delete();
-
-        // $delete = $builder->where('id', $id)->delete();
-
-        // $delete = $model->where('id', $id)->delete();
-        // if ($delete) {
-        //     echo json_encode(array("status" => true));
-        // } else {
-        //     echo json_encode(array("status" => false));
-        // }
     }
 
     // public function viewLocation($id = null)
@@ -56,7 +65,7 @@ class Locations extends BaseController
     //     }
     // }
 
-
+    
     public function viewLocation()
     {
         $db = \Config\Database::connect();
@@ -64,5 +73,4 @@ class Locations extends BaseController
         $data = $query->getResultArray();
         return json_encode($data);
     }
-
 }
