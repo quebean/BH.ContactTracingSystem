@@ -49,7 +49,7 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient Number:</label>
+            <label for="recipient-name" class="col-form-label">Contact Details:</label>
             <input type="text" class="form-control" id="smsRecipient" placeholder="Enter Recipient Number">
           </div>
           <div class="mb-3">

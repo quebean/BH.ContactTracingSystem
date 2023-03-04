@@ -21,7 +21,7 @@ class Locations extends BaseController
             'locationName' => $this->request->getPost('formLocation')
         ];
         $db->table('tbllocations')->insert($data);
-        return redirect()->back(); 
+        return redirect()->back();
     }
 
     public function checkLocation()
@@ -31,16 +31,16 @@ class Locations extends BaseController
         $location = $db->table('tbllocations')->getWhere(['locationName' => $locationName])->getRow();
 
         if ($location) {
-         echo 'exists';
+            echo 'exists';
         } else {
             $data = [
                 'locationName' => $this->request->getPost('locationName')
             ];
             $db->table('tbllocations')->insert($data);
             echo '';
-           // return redirect()->back(); 
+            // return redirect()->back(); 
         }
-       
+
     }
 
     public function deleteLocation($id)
