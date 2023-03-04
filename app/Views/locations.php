@@ -34,7 +34,7 @@
                     </td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row['locationID']; ?>" class="btn btn-outline-danger btnDelete"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
@@ -86,12 +86,35 @@
       </div>
       <div class="modal-body">
       <input type="hidden" name="hdnlocationID" id="hdnlocationID"/>
-            <h5>Do you want to delete the selected location?</h5>
+            <p>Do you want to delete the selected location?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
         <button type="button" class="btn btn-primary btnConfirmDelete">Yes</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="viewlocationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">View Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+          <input type="hidden" name="hdnlocationID" id="hdnlocationID"/>
+            <label for="formLocation" class="form-label">Location Name</label>
+            <input type="text" class="form-control" id="formLocation"  name="formLocation">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -114,7 +137,22 @@
         $('#deleteModal').modal('hide');
   });
   
-  
+  $('body').on('click', '.btnView', function () {
+    var locationID = $(this).attr('data-id');
+    $('#viewlocationModal #hdnlocationID').val(locationID);
+        $.ajax({
+            url: 'manage-locations/view/'+locationID,
+            type: "GET",
+            dataType: 'json',
+            success: function (res) {
+                $('#viewlocationModal').modal('show');
+                $('#viewlocationModal #formLocation').val(res.data.locationName); 
+            },
+                error: function (data) {
+            }
+        });
+    });
+
 </script>
 
 <?php include("shared/bottom.php"); ?>

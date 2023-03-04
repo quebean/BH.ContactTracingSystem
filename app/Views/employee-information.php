@@ -105,7 +105,7 @@
             </div>
             <div class="col">
               <div class="form-group">
-                <label for=" floatingInput">Middle Name</label>
+                <label for=" floatingInput">Middle Name<span class="required">*</span></label>
                 <input type="text" class="form-control"  name="txtEmpMiddleName" placeholder="Middle Name">
               </div>
             </div>
@@ -125,7 +125,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-              <label for="floatingSelectGrid">Sex</label>
+              <label for="floatingSelectGrid">Sex<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpSex" aria-label="Sex">
                   <option selected value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -134,7 +134,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-              <label for="floatingSelectGrid">Blood Type</label>
+              <label for="floatingSelectGrid">Blood Type<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpBloodType" aria-label="Blood Type">
                   <option selected value="A+">A+</option>
                   <option value="A-">A-</option>
@@ -172,7 +172,7 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Marital Status</label>
+              <label for="floatingSelectGrid">Marital Status<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpMaritalStatus" aria-label="Marital Status">
                   <option selected value="Single">Single</option>
                   <option value="Married">Married</option>
@@ -185,13 +185,13 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for=" floatingInput">SSS Number</label>
+                <label for=" floatingInput">SSS Number<span class="required">*</span></label>
                 <input type="text" class="form-control"  name="txtEmpSSS" placeholder="SSS Number">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label for=" floatingInput">PhilHealth Number</label>
+                <label for=" floatingInput">PhilHealth Number<span class="required">*</span></label>
                 <input type="text" class="form-control"  name="txtEmpPhilNum" placeholder="PhilHealth Number">
               </div>
             </div>
@@ -199,7 +199,7 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Registered Nurse</label>
+              <label for="floatingSelectGrid">Registered Nurse<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtIsNurse" aria-label="Registered Nurse">
                   <option selected value="No">No</option>
                   <option value="No">Yes</option>
@@ -208,7 +208,7 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label class="text-muted" for=" floatingInput">License Number<span class="required">*</span></label>
+                <label class="text-muted" for=" floatingInput">License Number</label>
                 <input type="text" class="form-control"  name="txtLicenseNumber" placeholder="License Number" disabled>
               </div>
             </div>
@@ -227,7 +227,7 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Province</label>
+              <label for="floatingSelectGrid">Province<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtProvince" aria-label="Province">
                   <option selected value="Philippines">Cavite</option>
                   <option value="Metro Manila">Metro Manila</option>
@@ -245,7 +245,7 @@
           <div class="row g-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">City</label>
+              <label for="floatingSelectGrid">City<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtCity" aria-label="City">
                   <option selected value="Cavite City">Cavite City</option>
                   <option value="Dasmariñas City">Dasmariñas City</option>
@@ -255,7 +255,7 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Barangay</label>
+              <label for="floatingSelectGrid">Barangay<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtBarangay" aria-label="Barangay">
                   <option selected value="Barangay 1">Barangay 1</option>
                   <option value="Barangay 2">Barangay 2</option>
@@ -273,7 +273,7 @@
             </div>
             <div class="col-6 mb-4">
               <div class="form-group">
-                <label for="floatingInput">Email Address</label>
+                <label for="floatingInput">Email Address<span class="required">*</span></label>
                 <input type="text" class="form-control"  name="txtEmpEmail" placeholder="Email Address">
               </div>
             </div>
@@ -298,7 +298,58 @@
         txtEmpPosition:"required",
         txtEmpFirstName:{
           required:true
-        }
+        },
+        txtEmpMiddleName:{
+          required:true
+        },
+        txtEmpLastName:{
+          required:true
+        },
+        txtEmpBirthdate:{
+          required:true
+        },
+        txtEmpSex:{
+          required:true
+        },
+        txtEmpBloodType:{
+          required:true
+        },
+        txtEmpHeight:{
+          required:true
+        },
+        txtEmpWeight:{
+          required:true
+        },
+        txtEmpCitizenship:{
+          required:true
+        },
+        txtEmpMaritalStatus:{
+          required:true
+        },
+        txtEmpSSS:{
+          required:true
+        },
+        txtEmpPhilNum:{
+          required:true
+        },
+        txtEmpAddress:{
+          required:true
+        },
+        txtProvince:{
+          required:true
+        },
+        txtZipCode:{
+          required:true
+        },
+        txtBarangay:{
+          required:true
+        },
+        txtContactNumber:{
+          required:true
+        },
+        txtEmpEmail:{
+          required:true
+        },
       },
       messages: {
         
