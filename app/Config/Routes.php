@@ -42,6 +42,7 @@ $routes->get('/manage-locations/view/(:num)', 'Locations::viewLocation/$1');
 $routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
 $routes->post('/check-location', 'Locations::checkLocation');
+$routes->get('/health-form', 'HealthFormMobile::index');
 
 /*
  * --------------------------------------------------------------------
