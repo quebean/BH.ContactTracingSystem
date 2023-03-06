@@ -86,13 +86,13 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtEmpNumber">Patient Number<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpNumber" placeholder="Employee Number">
+                <input type="text" class="form-control" name="txtEmpNumber" placeholder="Employee Number">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="txtEmpPosition">Position<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpPosition" placeholder="Position">
+                <input type="text" class="form-control" name="txtEmpPosition" placeholder="Position">
               </div>
             </div>
           </div>
@@ -100,19 +100,19 @@
             <div class="col">
               <div class="form-group">
                 <label for=" floatingInput">First Name<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpFirstName" placeholder="First Name">
+                <input type="text" class="form-control" name="txtEmpFirstName" placeholder="First Name">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for=" floatingInput">Middle Name<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpMiddleName" placeholder="Middle Name">
+                <input type="text" class="form-control" name="txtEmpMiddleName" placeholder="Middle Name">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for=" floatingInput">Last Name<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpLastName" placeholder="Last Name">
+                <input type="text" class="form-control" name="txtEmpLastName" placeholder="Last Name">
               </div>
             </div>
           </div>
@@ -120,12 +120,12 @@
             <div class="col-4">
               <div class="form-group">
                 <label for=" floatingInput">Birthdate<span class="required">*</span></label>
-                <input type="date" class="form-control"  name="txtEmpBirthdate" placeholder="Birthdate">
+                <input type="date" class="form-control" name="txtEmpBirthdate" placeholder="Birthdate">
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-              <label for="floatingSelectGrid">Sex<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Sex<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpSex" aria-label="Sex">
                   <option selected value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -134,7 +134,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-              <label for="floatingSelectGrid">Blood Type<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Blood Type<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpBloodType" aria-label="Blood Type">
                   <option selected value="A+">A+</option>
                   <option value="A-">A-</option>
@@ -167,13 +167,14 @@
             <div class="col-6">
               <div class="form-group">
                 <label for=" floatingInput">Citizenship<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpCitizenship" placeholder="Citizenship">
+                <input type="text" class="form-control" name="txtEmpCitizenship" placeholder="Citizenship">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Marital Status<span class="required">*</span></label>
-                <select class="form-select" id="floatingSelectGrid" name="txtEmpMaritalStatus" aria-label="Marital Status">
+                <label for="floatingSelectGrid">Marital Status<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtEmpMaritalStatus"
+                  aria-label="Marital Status">
                   <option selected value="Single">Single</option>
                   <option value="Married">Married</option>
                   <option value="Widowed">Widowed</option>
@@ -186,20 +187,20 @@
             <div class="col-6">
               <div class="form-group">
                 <label for=" floatingInput">SSS Number<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpSSS" placeholder="SSS Number">
+                <input type="text" class="form-control" name="txtEmpSSS" placeholder="SSS Number">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for=" floatingInput">PhilHealth Number<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpPhilNum" placeholder="PhilHealth Number">
+                <input type="text" class="form-control" name="txtEmpPhilNum" placeholder="PhilHealth Number">
               </div>
             </div>
           </div>
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Registered Nurse<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Registered Nurse<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtIsNurse" aria-label="Registered Nurse">
                   <option selected value="No">No</option>
                   <option value="No">Yes</option>
@@ -209,7 +210,7 @@
             <div class="col-6">
               <div class="form-group">
                 <label class="text-muted" for=" floatingInput">License Number</label>
-                <input type="text" class="form-control"  name="txtLicenseNumber" placeholder="License Number" disabled>
+                <input type="text" class="form-control" name="txtLicenseNumber" placeholder="License Number" disabled>
               </div>
             </div>
           </div>
@@ -219,15 +220,16 @@
           <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-4">
             <div class="form-group">
-              <label class="" for="floatingInput">Address <span class="text-muted">(house number and street name)<span class="required">*</span></span></label>
-              <input type="text" class="form-control"  name="txtEmpAddress" placeholder="Address">
+              <label class="" for="floatingInput">Address <span class="text-muted">(house number and street name)<span
+                    class="required">*</span></span></label>
+              <input type="text" class="form-control" name="txtEmpAddress" placeholder="Address">
 
             </div>
           </div>
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Province<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Province<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtProvince" aria-label="Province">
                   <option selected value="Philippines">Cavite</option>
                   <option value="Metro Manila">Metro Manila</option>
@@ -238,14 +240,14 @@
             <div class="col-6">
               <div class="form-group">
                 <label for=" floatingInput">Zip Code<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtZipCode" placeholder="Zip Code">
+                <input type="text" class="form-control" name="txtZipCode" placeholder="Zip Code">
               </div>
             </div>
           </div>
           <div class="row g-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">City<span class="required">*</span></label>
+                <label for="floatingSelectGrid">City<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtCity" aria-label="City">
                   <option selected value="Cavite City">Cavite City</option>
                   <option value="Dasmariñas City">Dasmariñas City</option>
@@ -255,7 +257,7 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-              <label for="floatingSelectGrid">Barangay<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Barangay<span class="required">*</span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtBarangay" aria-label="Barangay">
                   <option selected value="Barangay 1">Barangay 1</option>
                   <option value="Barangay 2">Barangay 2</option>
@@ -268,13 +270,13 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="floatingInput">Contact Number<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtContactNumber" placeholder="Contact Number">
+                <input type="text" class="form-control" name="txtContactNumber" placeholder="Contact Number">
               </div>
             </div>
             <div class="col-6 mb-4">
               <div class="form-group">
                 <label for="floatingInput">Email Address<span class="required">*</span></label>
-                <input type="text" class="form-control"  name="txtEmpEmail" placeholder="Email Address">
+                <input type="text" class="form-control" name="txtEmpEmail" placeholder="Email Address">
               </div>
             </div>
           </div>
@@ -293,67 +295,67 @@
     });
 
     $("#addEmployee").validate({
-      rules:{
+      rules: {
         txtEmpNumber: "required",
-        txtEmpPosition:"required",
-        txtEmpFirstName:{
-          required:true
+        txtEmpPosition: "required",
+        txtEmpFirstName: {
+          required: true
         },
-        txtEmpMiddleName:{
-          required:true
+        txtEmpMiddleName: {
+          required: true
         },
-        txtEmpLastName:{
-          required:true
+        txtEmpLastName: {
+          required: true
         },
-        txtEmpBirthdate:{
-          required:true
+        txtEmpBirthdate: {
+          required: true
         },
-        txtEmpSex:{
-          required:true
+        txtEmpSex: {
+          required: true
         },
-        txtEmpBloodType:{
-          required:true
+        txtEmpBloodType: {
+          required: true
         },
-        txtEmpHeight:{
-          required:true
+        txtEmpHeight: {
+          required: true
         },
-        txtEmpWeight:{
-          required:true
+        txtEmpWeight: {
+          required: true
         },
-        txtEmpCitizenship:{
-          required:true
+        txtEmpCitizenship: {
+          required: true
         },
-        txtEmpMaritalStatus:{
-          required:true
+        txtEmpMaritalStatus: {
+          required: true
         },
-        txtEmpSSS:{
-          required:true
+        txtEmpSSS: {
+          required: true
         },
-        txtEmpPhilNum:{
-          required:true
+        txtEmpPhilNum: {
+          required: true
         },
-        txtEmpAddress:{
-          required:true
+        txtEmpAddress: {
+          required: true
         },
-        txtProvince:{
-          required:true
+        txtProvince: {
+          required: true
         },
-        txtZipCode:{
-          required:true
+        txtZipCode: {
+          required: true
         },
-        txtBarangay:{
-          required:true
+        txtBarangay: {
+          required: true
         },
-        txtContactNumber:{
-          required:true
+        txtContactNumber: {
+          required: true
         },
-        txtEmpEmail:{
-          required:true
+        txtEmpEmail: {
+          required: true
         },
       },
       messages: {
-        
-        },
+
+      },
     });
   </script>
 

@@ -1,98 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bevan&family=Bree+Serif&family=Nunito&family=Quicksand&family=Red+Hat+Text:wght@500&family=Roboto+Slab:wght@900&family=Tilt+Neon&display=swap');
 :root {
   --main-color: #66a36c;
   --darker-main: #588b5d;
-  --bg-color: rgb(76,156,126);
-  --main-font: 'Roboto', sans-serif;
-  --btn-color: #90C595;
-
+  --bg-color: rgb(76, 156, 107);
+  --head-font: 'Tilt Neon', cursive;
+  --title-font: 'Red Hat Text', sans-serif;
+  --title-font2: 'Quicksand', sans-serif;
+  --logo-font: 'Bree Serif', serif;
+  --logo-font2: 'Bevan', cursive;
+  --logo-bg: #b8dab6;
+  --logo-color: #4D9C7F;
 }
 
-* {
+*{ 
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: var(--main-font);
-  color: #151515;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background:  linear-gradient(90deg, rgba(76,156,126,0.4), var(--main-color));
+  background:  linear-gradient(90deg, rgba(67, 158, 105, 0.493), var(--main-color));
+
 }
 
-.login {
+.container {
   background: #fff;
-  width: 360px;
-  height: min-content;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  height: 600px;
+  position: relative;
+  background: rgba(255, 255, 255, .90);
+
+}
+.container:not(.card-left, .card-right) {
+  border-radius: 7px;
+  box-shadow: 1px 1px 18px rgba(0, 0, 0, 0.25);
 }
 
-.login h1 {
-  font-size: 37px;
-  font-weight: bold;
-  color: var(--main-color);
-  margin-bottom: 25px;
+.card-left {
+  position: relative;
+
 }
 
-.login form {
-  font-size: 18px;
+h1.sign-up {
+  color: #1f1f1f;
 }
 
-.login form input[type=submit] {
-  font-size: 20px;
-  margin-top: 15px;
-  background: #fff;
+.card-left-footer {
+  display: flex; 
+  justify-content: center;
+}
+
+.btn-login {
+  padding: 8px 35px;
+  /* background: #fff; */
   color: var(--darker-main);
   border: 3px solid var(--darker-main);
   transition: all .2s;
+  background: rgba(255, 255, 255, .10);
+}
+
+.btn-login:hover {
+  color: #fff;
+  background: var(--darker-main);
+}
+
+.form-check-input[type=checkbox] {
+  border-color: var(--darker-main);
+}
+
+.form-check-input[type=checkbox]:checked,.form-check-input[type=checkbox]:focus  {
+  background-color: var(--darker-main);
+  border: var(--darker-main);
+}
+
+input[type="text"], input[type="password"] {
+  border: 3px solid rgb(100, 180, 130);
+  transition: border 0.2s;
+  background: rgba(255, 255, 255, .10);
+
+
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  box-shadow: none;
+  border: 3px solid var(--darker-main);
+}
+
+
+
+div.card-right {
+  position: relative;
+  background: var(--logo-bg);
+  border-radius: 0px 7px 7px 0px;
+}
+
+.right-top, .right-bottom {
+  height: 50%;
+}
+
+label.form-label {
+  font-size: 1.1rem;
+  color: #1f1f1f;
+}
+
+label.form-check-label {
+  color: #1f1f1f;
+}
+
+.card-left-header {
+  margin-bottom: 70px;
+}
+
+div.title {
+  background: var(--logo-color);
+}
+
+h2.title-h2 {
+  color: #fff;
+  font-family: var(--title-font2);
+  letter-spacing: 10px;
+}
+
+h1.logo-bh {
+  position: relative;
+  color: var(--logo-color);
+  font-family: var(--logo-font2);
+  font-size: 9rem;
+  letter-spacing: -15px;
   font-weight: 500;
 }
 
-.login form input[type=submit]:hover {
-  background: var(--darker-main);
-  color: #fff;
-}
-
-.login-footer {
-  position: relative;
-  width: 100%;
-  height: auto;
-
-}
-
-.container-head {
-  position: relative;
-}
-
-.container-head::before {
-  content:'';
+.cross {
   position: absolute;
-  top: -6px;
-  height: 6px;
-  width: 305px;
-  background: var(--darker-main);
-  z-index: 2;
+  width: 70px;
+  height: 70px;
+  top: 50;
+  left: 50;
+  transform: translate(-26px, 45px);
+  /* display:none; */
 }
 
-.container-head::after {
-  content:'';
-  position: absolute;
-  top: 135px;
-  height: 6px;
-  width: 305px;
-  background: var(--darker-main);
-  z-index: 2;
+.p-title-date {
+  color: var(--logo-color);
+  font-size: 1.3rem;
+  font-weight: 500;
 }
-
-label, .form-group .invalid-feedback{
-  font-size: 16px !important;
-  color: #3f3e3e !important;
-}
-
-
