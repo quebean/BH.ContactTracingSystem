@@ -34,7 +34,7 @@
                     </td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i
+                      <button id="view-data" class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i
                           class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal"
                         data-id="<?php echo $row['locationID']; ?>" class="btn btn-outline-danger btnDelete"><i
@@ -112,7 +112,7 @@
           <div class="mb-3">
             <input type="hidden" name="hdnlocationID" id="hdnlocationID" />
             <label for="formLocation" class="form-label">Location Name</label>
-            <input type="text" class="form-control" id="formLocation" name="formLocation">
+          
           </div>
       </div>
       <div class="modal-footer">
@@ -157,28 +157,6 @@
     });
   });
 
-  /**  $(document).ready(function () {
-  $('#locationsTable').DataTable();
-
-  // AJAX call to check if location already exists
- $('#formLocation').on('blur', function() {
-    var locationName = $(this).val();
-    $.ajax({
-      url: ' ',
-      type: 'POST',
-      data: { locationName: locationName },
-      success: function(data) {
-        if (data == 'exists') {
-          $('#locationError').html('Location already exists.');
-          $('#locationSubmit').prop('disabled', true);
-        } else {
-          $('#locationError').html('');
-          $('#locationSubmit').prop('disabled', false);
-        }
-      }
-    });
-  });
-});**/
   var prevText = "";
   $('#formLocation').keyup(function (event) {
 
@@ -189,11 +167,10 @@
     } else {
       $('#locationError').html('');
       $('#locationSubmit').prop('disabled', false);
-    }
+    } 
   });
 
   $('#locationSubmit').on('click', function (e) {
-
     var locationName = $("#formLocation").val();
     $.ajax({
       url: '<?php echo base_url('check-location'); ?>',
@@ -213,6 +190,8 @@
     });
     return false;
   });
+
+ 
 
 
 </script>

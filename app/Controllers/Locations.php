@@ -73,4 +73,11 @@ class Locations extends BaseController
         $data = $query->getResultArray();
         return json_encode($data);
     }
+    public function viewLocationdata() {
+        $id = $this->input->get('id');
+        $data = $this->Your_model->get_data($id); // Replace Your_model with your model name
+      
+        echo $data; // Return data as a string
+      }
+      
 }
