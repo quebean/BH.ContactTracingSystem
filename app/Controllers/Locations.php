@@ -14,15 +14,6 @@ class Locations extends BaseController
         return view('locations', $data);
     }
 
-    public function addLocation()
-    {
-        $db = \Config\Database::connect();
-        $data = [
-            'locationName' => $this->request->getPost('formLocation')
-        ];
-        $db->table('tbllocations')->insert($data);
-        return redirect()->back();
-    }
 
     public function checkLocation()
     {
@@ -43,6 +34,30 @@ class Locations extends BaseController
 
     }
 
+
+    public function updateLocation($id)
+    {
+        $db = \Config\Database::connect();
+        $locationName = $this->request->getPost('locationName');
+        $location = $db->table('tbllocations')->getWhere(['locationName' => $locationName])->getRow();
+
+        if ($location) {
+            echo 'exists';
+        } else {
+            $builder = $db->table('tbllocations');
+            $builder->where('locationID', $id);
+            $locationName = $this->request->getPost('locationName');
+            $data = [
+                'locationName' => $locationName
+            ];
+
+            $builder->update($data);
+            echo '';
+        }
+
+
+
+    }
     public function deleteLocation($id = null)
     {
         $db = \Config\Database::connect();
@@ -65,7 +80,7 @@ class Locations extends BaseController
     //     }
     // }
 
-    
+
     public function viewLocation()
     {
         $db = \Config\Database::connect();
