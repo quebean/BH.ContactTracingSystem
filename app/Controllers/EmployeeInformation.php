@@ -114,16 +114,16 @@ class EmployeeInformation extends BaseController
         $db = \Config\Database::connect();
         $this->personalInfoID = $this->request->getVar('personalInfoID');
         $this->personalInfoID;
-        $personID = $this->personalInfoID;
+        $personalInfo = $this->personalInfoID;
         $this->contactInfoID = $this->request->getVar('contactInfoID');
         $this->contactInfoID;
         $contactID = $this->contactInfoID;
-        echo $personID;
+        echo $personalInfo;
         echo $contactID;
         $builder = $db->table('tblcontactinformation');
         $builder->where('contactInfoID', $contactID)->delete();
         $builder = $db->table('tblpersonalinfo');
-        $builder->where('personalInfoID', $personID)->delete();
+        $builder->where('personalInfoID', $personalInfo)->delete();
         $builder = $db->table('tblpersons');
         $builder->where('personID', $id)->delete();
     }
