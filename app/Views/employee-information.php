@@ -293,7 +293,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary btnAddEmployee">Save changes</button>
           </div>
         </form>
       </div>
@@ -465,9 +465,9 @@
     var contactInfoID = $(this).attr('data-id3');
     $('#deleteModal #hdnemployeeID').val(employeeID);
     $('#deleteModal #hdnpersonalInfoID').val(personalInfoID);
-    $('#deleteModal #hdncontactInfoID').val(contactInfoID);
-    
+    $('#deleteModal #hdncontactInfoID').val(contactInfoID);  
   });
+
 
   $('body').on('click', '.btnConfirmDelete', function () {
     var employeeID = $("#hdnemployeeID").val();
@@ -482,6 +482,7 @@
           $.get('delete-employee/' + employeeID, function (data) {
             $('#employeeTable tbody #' + employeeID).remove();
           })
+          alertify.alert('Confirmation', 'Employee Deleted!', function(){ alertify.success('Ok'); });
         }
       });
     $('#deleteModal').modal('hide');
