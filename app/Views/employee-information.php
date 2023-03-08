@@ -1,9 +1,6 @@
 <?php include("shared/top.php"); ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 <!-- Datatables -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <div class="main-container d-flex">
   <?php include("shared/sidenav.php"); ?>
 
@@ -22,6 +19,9 @@
               <thead>
                 <tr>
                   <th class="text-center">Employee ID</th>
+                  <th class="text-center d-none">Person ID</th>
+                  <th class="text-center d-none">Personal Info ID</th>
+                  <th class="text-center d-none">Contact Info ID</th>
                   <th class="text-center">Employee Name</th>
                   <th class="text-center">Position</th>
                   <th class="text-center">Sex</th>
@@ -37,8 +37,17 @@
                     <td class="text-center">
                       <?php echo $row->employeeNumber ?>
                     </td>
-                    <td class="text-center">
-                      <?php echo $row->fullName ?>
+                    <td class="text-center d-none">
+                      <?php echo $row->personID ?>
+                      </td>
+                      <td class="text-center d-none">
+                        <?php echo $row->personalInfoID ?>
+                      </td>
+                      <td class="text-center d-none">
+                        <?php echo $row->contactInformationID ?>
+                      </td>
+                                                      <td class="text-center">                                                                                                                                                                              <?php echo $row->fullName ?>
+
                     </td>
                     <td class="text-center">
                       <?php echo $row->position ?>
@@ -52,9 +61,11 @@
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
-                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                  </tr>
+                      <button data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" class="btn btn-outline-danger btnDelete"><i
+                              class="fa-solid fa-trash"></i></button>
+                        </td>
+                      </tr>
                   <?php
                 }
                 ?>
@@ -73,7 +84,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Patient</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create New Employee</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -85,7 +96,7 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for="txtEmpNumber">Patient Number<span class="required">*</span></label>
+                <label for="txtEmpNumber">Employee Number<span class="required">*</span></label>
                 <input type="text" class="form-control" name="txtEmpNumber" placeholder="Employee Number">
               </div>
             </div>
@@ -282,81 +293,203 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary btnAddEmployee">Save changes</button>
           </div>
         </form>
       </div>
     </div>
   </div>
+</div>
 
-  <script defer type="text/javascript">
-    $(document).ready(function () {
-      $('#employeeTable').DataTable();
-    });
 
-    $("#addEmployee").validate({
-      rules: {
-        txtEmpNumber: "required",
-        txtEmpPosition: "required",
-        txtEmpFirstName: {
-          required: true
-        },
-        txtEmpMiddleName: {
-          required: true
-        },
-        txtEmpLastName: {
-          required: true
-        },
-        txtEmpBirthdate: {
-          required: true
-        },
-        txtEmpSex: {
-          required: true
-        },
-        txtEmpBloodType: {
-          required: true
-        },
-        txtEmpHeight: {
-          required: true
-        },
-        txtEmpWeight: {
-          required: true
-        },
-        txtEmpCitizenship: {
-          required: true
-        },
-        txtEmpMaritalStatus: {
-          required: true
-        },
-        txtEmpSSS: {
-          required: true
-        },
-        txtEmpPhilNum: {
-          required: true
-        },
-        txtEmpAddress: {
-          required: true
-        },
-        txtProvince: {
-          required: true
-        },
-        txtZipCode: {
-          required: true
-        },
-        txtBarangay: {
-          required: true
-        },
-        txtContactNumber: {
-          required: true
-        },
-        txtEmpEmail: {
-          required: true
-        },
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" name="hdnemployeeID" id="hdnemployeeID" />
+        <input type="hidden" name="hdnpersonalInfoID" id="hdnpersonalInfoID" />
+        <input type="hidden" name="hdncontactInfoID" id="hdncontactInfoID" />
+        <p>Do you want to delete the selected employee?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary btnConfirmDelete">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer type="text/javascript">
+  $(document).ready(function () {
+    $('#employeeTable').DataTable();
+
+    jQuery.validator.addMethod("lettersonly", function (value, element) {
+      return this.optional(element) || /^[a-z " "]+$/i.test(value);
+    }, "Letters only please");
+
+    jQuery.validator.addMethod("card", function (value, element) {
+      return this.optional(element) || /^[0-9 -]+$/i.test(value);
+    }, "Please enter a valid PhilHealth Number");
+
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+      let newValue = value.trim();
+
+      return (newValue) ? true : false;
+    }, "This field is required");
+  });
+
+  $("#addEmployee").validate({
+    rules: {
+      txtEmpNumber: {
+        required: true,
+        noSpace: true
       },
-      messages: {
-
+      txtEmpPosition: {
+        required: true,
+        noSpace: true
       },
-    });
-  </script>
+      txtEmpFirstName: {
+        required: true,
+        lettersonly: true,
+        noSpace: true
+      },
+      txtEmpMiddleName: {
+        required: true,
+        lettersonly: true,
+        noSpace: true
+      },
+      txtEmpLastName: {
+        required: true,
+        lettersonly: true,
+        noSpace: true
+      },
+      txtEmpBirthdate: {
+        required: true
+      },
+      txtEmpSex: {
+        required: true
+      },
+      txtEmpBloodType: {
+        required: true
+      },
+      txtEmpHeight: {
+        required: true,
+        digits: true
+      },
+      txtEmpWeight: {
+        required: true,
+        digits: true
+      },
+      txtEmpCitizenship: {
+        required: true
+      },
+      txtEmpMaritalStatus: {
+        required: true
+      },
+      txtEmpSSS: {
+        required: true,
+        digits: true,
+        rangelength: [9, 12]
+      },
+      txtEmpPhilNum: {
+        required: true,
+        card: true,
+        rangelength: [12, 14]
+      },
+      txtEmpAddress: {
+        required: true,
+        noSpace: true
+      },
+      txtProvince: {
+        required: true
+      },
+      txtZipCode: {
+        required: true,
+        digits: true,
+        rangelength: [4, 4]
+      },
+      txtBarangay: {
+        required: true
+      },
+      txtContactNumber: {
+        required: true,
+        digits: true,
+        rangelength: [7, 11]
+      },
+      txtEmpEmail: {
+        required: true,
+        email: true
+      },
+    },
+    messages: {
+      txtEmpHeight: {
+        digits: "Please enter a valid height"
+      },
+      txtEmpWeight: {
+        digits: "Please enter a valid weight"
+      },
+      txtEmpSSS: {
+        digits: "Please enter a valid SSS ID Number",
+        rangelength: "Please enter a valid SSS ID Number"
+      },
+      txtZipCode: {
+        digits: "Please enter a valid Zip Code",
+        rangelength: "Please enter a valid Zip Code"
+      },
+      txtContactNumber: {
+        digits: "Please enter a valid Contact Number",
+        rangelength: "Please enter a valid Contact Number"
+      },
+      txtEmpFirstName: {
+        lettersonly: "Please enter a valid name"
+      },
+      txtEmpMiddleName: {
+        lettersonly: "Please enter a valid name"
+      },
+      txtEmpLastName: {
+        lettersonly: "Please enter a valid name"
+      },
+      txtEmpPhilNum: {
+        rangelength: "Please enter a valid PhilHealth Number"
+      },
+    },
+  });
 
-  <?php include("shared/bottom.php"); ?>
+  $('body').on('click', '.btnDelete', function () {
+    var employeeID = $(this).attr('data-id');
+    var personalInfoID = $(this).attr('data-id2');
+    var contactInfoID = $(this).attr('data-id3');
+    $('#deleteModal #hdnemployeeID').val(employeeID);
+    $('#deleteModal #hdnpersonalInfoID').val(personalInfoID);
+    $('#deleteModal #hdncontactInfoID').val(contactInfoID);  
+  });
+
+
+  $('body').on('click', '.btnConfirmDelete', function () {
+    var employeeID = $("#hdnemployeeID").val();
+    var personalInfoID = $("#hdnpersonalInfoID").val();
+    var contactInfoID = $("#hdncontactInfoID").val();
+    $.ajax({
+        url: '/getIDs',
+        type: 'POST',
+        data: { personalInfoID: personalInfoID , contactInfoID: contactInfoID},
+        success: function (data) {
+          console.log(data);
+          $.get('delete-employee/' + employeeID, function (data) {
+            $('#employeeTable tbody #' + employeeID).remove();
+          })
+          alertify.alert('Confirmation', 'Employee Deleted!', function(){ alertify.success('Ok'); });
+        }
+      });
+    $('#deleteModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+  });
+
+</script>
+
+<?php include("shared/bottom.php"); ?>

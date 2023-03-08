@@ -4,13 +4,16 @@ namespace App\Controllers;
 
 class EmployeeInformation extends BaseController
 {
+    private $personalInfoID;
+    private $contactInfoID;
     public function index()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('tblemployeeinfo');
         $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
         $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblemployeeinfo.personalInfoID');
-        $builder->join('tblpersons', 'tblpersons.personID= tblemployeeinfo.personID');
+        $builder->join('tblpersons', 'tblpersons.personID = tblemployeeinfo.personID');
+
         $query = $builder->get();
         $result = $query->getResult();
         $data["result"] = $result;
@@ -24,6 +27,15 @@ class EmployeeInformation extends BaseController
         $db = \Config\Database::connect();
         // $db->transStart();
         // Insert data into table1
+
+        $data5 = [
+            'cellphoneNumber' => $this->request->getVar('txtContactNumber'),
+            'emailAddress' => $this->request->getVar('txtEmpEmail'),
+        ];
+        $db->table('tblcontactinformation')->insert($data5);
+        $table4_id = $db->insertID();
+
+
         $data1 = [
             'firstName' => $this->request->getVar('txtEmpFirstName'),
             'middleName' => $this->request->getVar('txtEmpMiddleName'),
@@ -31,6 +43,7 @@ class EmployeeInformation extends BaseController
             'birthDate' => $this->request->getVar('txtEmpBirthdate'),
             'sex' => $this->request->getVar('txtEmpSex'),
             'bloodType' => $this->request->getVar('txtEmpBloodType'),
+            'contactInformationID' => $table4_id
         ];
 
         $db->table('tblpersons')->insert($data1);
@@ -73,12 +86,7 @@ class EmployeeInformation extends BaseController
         $db->table('tblemployeeinfo')->insert($data4);
 
 
-        $data5 = [
-            'cellphoneNumber' => $this->request->getVar('txtContactNumber'),
-            'emailAddress' => $this->request->getVar('txtEmpEmail'),
-        ];
-        $db->table('tblcontactinformation')->insert($data5);
-
+       
 
         // End the transaction
         // $db->transComplete();
@@ -92,4 +100,53 @@ class EmployeeInformation extends BaseController
             return redirect()->back();
         }
     }
+
+    public function getID()
+    {
+        $this->personalInfoID = $this->request->getVar('personalInfoID');
+        $this->contactInfoID = $this->request->getVar('contactInfoID');
+        echo "hello";
+        $this->deleteEmployee();
+    }
+
+    public function deleteEmployee($id = null)
+    {
+        $db = \Config\Database::connect();
+        $this->personalInfoID = $this->request->getVar('personalInfoID');
+        $this->personalInfoID;
+        $personalInfo = $this->personalInfoID;
+        $this->contactInfoID = $this->request->getVar('contactInfoID');
+        $this->contactInfoID;
+        $contactID = $this->contactInfoID;
+        echo $personalInfo;
+        echo $contactID;
+        $builder = $db->table('tblcontactinformation');
+        $builder->where('contactInfoID', $contactID)->delete();
+        $builder = $db->table('tblpersonalinfo');
+        $builder->where('personalInfoID', $personalInfo)->delete();
+        $builder = $db->table('tblpersons');
+        $builder->where('personID', $id)->delete();
+    }
+
+
+
+// public function try ()
+// {
+//     $personalInfoID = $this->request->getVar('personalInfoID');
+//     //  echo $personalInfoID;
+//     $this->$personalInfoID;
+//     $this->deleteEmployee();
+
+// }
+
+// public function deleteEmployee()
+// {
+//     $newpersonalInfoID = $this->$personalInfoID;
+//     $db = \Config\Database::connect();
+//     $builder = $db->table('tblpersons');
+//     $builder->where('personID', $id)->delete();
+
+// }
+
+
 }
