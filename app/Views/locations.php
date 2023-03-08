@@ -158,7 +158,19 @@
 
       return (newValue) ? true: false;
     }, "Location name is required");
-  });
+
+    window.localStorage.setItem('show_popup_update', 'false');
+    window.localStorage.setItem('show_popup_add', 'false');
+    });
+
+
+    if(window.localStorage.getItem('show_popup_update') == 'true') {
+      alertify.alert('Confirmation', 'Location Updated!', function(){ alertify.success('Ok'); });
+    }
+
+    if(window.localStorage.getItem('show_popup_add') == 'true') {
+      alertify.alert('Confirmation', 'Location Added!', function(){ alertify.success('Ok'); });
+    }
 
 
   // delete
@@ -173,6 +185,7 @@
       $('#locationsTable tbody #' + locationID).remove();
     })
     $('#deleteModal').modal('hide');
+    alertify.alert('Confirmation', 'Location Deleted!', function(){ alertify.success('Ok'); });
   });
   // delete
 
@@ -211,7 +224,6 @@
   });
 
    $('#updateLocationForm').keyup(function (event) {
-
     newText = event.target.value;
     if (prevText == newText && prevText != "") {
 
@@ -246,8 +258,11 @@
             $('#locationSubmit').prop('disabled', true);
           } else {
             $('#locationError').html('');
+            $('#formLocation'). val("");
             $('#locationSubmit').prop('disabled', false);
-            location.reload();
+            $('#locationModal').modal('hide');
+            window.localStorage.setItem('show_popup_add', 'true');
+            window.location.reload();
           }
         }
       });
@@ -303,7 +318,9 @@
           } else {
             $('#updatelocationError').html('');
             $('#updateLocationSubmit').prop('disabled', false);
-            location.reload();
+            $('#updatelocationModal').modal('hide');
+            window.localStorage.setItem('show_popup_update', 'true');
+            window.location.reload();
           }
         }
       });
