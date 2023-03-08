@@ -67,8 +67,8 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Patient</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Patient</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 
@@ -80,7 +80,7 @@
             <div class="col-6">
               <label for=" floatingInput">Patient Number<span class="required">*</span></label>
               <div class="input-group">
-                <span class="input-group-text" id="basic-addon1">BHPID-</span>
+                <span class="input-group-text" id="basic-addon1">BHPID -</span>
                 <input type="text" class="form-control" id="floatingInput" placeholder="Patient Number">
               </div>
             </div>
@@ -143,17 +143,17 @@
             <div class="col-6">
               <label for=" floatingInput">Height<span class="required">*</span></label>
               <div class="input-group">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Height"
-                  aria-describedby="basic-addon2">
-                <span class="input-group-text" id="basic-addon2">m.</span>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Height in centimeters"
+                  aria-describedby="helpCm">
+                <span class="input-group-text" id="helpCm">cm.</span>
               </div>
             </div>
             <div class="col-6">
               <label for=" floatingInput">Weight<span class="required">*</span></label>
               <div class="input-group">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Weight"
+                <input type="text" class="form-control" id="floatingInput" placeholder="Weight in pounds"
                   aria-describedby="basic-addon3">
-                <span class="input-group-text" id="basic-addon3">kg.</span>
+                <span class="input-group-text" id="basic-addon3">lbs.</span>
               </div>
             </div>
 
@@ -199,8 +199,7 @@
             <div class="col">
               <div class="form-group">
                 <label for=" floatingInput">Diagnoses<span class="required">*</span></label>
-                <input type="text" class="form-control" id="floatingInput" placeholder="Diagnoses"
-                  aria-describedby="help">
+                <textarea class="form-control" id="smsText" rows="2" placeholder="Diagnoses"></textarea>
                 <div id="help" class="form-text ms-2">Multiple inputs are accepted.</div>
               </div>
             </div>
@@ -208,13 +207,13 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for=" floatingInput">Referred By<span class="required">*</span></label>
-                <input type="text" class="form-control" id="floatingInput" placeholder="Referred By">
+                <label for=" floatingInput">Physician<span class="required">*</span></label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Physician">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label for=" floatingInput">Next Appointment<span class="required">*</span></label>
+                <label for=" floatingInput">Next Appointment<span class="required"></span></label>
                 <input type="datetime-local" class="form-control" id="floatingInput2" placeholder="Next Appointment">
               </div>
             </div>
@@ -233,12 +232,8 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for="floatingSelectGrid">Province</label>
-                <select class="form-select" id="floatingSelectGrid" aria-label="Provice">
-                  <option selected value="Philippines">Cavite</option>
-                  <option value="Metro Manila">Metro Manila</option>
-                  <option value="Batangas">Batangas</option>
-                </select>
+                <label for=" floatingInput">Province<span class="required">*</span></label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Province">
               </div>
             </div>
             <div class="col-6">
@@ -251,22 +246,15 @@
           <div class="row g-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for="floatingSelectGrid">City</label>
-                <select class="form-select" id="floatingSelectGrid" aria-label="City">
-                  <option selected value="Cavite City">Cavite City</option>
-                  <option value="Dasmariñas City">Dasmariñas City</option>
-                  <option value="Bacoor City">Bacoor City</option>
-                </select>
+                <label for=" floatingInput">City<span class="required">*</span></label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="City">
               </div>
             </div>
             <div class="col-6">
-              <div class="form-group">
-                <label for="floatingSelectGrid">Barangay</label>
-                <select class="form-select" id="floatingSelectGrid" aria-label="Barangay">
-                  <option selected value="Barangay 1">Barangay 1</option>
-                  <option value="Barangay 2">Barangay 2</option>
-                  <option value="Barangay 3">Barangay 3</option>
-                </select>
+              <label for=" floatingInput">Barangay<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Brgy.</span>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Barangay Number">
               </div>
             </div>
           </div>
@@ -280,7 +268,9 @@
             <div class="col-6 mb-4">
               <div class="form-group">
                 <label for="floatingInput">Email Address</label>
-                <input type="text" class="form-control" id="floatingInput" placeholder="Email Address">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Email Address"
+                  aria-describedby="helpEmail">
+                <div id="helpEmail" class="form-text ms-2">Leave blank if none.</div>
               </div>
             </div>
           </div>

@@ -13,8 +13,8 @@ body {
 
 #side_nav {
   background: var(--sidebar-color);
-  min-width: 290px;
-  max-width: 290px;
+  min-width: 280px;
+  max-width: 280px;
   min-height: 100vh;
 }
 
@@ -43,7 +43,7 @@ body {
 .logo-x {
   position: absolute;
   top: 35px;
-  left: 35px;
+  left: 30px;
   width: 24px;
   height: 11px;
   border: 2px solid var(--sidebar-header-color);
@@ -54,7 +54,7 @@ body {
 .logo-y {
   position: absolute;
   top: 35px;
-  left: 35px;
+  left: 30px;
   width: 24px;
   height: 11px;
   border: 2px solid var(--sidebar-header-color);
@@ -125,4 +125,17 @@ label.error {
   float: none;
   color: red;
   padding-left: .5em;
+}
+
+
+div.modal-header {
+  background: var(--sidebar-header-color);
+}
+
+h5.modal-title-head {
+  color: #fff;
+}
+
+.manual-error {
+  display: none;
 }

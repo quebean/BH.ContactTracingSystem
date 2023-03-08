@@ -39,14 +39,15 @@
                     </td>
                     <td class="text-center d-none">
                       <?php echo $row->personID ?>
-                      </td>
-                      <td class="text-center d-none">
-                        <?php echo $row->personalInfoID ?>
-                      </td>
-                      <td class="text-center d-none">
-                        <?php echo $row->contactInformationID ?>
-                      </td>
-                                                      <td class="text-center">                                                                                                                                                                              <?php echo $row->fullName ?>
+                    </td>
+                    <td class="text-center d-none">
+                      <?php echo $row->personalInfoID ?>
+                    </td>
+                    <td class="text-center d-none">
+                      <?php echo $row->contactInformationID ?>
+                    </td>
+                    <td class="text-center">
+                      <?php echo $row->fullName ?>
 
                     </td>
                     <td class="text-center">
@@ -61,11 +62,12 @@
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
-                      <button data-bs-toggle="modal" data-bs-target="#deleteModal"
-                        data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" class="btn btn-outline-danger btnDelete"><i
-                              class="fa-solid fa-trash"></i></button>
-                        </td>
-                      </tr>
+                      <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row->personID; ?>"
+                        data-id2="<?php echo $row->personalInfoID; ?>"
+                        data-id3="<?php echo $row->contactInformationID; ?>" class="btn btn-outline-danger btnDelete"><i
+                          class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>
                   <?php
                 }
                 ?>
@@ -84,8 +86,8 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Employee</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Employee</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 
@@ -95,10 +97,12 @@
           <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-4">
             <div class="col-6">
-              <div class="form-group">
-                <label for="txtEmpNumber">Employee Number<span class="required">*</span></label>
+              <label for="txtEmpNumber">Employee Number<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">BHEID -</span>
                 <input type="text" class="form-control" name="txtEmpNumber" placeholder="Employee Number">
               </div>
+              <label id="txtEmpNumber-error" class="error manual-error" for="txtEmpNumber"></label>
             </div>
             <div class="col-6">
               <div class="form-group">
@@ -116,8 +120,10 @@
             </div>
             <div class="col">
               <div class="form-group">
-                <label for=" floatingInput">Middle Name<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtEmpMiddleName" placeholder="Middle Name">
+                <label for=" floatingInput">Middle Name<span class="required"></span></label>
+                <input type="text" class="form-control" name="txtEmpMiddleName" placeholder="Middle Name"
+                  aria-describedby="helpMiddle">
+                <div id="helpMiddle" class="form-text ms-2">Leave blank if none.</div>
               </div>
             </div>
             <div class="col">
@@ -136,7 +142,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="floatingSelectGrid">Sex<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Sex<span class="required"></span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpSex" aria-label="Sex">
                   <option selected value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -145,7 +151,7 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="floatingSelectGrid">Blood Type<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Blood Type<span class="required"></span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpBloodType" aria-label="Blood Type">
                   <option selected value="A+">A+</option>
                   <option value="A-">A-</option>
@@ -161,16 +167,22 @@
           </div>
           <div class="row g-3 mb-4">
             <div class="col-6">
-              <div class="form-group">
-                <label for=" floatingInput">Height (m)<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtEmpHeight" placeholder="Height">
+              <label for=" floatingInput">Height<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="txtEmpHeight" placeholder="Height in centimeters"
+                  aria-describedby="helpCm">
+                <span class="input-group-text" id="helpCm">cm.</span>
               </div>
+              <label id="txtEmpHeight-error" class="error manual-error" for="txtEmpHeight"></label>
+
             </div>
             <div class="col-6">
-              <div class="form-group">
-                <label for=" floatingInput">Weight (kg)<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtEmpWeight" placeholder="Weight">
+              <label for=" floatingInput">Weight<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="txtEmpWeight" placeholder="Weight in pounds">
+                <span class="input-group-text" id="helpLbs">lbs.</span>
               </div>
+              <label id="txtEmpWeight-error" class="error manual-error" for="txtEmpWeight"></label>
             </div>
 
           </div>
@@ -183,7 +195,7 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label for="floatingSelectGrid">Marital Status<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Marital Status<span class="required"></span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtEmpMaritalStatus"
                   aria-label="Marital Status">
                   <option selected value="Single">Single</option>
@@ -211,7 +223,7 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for="floatingSelectGrid">Registered Nurse<span class="required">*</span></label>
+                <label for="floatingSelectGrid">Registered Nurse<span class="required"></span></label>
                 <select class="form-select" id="floatingSelectGrid" name="txtIsNurse" aria-label="Registered Nurse">
                   <option selected value="No">No</option>
                   <option value="No">Yes</option>
@@ -240,12 +252,8 @@
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for="floatingSelectGrid">Province<span class="required">*</span></label>
-                <select class="form-select" id="floatingSelectGrid" name="txtProvince" aria-label="Province">
-                  <option selected value="Philippines">Cavite</option>
-                  <option value="Metro Manila">Metro Manila</option>
-                  <option value="Batangas">Batangas</option>
-                </select>
+                <label for=" floatingInput">Province<span class="required">*</span></label>
+                <input type="text" class="form-control" id="floatingInput" name="txtProvince" placeholder="Province">
               </div>
             </div>
             <div class="col-6">
@@ -258,22 +266,16 @@
           <div class="row g-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for="floatingSelectGrid">City<span class="required">*</span></label>
-                <select class="form-select" id="floatingSelectGrid" name="txtCity" aria-label="City">
-                  <option selected value="Cavite City">Cavite City</option>
-                  <option value="Dasmariñas City">Dasmariñas City</option>
-                  <option value="Bacoor City">Bacoor City</option>
-                </select>
+                <label for=" floatingInput">City<span class="required">*</span></label>
+                <input type="text" class="form-control" id="floatingInput" name="txtCity" placeholder="City">
               </div>
             </div>
             <div class="col-6">
-              <div class="form-group">
-                <label for="floatingSelectGrid">Barangay<span class="required">*</span></label>
-                <select class="form-select" id="floatingSelectGrid" name="txtBarangay" aria-label="Barangay">
-                  <option selected value="Barangay 1">Barangay 1</option>
-                  <option value="Barangay 2">Barangay 2</option>
-                  <option value="Barangay 3">Barangay 3</option>
-                </select>
+              <label for=" floatingInput">Barangay<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Brgy.</span>
+                <input type="text" class="form-control" id="floatingInput" name="txtBarangay"
+                  placeholder="Barangay Number">
               </div>
             </div>
           </div>
@@ -465,7 +467,7 @@
     var contactInfoID = $(this).attr('data-id3');
     $('#deleteModal #hdnemployeeID').val(employeeID);
     $('#deleteModal #hdnpersonalInfoID').val(personalInfoID);
-    $('#deleteModal #hdncontactInfoID').val(contactInfoID);  
+    $('#deleteModal #hdncontactInfoID').val(contactInfoID);
   });
 
 
@@ -474,17 +476,17 @@
     var personalInfoID = $("#hdnpersonalInfoID").val();
     var contactInfoID = $("#hdncontactInfoID").val();
     $.ajax({
-        url: '/getIDs',
-        type: 'POST',
-        data: { personalInfoID: personalInfoID , contactInfoID: contactInfoID},
-        success: function (data) {
-          console.log(data);
-          $.get('delete-employee/' + employeeID, function (data) {
-            $('#employeeTable tbody #' + employeeID).remove();
-          })
-          alertify.alert('Confirmation', 'Employee Deleted!', function(){ alertify.success('Ok'); });
-        }
-      });
+      url: '/getIDs',
+      type: 'POST',
+      data: { personalInfoID: personalInfoID, contactInfoID: contactInfoID },
+      success: function (data) {
+        console.log(data);
+        $.get('delete-employee/' + employeeID, function (data) {
+          $('#employeeTable tbody #' + employeeID).remove();
+        })
+        alertify.alert('Confirmation', 'Employee Deleted!', function () { alertify.success('Ok'); });
+      }
+    });
     $('#deleteModal').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
