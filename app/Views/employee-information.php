@@ -60,7 +60,7 @@
                     </td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" class="btn btn-outline-secondary btnView"><i class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal"
                         data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" class="btn btn-outline-danger btnDelete"><i
                               class="fa-solid fa-trash"></i></button>
@@ -323,6 +323,231 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="viewEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create New Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+
+      <!-- Modal Personal Information -->
+      <div class="modal-body">
+        <form id="addEmployee" class="form-floating" method="post">
+          <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+              <input type="text" name="hdnviewemployeeID" id="hdnviewemployeeID" />
+              <input type="text" name="hdnviewpersonalInfoID" id="hdnviewpersonalInfoID" />
+              <input type="text" name="hdnviewcontactInfoID" id="hdnviewcontactInfoID" />
+                <label for="txtEmpNumber">Employee Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpNumber" id="txtViewEmpNumber" placeholder="Employee Number">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtEmpPosition">Position<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpPosition" id="txtViewEmpPosition" placeholder="Position">
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col">
+              <div class="form-group">
+                <label for=" floatingInput">First Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpViewFirstName" id = "txtEmpViewFirstName" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for=" floatingInput">Middle Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpViewMiddleName"  id = "txtEmpViewMiddleName" placeholder="Middle Name">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for=" floatingInput">Last Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpViewLastName"  id = "txtEmpViewLastName" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-4">
+              <div class="form-group">
+                <label for=" floatingInput">Birthdate<span class="required">*</span></label>
+                <input type="date" class="form-control" name="txtEmpBirthdate" placeholder="Birthdate">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="floatingSelectGrid">Sex<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtEmpSex" aria-label="Sex">
+                  <option selected value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="floatingSelectGrid">Blood Type<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtEmpBloodType" aria-label="Blood Type">
+                  <option selected value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for=" floatingInput">Height (m)<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpHeight" placeholder="Height">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for=" floatingInput">Weight (kg)<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpWeight" placeholder="Weight">
+              </div>
+            </div>
+
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for=" floatingInput">Citizenship<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpCitizenship" placeholder="Citizenship">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="floatingSelectGrid">Marital Status<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtEmpMaritalStatus"
+                  aria-label="Marital Status">
+                  <option selected value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Widowed">Widowed</option>
+                  <option value="Divorced">Divorced</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for=" floatingInput">SSS Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpSSS" placeholder="SSS Number">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for=" floatingInput">PhilHealth Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpPhilNum" placeholder="PhilHealth Number">
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="floatingSelectGrid">Registered Nurse<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtIsNurse" aria-label="Registered Nurse">
+                  <option selected value="No">No</option>
+                  <option value="No">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="text-muted" for=" floatingInput">License Number</label>
+                <input type="text" class="form-control" name="txtLicenseNumber" placeholder="License Number" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Contact Information -->
+
+          <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <div class="row g-3 mb-4">
+            <div class="form-group">
+              <label class="" for="floatingInput">Address <span class="text-muted">(house number and street name)<span
+                    class="required">*</span></span></label>
+              <input type="text" class="form-control" name="txtEmpAddress" placeholder="Address">
+
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="floatingSelectGrid">Province<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtProvince" aria-label="Province">
+                  <option selected value="Philippines">Cavite</option>
+                  <option value="Metro Manila">Metro Manila</option>
+                  <option value="Batangas">Batangas</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for=" floatingInput">Zip Code<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtZipCode" placeholder="Zip Code">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="floatingSelectGrid">City<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtCity" aria-label="City">
+                  <option selected value="Cavite City">Cavite City</option>
+                  <option value="Dasmariñas City">Dasmariñas City</option>
+                  <option value="Bacoor City">Bacoor City</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="floatingSelectGrid">Barangay<span class="required">*</span></label>
+                <select class="form-select" id="floatingSelectGrid" name="txtBarangay" aria-label="Barangay">
+                  <option selected value="Barangay 1">Barangay 1</option>
+                  <option value="Barangay 2">Barangay 2</option>
+                  <option value="Barangay 3">Barangay 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="floatingInput">Contact Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtContactNumber" placeholder="Contact Number">
+              </div>
+            </div>
+            <div class="col-6 mb-4">
+              <div class="form-group">
+                <label for="floatingInput">Email Address<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpEmail" placeholder="Email Address">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btnAddEmployee">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script defer type="text/javascript">
   $(document).ready(function () {
     $('#employeeTable').DataTable();
@@ -488,6 +713,33 @@
     $('#deleteModal').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
+  });
+
+  $('body').on('click', '.btnView', function () {
+    var employeeID = $(this).attr('data-id');
+    var personalInfoID = $(this).attr('data-id2');
+    var contactInfoID = $(this).attr('data-id3');
+    $('#viewEmployeeModal #hdnviewemployeeID').val(employeeID);
+    $('#viewEmployeeModal #hdnviewpersonalInfoID').val(personalInfoID);
+    $('#viewEmployeeModal #hdnviewcontactInfoID').val(contactInfoID);  
+    $.ajax({
+      url: 'view-employee/' + employeeID,
+      type: "GET",
+      dataType: 'json',
+      success: function (res) {
+        let result = res.find(employeeNumber => employeeNumber.employeeID == employeeID, 
+        position => position.employeeID == employeeID, firstName => firstName.personID == personID, middleName => middleName.personID == personID);
+        // let result = res.find(position => position.employeeID == employeeID);
+        $('#viewEmployeeModal').modal('show');
+        $('#viewEmployeeModal #txtViewEmpNumber').val(result.employeeNumber);
+        $('#viewEmployeeModal #txtViewEmpPosition').val(result.position);
+        $('#viewEmployeeModal #txtEmpViewFirstName').val(result.firstName);
+        $('#viewEmployeeModal #txtEmpViewMiddleName').val(result.middleName);
+        
+      },
+      error: function (data) {
+      }
+    });
   });
 
 </script>

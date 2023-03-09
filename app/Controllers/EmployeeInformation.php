@@ -13,7 +13,7 @@ class EmployeeInformation extends BaseController
         $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
         $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblemployeeinfo.personalInfoID');
         $builder->join('tblpersons', 'tblpersons.personID = tblemployeeinfo.personID');
-
+        $builder->where('tblemployeeinfo.isArchived', 0);
         $query = $builder->get();
         $result = $query->getResult();
         $data["result"] = $result;
@@ -147,6 +147,19 @@ class EmployeeInformation extends BaseController
 //     $builder->where('personID', $id)->delete();
 
 // }
+    public function viewEmployee()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tblemployeeinfo');
+        $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
+        $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblemployeeinfo.personalInfoID');
+        $builder->join('tblpersons', 'tblpersons.personID = tblemployeeinfo.personID');
+        $query = $builder->get();
+        $result = $query->getResultArray();
+        // $query = $db->table('tbllocations')->select('*')->get();
+        // $data = $query->getResultArray();
+        return json_encode($result);
+    }
 
 
 }
