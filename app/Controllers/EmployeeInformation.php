@@ -155,6 +155,7 @@ class EmployeeInformation extends BaseController
         $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
         $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblemployeeinfo.personalInfoID');
         $builder->join('tblpersons', 'tblpersons.personID = tblemployeeinfo.personID');
+        $builder->join('tblcontactinformation', 'tblcontactinformation.contactInfoID = tblpersons.contactInformationID');
         $query = $builder->get();
         $result = $query->getResultArray();
         // $query = $db->table('tbllocations')->select('*')->get();
