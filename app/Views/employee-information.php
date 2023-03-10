@@ -546,7 +546,7 @@
 
       <!-- Modal Personal Information -->
       <div class="modal-body">
-        <form id="addEmployee" action="<?php echo base_url('add-employee') ?>" class="form-floating" method="post">
+        <form id="updateEmployee" class="form-floating" method="post">
           <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-4">
             <div class="col-6">
@@ -756,7 +756,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary btnAddEmployee">Save changes</button>
+            <button type="submit" class="btn btn-primary btnUpdateEmployee">Save changes</button>
           </div>
         </form>
       </div>
@@ -806,14 +806,26 @@
 
       return (newValue) ? true : false;
     }, "This field is required");
+
+    window.localStorage.setItem('show_popup_update', 'false');
+    window.localStorage.setItem('show_popup_add', 'false');
   });
+
+  if (window.localStorage.getItem('show_popup_update') == 'true') {
+    alertify.success('Employee Updated');
+
+    }
+
+    if (window.localStorage.getItem('show_popup_add') == 'true') {
+      alertify.success('Employee Added');
+
+    }
 
   // conditional is nurse liscense
   let isNurseSelectTagCreateElement = document.querySelector('#isNurseCreateEmpSelect');
   let txtLicenseNumberCreateElement = document.querySelector('#txtLicenseNumber');
   let txtPositionEnable = document.querySelector('#txtEmpPosition');
   let txtisNurseEnable = document.querySelector('#isNurseCreateEmpSelect');
-
   txtPositionEnable.addEventListener('change', (event) => {
     if (txtPositionEnable.value.toLowerCase() == "nurse") {
       txtisNurseEnable.disabled = false;
@@ -824,26 +836,45 @@
         txtLicenseNumberCreateElement.disabled = true;
         txtLicenseNumberCreateElement.value = "";
         txtLicenseNumberCreateElement.placeholder = "License Number";
-        // $("#addEmployee").validate({
-        // rules: {
-        //   txtLicenseNumber: {
-        //     required: true,
-        //     noSpace: true,
-        //     digits: true
-        //   },
-        // },
-        // messages: {
-
-        // },
-  // });
       }
       })
     } else{
       txtisNurseEnable.disabled = true;
+      txtLicenseNumberCreateElement.disabled = true;
+      txtLicenseNumberCreateElement.value = "";
+      txtLicenseNumber.disabled = true;
+      txtLicenseNumberCreateElement.placeholder = "License Number";
+      $("#isNurseCreateEmpSelect").val("No");
     }
-
-    
   })
+
+
+  let isUpdateNurseSelectTagCreateElement = document.querySelector('#txtUpdateIsNurse');
+  let txtUpdateLicenseNumberCreateElement = document.querySelector('#txtUpdateLicenseNumber');
+  let txtUpdatePositionEnable = document.querySelector('#txtUpdateEmpPosition');
+  let txtUpdateisNurseEnable = document.querySelector('#txtUpdateIsNurse');
+  txtUpdatePositionEnable.addEventListener('change', (event) => {
+    if (txtUpdatePositionEnable.value.toLowerCase() == "nurse") {
+      txtUpdateisNurseEnable.disabled = false;
+      isUpdateNurseSelectTagCreateElement.addEventListener('change', (event) => {
+      if (isUpdateNurseSelectTagCreateElement.value.toLowerCase() == "yes") {
+        txtUpdateLicenseNumberCreateElement.disabled = false;
+      } else if (isUpdateNurseSelectTagCreateElement.value.toLowerCase() == "no") {
+        txtUpdateLicenseNumberCreateElement.disabled = true;
+        txtUpdateLicenseNumberCreateElement.value = "";
+        txtUpdateLicenseNumberCreateElement.placeholder = "License Number";
+      }
+      })
+    } else{
+      txtUpdateisNurseEnable.disabled = true;
+      txtUpdateLicenseNumberCreateElement.disabled = true;
+      txtUpdateLicenseNumberCreateElement.value = "";
+      txtUpdateLicenseNumberCreateElement.placeholder = "License Number";
+      txtUpdateLicenseNumber.disabled = true;
+      $("#txtUpdateIsNurse").val("No");
+    }
+  })
+ 
  
 
   $("#addEmployee").validate({
@@ -855,7 +886,7 @@
       txtLicenseNumber: {
         required: true,
         noSpace: true,
-        digits: true
+        rangelength: [6, 7]
       },
       txtCity: {
         required: true,
@@ -968,7 +999,189 @@
       txtEmpPhilNum: {
         rangelength: "Please enter a valid PhilHealth Number"
       },
+      txtLicenseNumber: {
+        rangelength: "Please enter a valid Nurse License Number"
+      },
     },
+  });
+
+
+
+  $("#updateEmployee").validate({
+    rules: {
+      txtUpdateEmpNumber: {
+        required: true,
+        noSpace: true
+      },
+      txtUpdateLicenseNumber: {
+        required: true,
+        noSpace: true,
+        rangelength: [6, 7]
+      },
+      txtUpdateCity: {
+        required: true,
+        noSpace: true
+      },
+      txtUpdateEmpPosition: {
+        required: true,
+        noSpace: true
+      },
+      txtUpdateEmpFirstName: {
+        required: true,
+        lettersonly: true,
+        noSpace: true
+      },
+      txtUpdateEmpMiddleName: {
+        lettersonly: true,
+      },
+      txtUpdateEmpLastName: {
+        required: true,
+        lettersonly: true,
+        noSpace: true
+      },
+      txtUpdateEmpBirthdate: {
+        required: true
+      },
+      txtUpdateEmpSex: {
+        required: true
+      },
+      txtUpdateEmpBloodType: {
+        required: true
+      },
+      txtUpdateEmpHeight: {
+        required: true,
+        digits: true
+      },
+      txtUpdateEmpWeight: {
+        required: true,
+        digits: true
+      },
+      txtUpdateEmpCitizenship: {
+        required: true
+      },
+      txtUpdateEmpMaritalStatus: {
+        required: true
+      },
+      txtUpdateEmpSSS: {
+        required: true,
+        digits: true,
+        rangelength: [9, 12]
+      },
+      txtUpdateEmpPhilNum: {
+        required: true,
+        card: true,
+        rangelength: [12, 14]
+      },
+      txtUpdateEmpAddress: {
+        required: true,
+        noSpace: true
+      },
+      txtUpdateProvince: {
+        required: true,
+        noSpace: true
+      },
+      txtUpdateZipCode: {
+        required: true,
+        digits: true,
+        rangelength: [4, 4]
+      },
+      txtUpdateBarangay: {
+        required: true
+      },
+      txtUpdateContactNumber: {
+        required: true,
+        digits: true,
+        rangelength: [7, 11]
+      },
+      txtUpdateEmpEmail: {
+        required: true,
+        email: true
+      },
+    },
+    messages: {
+      txtUpdateEmpHeight: {
+        digits: "Please enter a valid height"
+      },
+      txtUpdateEmpWeight: {
+        digits: "Please enter a valid weight"
+      },
+      txtUpdateEmpSSS: {
+        digits: "Please enter a valid SSS ID Number",
+        rangelength: "Please enter a valid SSS ID Number"
+      },
+      txtUpdateZipCode: {
+        digits: "Please enter a valid Zip Code",
+        rangelength: "Please enter a valid Zip Code"
+      },
+      txtUpdateContactNumber: {
+        digits: "Please enter a valid Contact Number",
+        rangelength: "Please enter a valid Contact Number"
+      },
+      txtUpdateEmpFirstName: {
+        lettersonly: "Please enter a valid name"
+      },
+      txtUpdateEmpMiddleName: {
+        lettersonly: "Please enter a valid name"
+      },
+      txtUpdateEmpLastName: {
+        lettersonly: "Please enter a valid name"
+      },
+      txtUpdateEmpPhilNum: {
+        rangelength: "Please enter a valid PhilHealth Number"
+      },
+      txtUpdateLicenseNumber: {
+        rangelength: "Please enter a valid Nurse License Number"
+      },
+    },
+    submitHandler: function (form) {
+      var employeeID = $("#hdnupdateEmployeeID").val();
+      var personalInfoID = $("#hdnupdatePersonalInfoID").val();
+      var contactInfoID = $("#hdnupdateContactInfoID").val();
+      var employeeIDfinal = $("#hdnupdateFinalEmployeeID").val();
+      var txtNumber = $("#txtUpdateEmpNumber").val();
+      var txtPosition = $("#txtUpdateEmpPosition").val();
+      var txtFirstName = $("#txtUpdateEmpFirstName").val();
+      var txtMiddleName = $("#txtUpdateEmpMiddleName").val();
+      var txtLastName = $("#txtUpdateEmpLastName").val();
+      var txtBirthDate = $("#txtUpdateEmpBirthdate").val();
+      var txtSex = $("#txtUpdateEmpSex").val();
+      var txtBloodType = $("#txtUpdateEmpBloodType").val();
+      var txtWeight = $("#txtUpdateEmpWeight").val();
+      var txtHeight = $("#txtUpdateEmpHeight").val();
+      var txtCitizenship = $("#txtUpdateEmpCitizenship").val();
+      var txtMaritalStatus = $("#txtUpdateEmpMaritalStatus").val();
+      var txtSSS = $("#txtUpdateEmpSSS").val();
+      var txtPhilNum = $("#txtUpdateEmpPhilNum").val();
+      var txtNurse = $("#txtUpdateIsNurse").val();
+      var txtAddress = $("#txtUpdateEmpAddress").val();
+      var txtProvince = $("#txtUpdateProvince").val();
+      var txtCity = $("#txtUpdateCity").val();
+      var txtBarangay = $("#txtUpdateBarangay").val();
+      var txtContactNum = $("#txtUpdateContactNumber").val();
+      var txtEmail = $("#txtUpdateEmpEmail").val();
+      var txtZipCode = $("#txtUpdateZipCode").val();
+      var txtLicenseNum = $("#txtUpdateLicenseNumber").val();
+      console.log(employeeID, personalInfoID,contactInfoID, employeeIDfinal);
+      $.ajax({
+        url: '/update-employee',
+        type: 'POST',
+        data: { employeeID: employeeID, personalInfoID: personalInfoID, contactInfoID: contactInfoID, employeeIDfinal:employeeIDfinal, txtNumber, txtPosition, txtFirstName,txtMiddleName,txtLastName,txtBirthDate,
+        txtSex, txtBloodType, txtWeight,txtHeight, txtCitizenship, txtMaritalStatus, txtSSS, txtPhilNum, txtNurse, txtAddress, txtProvince, txtCity, txtBarangay, txtContactNum, txtEmail,
+        txtZipCode, txtLicenseNum},
+        success: function (data) {
+          $('#updateEmployeeModal').modal('hide');
+          window.localStorage.setItem('show_popup_update', 'true');
+          window.location.reload();
+          
+          // $.get('delete-employee/' + employeeID, function (data) {
+          //   $('#employeeTable tbody #' + employeeIDfinal).remove();
+          // })
+          // alertify.alert('Confirmation', 'Employee Deleted!', function () { alertify.success('Ok'); });
+        }
+    });
+      
+    }
+    
   });
 
   $('body').on('click', '.btnDelete', function () {
@@ -980,7 +1193,6 @@
     $('#deleteModal #hdnpersonalInfoID').val(personalInfoID);
     $('#deleteModal #hdncontactInfoID').val(contactInfoID);
     $('#deleteModal #hdnrealemployeeID').val(employeeIDfinal);
-
   });
 
 
@@ -998,13 +1210,16 @@
         $.get('delete-employee/' + employeeID, function (data) {
           $('#employeeTable tbody #' + employeeIDfinal).remove();
         })
-        alertify.alert('Confirmation', 'Employee Deleted!', function () { alertify.success('Ok'); });
+        alertify.success('Employee Deleted');
       }
     });
     $('#deleteModal').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
   });
+
+
+ 
 
   $('body').on('click', '.btnView', function () {
     var employeeID = $(this).attr('data-id');
@@ -1039,7 +1254,6 @@
         $('#viewEmployeeModal #txtViewEmpMaritalStatus').val(result.maritalStatus);
         $('#viewEmployeeModal #txtViewEmpSSS').val(result.sssNumber);
         $('#viewEmployeeModal #txtViewEmpPhilNum').val(result.philHealthNumber);
-        $('#viewEmployeeModal #txtViewIsNurse').val(result.isNurse);
         $('#viewEmployeeModal #txtViewEmpAddress').val(result.address);
         $('#viewEmployeeModal #txtViewProvince').val(result.province);
         $('#viewEmployeeModal #txtViewZipCode').val(result.zipcode);
@@ -1047,6 +1261,8 @@
         $('#viewEmployeeModal #txtViewBarangay').val(result.barangay);
         $('#viewEmployeeModal #txtViewContactNumber').val(result.cellphoneNumber);
         $('#viewEmployeeModal #txtViewEmpEmail').val(result.emailAddress);
+        $('#viewEmployeeModal #txtViewIsNurse').val(result.isNurse);
+        $('#viewEmployeeModal #txtViewLicenseNumber').val(result.nurseLicenseNumber);
       },
       error: function (data) {
       }
@@ -1074,31 +1290,39 @@
         // let result = res.find(position => position.employeeID == employeeID);
         $('#updateEmployeeModal').modal('show');
         $('#updateEmployeeModal #txtUpdateEmpNumber').val(result.employeeNumber);
-        // $('#viewEmployeeModal #txtViewEmpPosition').val(result.position);
-        // $('#viewEmployeeModal #txtEmpViewFirstName').val(result.firstName);
-        // $('#viewEmployeeModal #txtEmpViewMiddleName').val(result.middleName);
-        // $('#viewEmployeeModal #txtEmpViewLastName').val(result.lastName);
-        // $('#viewEmployeeModal #txtViewEmpBirthdate').val(result.birthDate);
-        // $('#viewEmployeeModal #txtViewEmpSex').val(result.sex);
-        // $('#viewEmployeeModal #txtViewEmpBloodType').val(result.bloodType);
-        // $('#viewEmployeeModal #txtViewEmpHeight').val(result.height);
-        // $('#viewEmployeeModal #txtViewEmpWeight').val(result.weight);
-        // $('#viewEmployeeModal #txtViewEmpCitizenship').val(result.citizenship);
-        // $('#viewEmployeeModal #txtViewEmpMaritalStatus').val(result.maritalStatus);
-        // $('#viewEmployeeModal #txtViewEmpSSS').val(result.sssNumber);
-        // $('#viewEmployeeModal #txtViewEmpPhilNum').val(result.philHealthNumber);
-        // $('#viewEmployeeModal #txtViewIsNurse').val(result.isNurse);
-        // $('#viewEmployeeModal #txtViewEmpAddress').val(result.address);
-        // $('#viewEmployeeModal #txtViewProvince').val(result.province);
-        // $('#viewEmployeeModal #txtViewZipCode').val(result.zipcode);
-        // $('#viewEmployeeModal #txtViewCity').val(result.city);
-        // $('#viewEmployeeModal #txtViewBarangay').val(result.barangay);
-        // $('#viewEmployeeModal #txtViewContactNumber').val(result.cellphoneNumber);
-        // $('#viewEmployeeModal #txtViewEmpEmail').val(result.emailAddress);
+        $('#updateEmployeeModal #txtUpdateEmpPosition').val(result.position);
+        $('#updateEmployeeModal #txtUpdateEmpFirstName').val(result.firstName);
+        $('#updateEmployeeModal #txtUpdateEmpMiddleName').val(result.middleName);
+        $('#updateEmployeeModal #txtUpdateEmpLastName').val(result.lastName);
+        $('#updateEmployeeModal #txtUpdateEmpBirthdate').val(result.birthDate);
+        $('#updateEmployeeModal #txtUpdateEmpSex').val(result.sex);
+        $('#updateEmployeeModal #txtUpdateEmpBloodType').val(result.bloodType);
+        $('#updateEmployeeModal #txtUpdateEmpHeight').val(result.height);
+        $('#updateEmployeeModal #txtUpdateEmpWeight').val(result.weight);
+        $('#updateEmployeeModal #txtUpdateEmpCitizenship').val(result.citizenship);
+        $('#updateEmployeeModal #txtUpdateEmpMaritalStatus').val(result.maritalStatus);
+        $('#updateEmployeeModal #txtUpdateEmpSSS').val(result.sssNumber);
+        $('#updateEmployeeModal #txtUpdateEmpPhilNum').val(result.philHealthNumber);
+        $('#updateEmployeeModal #txtUpdateIsNurse').val(result.isNurse);
+        $('#updateEmployeeModal #txtUpdateEmpAddress').val(result.address);
+        $('#updateEmployeeModal #txtUpdateProvince').val(result.province);
+        $('#updateEmployeeModal #txtUpdateCity').val(result.city);
+        $('#updateEmployeeModal #txtUpdateBarangay').val(result.barangay);
+        $('#updateEmployeeModal #txtUpdateContactNumber').val(result.cellphoneNumber);
+        $('#updateEmployeeModal #txtUpdateEmpEmail').val(result.emailAddress);
+        $('#updateEmployeeModal #txtUpdateZipCode').val(result.zipcode);
+        $('#updateEmployeeModal #txtUpdateLicenseNumber').val(result.nurseLicenseNumber);
       },
       error: function (data) {
       }
     });
+
+    $('body').on('click', '.btnUpdateEmployee', function () {
+    
+    // $('#deleteModal').modal('hide');
+    // $('body').removeClass('modal-open');
+    // $('.modal-backdrop').remove();
+  });
   });
 
 </script>

@@ -36,6 +36,7 @@ $routes->get('/employee-information', 'EmployeeInformation::index');
 $routes->post('/add-employee', 'EmployeeInformation::addEmployee');
 $routes->get('/view-employee/(:num)', 'EmployeeInformation::viewEmployee/$1');
 $routes->get('/fetch-employee/(:num)', 'EmployeeInformation::fetchEmployee/$1');
+$routes->post('/update-employee', 'EmployeeInformation::updateEmployee');
 $routes->get('/delete-employee/(:num)', 'EmployeeInformation::deleteEmployee/$1');
 $routes->post('/getIDs', 'EmployeeInformation::getID');
 $routes->get('/patient-information', 'PatientInformation::index');
