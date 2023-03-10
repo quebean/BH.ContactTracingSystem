@@ -19,7 +19,7 @@
                   <th class="text-center">Patient ID</th>
                   <th class="text-center">Patient Name</th>
                   <th class="text-center">Contact Number</th>
-                  <th class="text-center">Referred By</th>
+                  <th class="text-center">Physician</th>
                   <th class="text-center">Next Consultation</th>
                   <th class="text-center">Actions</th>
                 </tr>
@@ -68,7 +68,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Patient</h5>
-        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 

@@ -87,7 +87,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Employee</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 
@@ -244,7 +244,7 @@
           <div class="row g-3 mb-4">
             <div class="form-group">
               <label class="" for="floatingInput">Address <span class="text-muted">(house number and street name)<span
-                    class="required">*</span></span></label>
+                    class="required">*</span></label>
               <input type="text" class="form-control" name="txtEmpAddress" placeholder="Address">
 
             </div>
@@ -258,20 +258,20 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label for=" floatingInput">Zip Code<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtZipCode" placeholder="Zip Code">
+                <label for="floatingInput">Zip Code<span class="required">*</span></label>
+                <input type="text" id="" class="form-control" name="txtZipCode" placeholder="Zip Code">
               </div>
             </div>
           </div>
           <div class="row g-3 mb-4">
             <div class="col-6">
               <div class="form-group">
-                <label for=" floatingInput">City<span class="required">*</span></label>
-                <input type="text" class="form-control" id="floatingInput" name="txtCity" placeholder="City">
+                <label for="textCityCreate">City<span class="required">*</span></label>
+                <input type="text" class="form-control" id="textCityCreate" name="txtCity" placeholder="City">
               </div>
             </div>
             <div class="col-6">
-              <label for=" floatingInput">Barangay<span class="required">*</span></label>
+              <label for="floatingInput">Barangay<span class="required">*</span></label>
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">Brgy.</span>
                 <input type="text" class="form-control" id="floatingInput" name="txtBarangay"
@@ -309,7 +309,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <input type="hidden" name="hdnemployeeID" id="hdnemployeeID" />
@@ -348,6 +348,10 @@
   $("#addEmployee").validate({
     rules: {
       txtEmpNumber: {
+        required: true,
+        noSpace: true
+      },
+      txtCity: {
         required: true,
         noSpace: true
       },
@@ -408,7 +412,8 @@
         noSpace: true
       },
       txtProvince: {
-        required: true
+        required: true,
+        noSpace: true
       },
       txtZipCode: {
         required: true,
