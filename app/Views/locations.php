@@ -33,8 +33,9 @@
                       <?php echo $row['locationName']; ?>
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                      <button id="view-data" class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i
+                      <button class="btn btn-outline-primary btnUpdate" data-id="<?php echo $row['locationID']; ?>"><i
+                          class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i
                           class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal"
                         data-id="<?php echo $row['locationID']; ?>" class="btn btn-outline-danger btnDelete"><i
@@ -59,8 +60,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Location</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Location</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="locationForm">
@@ -85,7 +86,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Location</h5>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Delete Location</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -104,7 +105,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">View Location</h5>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">View Location</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -112,7 +113,8 @@
           <div class="mb-3">
             <input type="hidden" name="hdnlocationID" id="hdnlocationID" />
             <label for="formLocation" class="form-label">Location Name</label>
-          
+            <input type="text" class="form-control" id="formLocation" name="formLocation" disabled>
+
           </div>
       </div>
       <div class="modal-footer">
@@ -123,11 +125,65 @@
   </div>
 </div>
 
+<div class="modal fade" id="updatelocationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Update Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="updateLocationForm">
+          <div class="mb-3">
+            <input type="hidden" name="hdnupdatelocationID" id="hdnupdatelocationID" />
+            <label for="updateLocation" class="form-label">Location Name</label>
+            <input type="text" class="form-control" id="updateLocation" name="updateLocation">
+            <span id="updatelocationError" class="text-danger"></span>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="updateLocationSubmit">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <script defer type="text/javascript">
+
   $(document).ready(function () {
     $('#locationsTable').DataTable();
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+      let newValue = value.trim();
+
+      return (newValue) ? true : false;
+    }, "Location name is required");
+
+    window.localStorage.setItem('show_popup_update', 'false');
+    window.localStorage.setItem('show_popup_add', 'false');
   });
 
+
+  if (window.localStorage.getItem('show_popup_update') == 'true') {
+    alertify.success('Location Updated');
+
+  }
+
+  if (window.localStorage.getItem('show_popup_add') == 'true') {
+    alertify.success('Location Added');
+
+  }
+
+
+  // delete
   $('body').on('click', '.btnDelete', function () {
     var locationID = $(this).attr('data-id');
     $('#deleteModal #hdnlocationID').val(locationID);
@@ -139,8 +195,12 @@
       $('#locationsTable tbody #' + locationID).remove();
     })
     $('#deleteModal').modal('hide');
+    alertify.success('Location Deleted');
   });
+  // delete
 
+
+  // view
   $('body').on('click', '.btnView', function () {
     var locationID = $(this).attr('data-id');
     $('#viewlocationModal #hdnlocationID').val(locationID);
@@ -149,14 +209,17 @@
       type: "GET",
       dataType: 'json',
       success: function (res) {
+        let result = res.find(locationName => locationName.locationID == locationID);
         $('#viewlocationModal').modal('show');
-        $('#viewlocationModal #formLocation').val(res.data.locationName);
+        $('#viewlocationModal #formLocation').val(result.locationName);
       },
       error: function (data) {
       }
     });
   });
+  // view
 
+  // create
   var prevText = "";
   $('#formLocation').keyup(function (event) {
 
@@ -170,29 +233,110 @@
     } 
   });
 
-  $('#locationSubmit').on('click', function (e) {
-    var locationName = $("#formLocation").val();
-    $.ajax({
-      url: '<?php echo base_url('check-location'); ?>',
-      type: 'POST',
-      data: { locationName: locationName },
-      success: function (data) {
-        if (data == 'exists') {
-          prevText = $("#formLocation").val();
-          $('#locationError').html('Location already exists.');
-          $('#locationSubmit').prop('disabled', true);
-        } else {
-          $('#locationError').html('');
-          $('#locationSubmit').prop('disabled', false);
-          location.reload();
-        }
-      }
-    });
-    return false;
+  $('#updateLocationForm').keyup(function (event) {
+    newText = event.target.value;
+    if (prevText == newText && prevText != "") {
+
+      $('#updateLocationSubmit').prop('disabled', true);
+    } else {
+      $('#updatelocationError').html('');
+      $('#updateLocationSubmit').prop('disabled', false);
+    }
   });
 
- 
+  $("#locationForm").validate({
+    rules: {
+      formLocation: {
+        required: true,
+        noSpace: true
+      }
+    },
+    messages: {
+      formLocation: {
+      }
+    },
+    submitHandler: function (form) {
+      var locationName = $("#formLocation").val().trim();
+      $.ajax({
+        url: '<?php echo base_url('check-location'); ?>',
+        type: 'POST',
+        data: { locationName: locationName },
+        success: function (data) {
+          if (data == 'exists') {
+            prevText = $("#formLocation").val();
+            $('#locationError').html('Location already exists.');
+            $('#locationSubmit').prop('disabled', true);
+          } else {
+            $('#locationError').html('');
+            $('#formLocation').val("");
+            $('#locationSubmit').prop('disabled', false);
+            $('#locationModal').modal('hide');
+            window.localStorage.setItem('show_popup_add', 'true');
+            window.location.reload();
+          }
+        }
+      });
+    }
+  });
+  // create
 
+
+  // update
+  $('body').on('click', '.btnUpdate', function () {
+    var locationID = $(this).attr('data-id');
+    $('#updatelocationModal #hdnupdatelocationID').val(locationID);
+    $.ajax({
+      url: 'manage-locations/view/' + locationID,
+      type: "GET",
+      dataType: 'json',
+      success: function (res) {
+        let result = res.find(locationName => locationName.locationID == locationID);
+        $('#updatelocationModal').modal('show');
+        $('#updatelocationModal #updateLocation').val(result.locationName);
+      },
+      error: function (data) {
+      }
+    });
+
+  });
+
+  $("#updateLocationForm").validate({
+    rules: {
+      formLocation: {
+        required: true,
+        noSpace: true
+      }
+    },
+    messages: {
+      formLocation: {
+      }
+    },
+    submitHandler: function (form) {
+      var locationName = $("#updateLocation").val().trim();
+      var locationID = $("#hdnupdatelocationID").val();
+      console.log(locationName, locationID)
+      $.ajax({
+        url: '/manage-locations/update/' + locationID,
+        type: 'POST',
+        data: { locationName: locationName },
+        success: function (data) {
+          console.log(data);
+          if (data == 'exists') {
+            prevText = $("#updateLocation").val();
+            $('#updatelocationError').html('Location already exists.');
+            $('#updateLocationSubmit').prop('disabled', true);
+          } else {
+            $('#updatelocationError').html('');
+            $('#updateLocationSubmit').prop('disabled', false);
+            $('#updatelocationModal').modal('hide');
+            window.localStorage.setItem('show_popup_update', 'true');
+            window.location.reload();
+          }
+        }
+      });
+    }
+  });
+   // update
 
 </script>
 
