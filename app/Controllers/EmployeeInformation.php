@@ -78,7 +78,8 @@ class EmployeeInformation extends BaseController
         $data4 = [
             'employeeNumber' => $this->request->getVar('txtEmpNumber'),
             'position' => $this->request->getVar('txtEmpPosition'),
-            'isNurse' => $this->request->getVar('txtIsNurse'),
+            'isNurse' => $this->request->getVar('txtIsNurse') ?? 'No',
+            'nurseLicenseNumber' => $this->request->getVar('txtLicenseNumber') ?? '',
             'personID' => $table1_id,
             'personalinfoID' => $table2_id,
             // 'nurseID' => $table3_id,
@@ -149,6 +150,21 @@ class EmployeeInformation extends BaseController
     // }
 
     public function viewEmployee()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tblemployeeinfo');
+        $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
+        $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblemployeeinfo.personalInfoID');
+        $builder->join('tblpersons', 'tblpersons.personID = tblemployeeinfo.personID');
+        $builder->join('tblcontactinformation', 'tblcontactinformation.contactInfoID = tblpersons.contactInformationID');
+        $query = $builder->get();
+        $result = $query->getResultArray();
+        // $query = $db->table('tbllocations')->select('*')->get();
+        // $data = $query->getResultArray();
+        return json_encode($result);
+    }
+
+    public function fetchEmployee()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('tblemployeeinfo');

@@ -60,7 +60,7 @@
                       <?php echo $row->address ?>
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
+                      <button data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" data-id4="<?php echo $row->employeeID; ?>" class="btn btn-outline-primary btnUpdate"><i class="fa-solid fa-pen"></i></button>
                       <button data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" data-id4="<?php echo $row->employeeID; ?>" class="btn btn-outline-secondary btnView"><i class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row->personID; ?>"
                         data-id2="<?php echo $row->personalInfoID; ?>"
@@ -94,7 +94,7 @@
       <!-- Modal Personal Information -->
       <div class="modal-body">
         <form id="addEmployee" action="<?php echo base_url('add-employee') ?>" class="form-floating" method="post">
-          <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
+          <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <label for="txtEmpNumber">Employee Number<span class="required">*</span></label>
@@ -107,7 +107,11 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtEmpPosition">Position<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtEmpPosition" placeholder="Position">
+                <select class="form-select" id="txtEmpPosition" name="txtEmpPosition" aria-label="Position">
+                  <option selected value="Doctor">Doctor</option>
+                  <option value="Guard">Guard</option>
+                  <option value="Nurse">Nurse</option>
+                </select>
               </div>
             </div>
           </div>
@@ -224,23 +228,23 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="floatingSelectGrid">Registered Nurse<span class="required"></span></label>
-                <select class="form-select" id="floatingSelectGrid" name="txtIsNurse" aria-label="Registered Nurse">
+                <select class="form-select" id="isNurseCreateEmpSelect" name="txtIsNurse" aria-label="Registered Nurse"  disabled>
                   <option selected value="No">No</option>
-                  <option value="No">Yes</option>
+                  <option value="Yes">Yes</option>
                 </select>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label class="text-muted" for=" floatingInput">License Number</label>
-                <input type="text" class="form-control" name="txtLicenseNumber" placeholder="License Number" disabled>
+                <input type="text" class="form-control" name="txtLicenseNumber" id="txtLicenseNumber" placeholder="License Number" disabled>
               </div>
             </div>
           </div>
 
           <!-- Modal Contact Information -->
 
-          <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <h5 class="title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-4">
             <div class="form-group">
               <label class="" for="floatingInput">Address <span class="text-muted">(house number and street name)<span
@@ -317,7 +321,7 @@
       <!-- Modal Personal Information -->
       <div class="modal-body">
         <form id="addEmployee" class="form-floating" method="post">
-          <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
+          <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-4">
             <div class="col-6">
             <input type="hidden" id = "hdnviewemployeeID">
@@ -327,14 +331,14 @@
               <label for="txtViewEmpNumber">Employee Number<span class="required">*</span></label>
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">BHEID -</span>
-                <input type="text" class="form-control" name="txtViewEmpNumber" id="txtViewEmpNumber" placeholder="Employee Number">
+                <input type="text" class="form-control" name="txtViewEmpNumber" id="txtViewEmpNumber" placeholder="Employee Number" disabled>
               </div>
               <label id="txtEmpNumber-error" class="error manual-error" for="txtEmpNumber"></label>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewEmpPosition">Position<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewEmpPosition" id = "txtViewEmpPosition" placeholder="Position">
+                <input type="text" class="form-control" name="txtViewEmpPosition" id = "txtViewEmpPosition" placeholder="Position" disabled>
               </div>
             </div>
           </div>
@@ -342,21 +346,21 @@
             <div class="col">
               <div class="form-group">
                 <label for="txtEmpViewFirstName">First Name<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtEmpViewFirstName" id="txtEmpViewFirstName"placeholder="First Name">
+                <input type="text" class="form-control" name="txtEmpViewFirstName" id="txtEmpViewFirstName"placeholder="First Name" disabled>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for="txtEmpViewMiddleName">Middle Name<span class="required"></span></label>
                 <input type="text" class="form-control" name="txtEmpViewMiddleName" id="txtEmpViewMiddleName" placeholder="Middle Name"
-                  aria-describedby="helpMiddle">
+                  aria-describedby="helpMiddle" disabled>
                 <div id="helpMiddle" class="form-text ms-2">Leave blank if none.</div>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for="txtEmpViewLastName">Last Name<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtEmpViewLastName" id="txtEmpViewLastName" placeholder="Last Name">
+                <input type="text" class="form-control" name="txtEmpViewLastName" id="txtEmpViewLastName" placeholder="Last Name" disabled>
               </div>
             </div>
           </div>
@@ -364,13 +368,13 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="txtViewEmpBirthdate">Birthdate<span class="required">*</span></label>
-                <input type="date" class="form-control" name="txtViewEmpBirthdate" id="txtViewEmpBirthdate" placeholder="Birthdate">
+                <input type="date" class="form-control" name="txtViewEmpBirthdate" id="txtViewEmpBirthdate" placeholder="Birthdate" disabled>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="txtViewEmpSex">Sex<span class="required"></span></label>
-                <select class="form-select" name="txtViewEmpSex" id="txtViewEmpSex" aria-label="Sex">
+                <select class="form-select" name="txtViewEmpSex" id="txtViewEmpSex" aria-label="Sex" disabled>
                   <option selected value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
@@ -379,7 +383,7 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="txtViewEmpBloodType">Blood Type<span class="required"></span></label>
-                <select class="form-select" name="txtViewEmpBloodType" id="txtViewEmpBloodType" aria-label="Blood Type">
+                <select class="form-select" name="txtViewEmpBloodType" id="txtViewEmpBloodType" aria-label="Blood Type" disabled>
                   <option selected value="A+">A+</option>
                   <option value="A-">A-</option>
                   <option value="B+">B+</option>
@@ -397,7 +401,7 @@
               <label for="txtViewEmpHeight">Height<span class="required">*</span></label>
               <div class="input-group">
                 <input type="text" class="form-control" name="txtViewEmpHeight" id="txtViewEmpHeight" placeholder="Height in centimeters"
-                  aria-describedby="helpCm">
+                  aria-describedby="helpCm" disabled>
                 <span class="input-group-text" id="helpCm">cm.</span>
               </div>
               <label id="txtEmpHeight-error" class="error manual-error" for="txtEmpHeight"></label>
@@ -406,7 +410,7 @@
             <div class="col-6">
               <label for="txtViewEmpWeight">Weight<span class="required">*</span></label>
               <div class="input-group">
-                <input type="text" class="form-control" name="txtViewEmpWeight" id="txtViewEmpWeight" placeholder="Weight in pounds">
+                <input type="text" class="form-control" name="txtViewEmpWeight" id="txtViewEmpWeight" placeholder="Weight in pounds" disabled>
                 <span class="input-group-text" id="helpLbs">lbs.</span>
               </div>
               <label id="txtEmpWeight-error" class="error manual-error" for="txtEmpWeight"></label>
@@ -417,14 +421,14 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewEmpCitizenship">Citizenship<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewEmpCitizenship" id="txtViewEmpCitizenship"placeholder="Citizenship">
+                <input type="text" class="form-control" name="txtViewEmpCitizenship" id="txtViewEmpCitizenship"placeholder="Citizenship" disabled>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewEmpMaritalStatus">Marital Status<span class="required"></span></label>
                 <select class="form-select" id="txtViewEmpMaritalStatus" name="txtViewEmpMaritalStatus"
-                  aria-label="Marital Status">
+                  aria-label="Marital Status" disabled>
                   <option selected value="Single">Single</option>
                   <option value="Married">Married</option>
                   <option value="Widowed">Widowed</option>
@@ -437,13 +441,13 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewEmpSSS">SSS Number<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewEmpSSS" id="txtViewEmpSSS" placeholder="SSS Number">
+                <input type="text" class="form-control" name="txtViewEmpSSS" id="txtViewEmpSSS" placeholder="SSS Number" disabled>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewEmpPhilNum">PhilHealth Number<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewEmpPhilNum" id="txtViewEmpPhilNum" placeholder="PhilHealth Number">
+                <input type="text" class="form-control" name="txtViewEmpPhilNum" id="txtViewEmpPhilNum" placeholder="PhilHealth Number" disabled>
               </div>
             </div>
           </div>
@@ -451,7 +455,7 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewIsNurse">Registered Nurse<span class="required"></span></label>
-                <select class="form-select" name="txtViewIsNurse" id="txtViewIsNurse" aria-label="Registered Nurse">
+                <select class="form-select" name="txtViewIsNurse" id="txtViewIsNurse" aria-label="Registered Nurse" disabled>
                   <option selected value="No">No</option>
                   <option value="No">Yes</option>
                 </select>
@@ -467,12 +471,12 @@
 
           <!-- Modal Contact Information -->
 
-          <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <h5 class="title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-4">
             <div class="form-group">
               <label class="" for="txtViewEmpAddress">Address <span class="text-muted">(house number and street name)<span
                     class="required">*</span></label>
-              <input type="text" class="form-control" name="txtViewEmpAddress" id="txtViewEmpAddress"placeholder="Address">
+              <input type="text" class="form-control" name="txtViewEmpAddress" id="txtViewEmpAddress"placeholder="Address" disabled>
 
             </div>
           </div>
@@ -480,13 +484,13 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewProvince">Province<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewProvince" id="txtViewProvince" placeholder="Province">
+                <input type="text" class="form-control" name="txtViewProvince" id="txtViewProvince" placeholder="Province" disabled>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewZipCode">Zip Code<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewZipCode" id="txtViewZipCode" placeholder="Zip Code">
+                <input type="text" class="form-control" name="txtViewZipCode" id="txtViewZipCode" placeholder="Zip Code" disabled>
               </div>
             </div>
           </div>
@@ -494,7 +498,7 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewCity">City<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewCity" id="txtViewCity" placeholder="City">
+                <input type="text" class="form-control" name="txtViewCity" id="txtViewCity" placeholder="City" disabled>
               </div>
             </div>
             <div class="col-6">
@@ -502,7 +506,7 @@
               <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">Brgy.</span>
                 <input type="text" class="form-control" id="txtViewBarangay" name="txtViewBarangay" 
-                  placeholder="Barangay Number">
+                  placeholder="Barangay Number" disabled>
               </div>
             </div>
           </div>
@@ -510,19 +514,249 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="txtViewContactNumber">Contact Number<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewContactNumber" id="txtViewContactNumber" placeholder="Contact Number">
+                <input type="text" class="form-control" name="txtViewContactNumber" id="txtViewContactNumber" placeholder="Contact Number" disabled>
               </div>
             </div>
             <div class="col-6 mb-4">
               <div class="form-group">
-                <label for="txtViewEmpEmail">Email Address<span class="required">*</span></label>
-                <input type="text" class="form-control" name="txtViewEmpEmail" id="txtViewEmpEmail" placeholder="Email Address">
+                <label for="txtViewEmpEmail">Email Address<span class="reqpuired">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpEmail" id="txtViewEmpEmail" placeholder="Email Address" disabled>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Update Employee</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+
+      <!-- Modal Personal Information -->
+      <div class="modal-body">
+        <form id="addEmployee" action="<?php echo base_url('add-employee') ?>" class="form-floating" method="post">
+          <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+            <input type="hidden" id = "hdnupdateEmployeeID">
+            <input type="hidden" id = "hdnupdatePersonalInfoID">
+            <input type="hidden" id = "hdnupdateContactInfoID">
+            <input type="hidden" id = "hdnupdateFinalEmployeeID">
+              <label for="txtUpdateEmpNumber">Employee Number<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">BHEID -</span>
+                <input type="text" class="form-control" name="txtUpdateEmpNumber" id="txtUpdateEmpNumber" placeholder="Employee Number">
+              </div>
+              <label id="txtEmpNumber-error" class="error manual-error" for="txtEmpNumber"></label>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateEmpPosition">Position<span class="required">*</span></label>
+                <select class="form-select" name="txtUpdateEmpPosition" id="txtUpdateEmpPosition" aria-label="Position">
+                  <option selected value="Doctor">Doctor</option>
+                  <option value="Guard">Guard</option>
+                  <option value="Nurse">Nurse</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col">
+              <div class="form-group">
+                <label for="txtUpdateEmpFirstName">First Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpFirstName" id="txtUpdateEmpFirstName" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="txtUpdateEmpMiddleName">Middle Name<span class="required"></span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpMiddleName" id="txtUpdateEmpMiddleName" placeholder="Middle Name"
+                  aria-describedby="helpMiddle">
+                <div id="helpMiddle" class="form-text ms-2">Leave blank if none.</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="txtUpdateEmpLastName">Last Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpLastName" id="txtUpdateEmpLastName" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="txtUpdateEmpBirthdate">Birthdate<span class="required">*</span></label>
+                <input type="date" class="form-control" name="txtUpdateEmpBirthdate" id="txtUpdateEmpBirthdate" placeholder="Birthdate">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="txtUpdateEmpSex">Sex<span class="required"></span></label>
+                <select class="form-select"  name="txtUpdateEmpSex" id="txtUpdateEmpSex" aria-label="Sex">
+                  <option selected value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="txtUpdateEmpBloodType">Blood Type<span class="required"></span></label>
+                <select class="form-select" name="txtUpdateEmpBloodType" id="txtUpdateEmpBloodType" aria-label="Blood Type">
+                  <option selected value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label for="txtUpdateEmpHeight">Height<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="txtUpdateEmpHeight" id="txtUpdateEmpHeight" placeholder="Height in centimeters"
+                  aria-describedby="helpCm">
+                <span class="input-group-text" id="helpCm">cm.</span>
+              </div>
+              <label id="txtEmpHeight-error" class="error manual-error" for="txtEmpHeight"></label>
+
+            </div>
+            <div class="col-6">
+              <label for="txtUpdateEmpWeight">Weight<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="txtUpdateEmpWeight" id="txtUpdateEmpWeight"placeholder="Weight in pounds">
+                <span class="input-group-text" id="helpLbs">lbs.</span>
+              </div>
+              <label id="txtEmpWeight-error" class="error manual-error" for="txtEmpWeight"></label>
+            </div>
+
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateEmpCitizenship">Citizenship<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpCitizenship" id="txtUpdateEmpCitizenship"placeholder="Citizenship">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateEmpMaritalStatus">Marital Status<span class="required"></span></label>
+                <select class="form-select" id="txtUpdateEmpMaritalStatus" name="txtUpdateEmpMaritalStatus"
+                  aria-label="Marital Status">
+                  <option selected value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Widowed">Widowed</option>
+                  <option value="Divorced">Divorced</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateEmpSSS">SSS Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpSSS" id="txtUpdateEmpSSS" placeholder="SSS Number">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateEmpPhilNum">PhilHealth Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpPhilNum" id="txtUpdateEmpPhilNum"placeholder="PhilHealth Number">
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateIsNurse">Registered Nurse<span class="required"></span></label>
+                <select class="form-select" id="txtUpdateIsNurse" name="txtUpdateIsNurse" aria-label="Registered Nurse"  disabled>
+                  <option selected value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="text-muted" for="txtUpdateLicenseNumber">License Number</label>
+                <input type="text" class="form-control" name="txtUpdateLicenseNumber" id="txtUpdateLicenseNumber" placeholder="License Number" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Contact Information -->
+
+          <h5 class="title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <div class="row g-3 mb-4">
+            <div class="form-group">
+              <label class="" for="txtUpdateEmpAddress">Address <span class="text-muted">(house number and street name)<span
+                    class="required">*</span></label>
+              <input type="text" class="form-control" name="txtUpdateEmpAddress" id="txtUpdateEmpAddress" placeholder="Address">
+
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateProvince">Province<span class="required">*</span></label>
+                <input type="text" class="form-control" id="txtUpdateProvince" name="txtUpdateProvince" placeholder="Province">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateZipCode">Zip Code<span class="required">*</span></label>
+                <input type="text" id="txtUpdateZipCode" class="form-control" name="txtUpdateZipCode" placeholder="Zip Code">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateCity">City<span class="required">*</span></label>
+                <input type="text" class="form-control" id="txtUpdateCity" name="txtUpdateCity" placeholder="City">
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="txtUpdateBarangay">Barangay<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Brgy.</span>
+                <input type="text" class="form-control" id="txtUpdateBarangay" name="txtUpdateBarangay"
+                  placeholder="Barangay Number">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtUpdateContactNumber">Contact Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateContactNumber" id="txtUpdateContactNumber" placeholder="Contact Number">
+              </div>
+            </div>
+            <div class="col-6 mb-4">
+              <div class="form-group">
+                <label for="txtUpdateEmpEmail">Email Address<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtUpdateEmpEmail" id="txtUpdateEmpEmail" placeholder="Email Address">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btnAddEmployee">Save changes</button>
           </div>
         </form>
       </div>
@@ -559,7 +793,6 @@
 <script defer type="text/javascript">
   $(document).ready(function () {
     $('#employeeTable').DataTable();
-
     jQuery.validator.addMethod("lettersonly", function (value, element) {
       return this.optional(element) || /^[a-z " "]+$/i.test(value);
     }, "Letters only please");
@@ -575,11 +808,54 @@
     }, "This field is required");
   });
 
+  // conditional is nurse liscense
+  let isNurseSelectTagCreateElement = document.querySelector('#isNurseCreateEmpSelect');
+  let txtLicenseNumberCreateElement = document.querySelector('#txtLicenseNumber');
+  let txtPositionEnable = document.querySelector('#txtEmpPosition');
+  let txtisNurseEnable = document.querySelector('#isNurseCreateEmpSelect');
+
+  txtPositionEnable.addEventListener('change', (event) => {
+    if (txtPositionEnable.value.toLowerCase() == "nurse") {
+      txtisNurseEnable.disabled = false;
+      isNurseSelectTagCreateElement.addEventListener('change', (event) => {
+      if (isNurseSelectTagCreateElement.value.toLowerCase() == "yes") {
+        txtLicenseNumberCreateElement.disabled = false;
+      } else if (isNurseSelectTagCreateElement.value.toLowerCase() == "no") {
+        txtLicenseNumberCreateElement.disabled = true;
+        txtLicenseNumberCreateElement.value = "";
+        txtLicenseNumberCreateElement.placeholder = "License Number";
+        // $("#addEmployee").validate({
+        // rules: {
+        //   txtLicenseNumber: {
+        //     required: true,
+        //     noSpace: true,
+        //     digits: true
+        //   },
+        // },
+        // messages: {
+
+        // },
+  // });
+      }
+      })
+    } else{
+      txtisNurseEnable.disabled = true;
+    }
+
+    
+  })
+ 
+
   $("#addEmployee").validate({
     rules: {
       txtEmpNumber: {
         required: true,
         noSpace: true
+      },
+      txtLicenseNumber: {
+        required: true,
+        noSpace: true,
+        digits: true
       },
       txtCity: {
         required: true,
@@ -740,7 +1016,6 @@
     $('#viewEmployeeModal #hdnviewpersonalInfoID').val(personalInfoID);
     $('#viewEmployeeModal #hdnviewcontactInfoID').val(contactInfoID);  
     $('#viewEmployeeModal #hdnviewFinalEmployeeID').val(employeeIDfinal);  
-
     $.ajax({
       url: 'view-employee/' + employeeID,
       type: "GET",
@@ -772,8 +1047,54 @@
         $('#viewEmployeeModal #txtViewBarangay').val(result.barangay);
         $('#viewEmployeeModal #txtViewContactNumber').val(result.cellphoneNumber);
         $('#viewEmployeeModal #txtViewEmpEmail').val(result.emailAddress);
-        
-        
+      },
+      error: function (data) {
+      }
+    });
+  });
+
+
+  $('body').on('click', '.btnUpdate', function () {
+    var employeeID = $(this).attr('data-id');
+    var personalInfoID = $(this).attr('data-id2');
+    var contactInfoID = $(this).attr('data-id3');
+    var employeeIDfinal = $(this).attr('data-id4');
+    console.log(employeeID, personalInfoID,contactInfoID, employeeIDfinal);
+    $('#updateEmployeeModal #hdnupdateEmployeeID').val(employeeID);
+    $('#updateEmployeeModal #hdnupdatePersonalInfoID').val(personalInfoID);
+    $('#updateEmployeeModal #hdnupdateContactInfoID').val(contactInfoID);  
+    $('#updateEmployeeModal #hdnupdateFinalEmployeeID').val(employeeIDfinal);  
+    $.ajax({
+      url: 'fetch-employee/' + employeeID,
+      type: "GET",
+      dataType: 'json',
+      success: function (res) {
+        let result = res.find(employee => employee.employeeID == employeeIDfinal);
+        console.log(res);
+        // let result = res.find(position => position.employeeID == employeeID);
+        $('#updateEmployeeModal').modal('show');
+        $('#updateEmployeeModal #txtUpdateEmpNumber').val(result.employeeNumber);
+        // $('#viewEmployeeModal #txtViewEmpPosition').val(result.position);
+        // $('#viewEmployeeModal #txtEmpViewFirstName').val(result.firstName);
+        // $('#viewEmployeeModal #txtEmpViewMiddleName').val(result.middleName);
+        // $('#viewEmployeeModal #txtEmpViewLastName').val(result.lastName);
+        // $('#viewEmployeeModal #txtViewEmpBirthdate').val(result.birthDate);
+        // $('#viewEmployeeModal #txtViewEmpSex').val(result.sex);
+        // $('#viewEmployeeModal #txtViewEmpBloodType').val(result.bloodType);
+        // $('#viewEmployeeModal #txtViewEmpHeight').val(result.height);
+        // $('#viewEmployeeModal #txtViewEmpWeight').val(result.weight);
+        // $('#viewEmployeeModal #txtViewEmpCitizenship').val(result.citizenship);
+        // $('#viewEmployeeModal #txtViewEmpMaritalStatus').val(result.maritalStatus);
+        // $('#viewEmployeeModal #txtViewEmpSSS').val(result.sssNumber);
+        // $('#viewEmployeeModal #txtViewEmpPhilNum').val(result.philHealthNumber);
+        // $('#viewEmployeeModal #txtViewIsNurse').val(result.isNurse);
+        // $('#viewEmployeeModal #txtViewEmpAddress').val(result.address);
+        // $('#viewEmployeeModal #txtViewProvince').val(result.province);
+        // $('#viewEmployeeModal #txtViewZipCode').val(result.zipcode);
+        // $('#viewEmployeeModal #txtViewCity').val(result.city);
+        // $('#viewEmployeeModal #txtViewBarangay').val(result.barangay);
+        // $('#viewEmployeeModal #txtViewContactNumber').val(result.cellphoneNumber);
+        // $('#viewEmployeeModal #txtViewEmpEmail').val(result.emailAddress);
       },
       error: function (data) {
       }

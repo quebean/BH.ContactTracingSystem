@@ -75,7 +75,7 @@
       <!-- Modal Personal Information -->
       <div class="modal-body">
         <form action="<?php echo base_url('add-location'); ?>" class="form-group" method="post">
-          <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
+          <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-4">
             <div class="col-6">
               <label for=" floatingInput">Patient Number<span class="required">*</span></label>
@@ -221,7 +221,7 @@
 
           <!-- Modal Contact Information -->
 
-          <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <h5 class="title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-3">
             <div class="form-group">
               <label for="floatingInput">Address <span class="text-muted">(house number and street
