@@ -55,9 +55,8 @@ h1.sign-up {
 
 .btn-login {
   padding: 8px 35px;
-  /* background: #fff; */
   color: var(--darker-main);
-  border: 3px solid var(--darker-main);
+  border: 2px solid var(--darker-main);
   transition: all .2s;
   background: rgba(255, 255, 255, .10);
 }
@@ -77,16 +76,15 @@ h1.sign-up {
 }
 
 input[type="text"], input[type="password"] {
-  border: 3px solid rgb(100, 180, 130);
+  border: 2px solid rgb(100, 180, 130);
   transition: border 0.2s;
   background: rgba(255, 255, 255, .10);
-
 
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
   box-shadow: none;
-  border: 3px solid var(--darker-main);
+  border: 2px solid var(--darker-main);
 }
 
 
@@ -122,6 +120,7 @@ h2.title-h2 {
   color: #fff;
   font-family: var(--title-font2);
   letter-spacing: 10px;
+  animation: left-right 3s infinite;
 }
 
 h1.logo-bh {
@@ -140,11 +139,28 @@ h1.logo-bh {
   top: 50;
   left: 50;
   transform: translate(-26px, 45px);
-  /* display:none; */
+  animation: rotation 2s ease;
 }
+
+.move {
+  animation: rotate 2s ease;
+}
+
 
 .p-title-date {
   color: var(--logo-color);
   font-size: 1.3rem;
   font-weight: 500;
 }
+
+
+@keyframes rotation {
+  from {transform: translate(-26px, 45px) rotate(0deg);}
+  to {transform: translate(-26px, 45px) rotate(360deg);} 
+}
+
+@keyframes rotate {
+  from {transform: translate(-26px, 45px) rotate(0deg);}
+  to {transform: translate(-26px, 45px) rotate(360deg);} 
+}
+

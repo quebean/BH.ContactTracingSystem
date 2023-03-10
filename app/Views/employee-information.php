@@ -365,7 +365,6 @@
         noSpace: true
       },
       txtEmpMiddleName: {
-        required: true,
         lettersonly: true,
         noSpace: true
       },
