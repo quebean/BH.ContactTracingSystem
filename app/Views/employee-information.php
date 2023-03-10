@@ -61,7 +61,7 @@
                     </td>
                     <td class="text-center">
                       <button class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i></button>
-                      <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
+                      <button data-id="<?php echo $row->personID; ?>" data-id2="<?php echo $row->personalInfoID; ?>" data-id3="<?php echo $row->contactInformationID; ?>" data-id4="<?php echo $row->employeeID; ?>" class="btn btn-outline-secondary btnView"><i class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row->personID; ?>"
                         data-id2="<?php echo $row->personalInfoID; ?>"
                         data-id3="<?php echo $row->contactInformationID; ?>" data-id4="<?php echo $row->employeeID; ?>"
@@ -81,7 +81,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal Create -->
 <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
@@ -304,6 +304,236 @@
 </div>
 
 
+<!-- Modal View -->
+<div class="modal fade" id="viewEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">View Employee</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+
+      <!-- Modal Personal Information -->
+      <div class="modal-body">
+        <form id="addEmployee" class="form-floating" method="post">
+          <h5 class="modal-title mb-2" id="exampleModalLabel">Personal Information</h5>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+            <input type="hidden" id = "hdnviewemployeeID">
+            <input type="hidden" id = "hdnviewpersonalInfoID">
+            <input type="hidden" id = "hdnviewcontactInfoID">
+            <input type="hidden" id = "hdnviewFinalEmployeeID">
+              <label for="txtViewEmpNumber">Employee Number<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">BHEID -</span>
+                <input type="text" class="form-control" name="txtViewEmpNumber" id="txtViewEmpNumber" placeholder="Employee Number">
+              </div>
+              <label id="txtEmpNumber-error" class="error manual-error" for="txtEmpNumber"></label>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewEmpPosition">Position<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpPosition" id = "txtViewEmpPosition" placeholder="Position">
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col">
+              <div class="form-group">
+                <label for="txtEmpViewFirstName">First Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpViewFirstName" id="txtEmpViewFirstName"placeholder="First Name">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="txtEmpViewMiddleName">Middle Name<span class="required"></span></label>
+                <input type="text" class="form-control" name="txtEmpViewMiddleName" id="txtEmpViewMiddleName" placeholder="Middle Name"
+                  aria-describedby="helpMiddle">
+                <div id="helpMiddle" class="form-text ms-2">Leave blank if none.</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="txtEmpViewLastName">Last Name<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtEmpViewLastName" id="txtEmpViewLastName" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="txtViewEmpBirthdate">Birthdate<span class="required">*</span></label>
+                <input type="date" class="form-control" name="txtViewEmpBirthdate" id="txtViewEmpBirthdate" placeholder="Birthdate">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="txtViewEmpSex">Sex<span class="required"></span></label>
+                <select class="form-select" name="txtViewEmpSex" id="txtViewEmpSex" aria-label="Sex">
+                  <option selected value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="txtViewEmpBloodType">Blood Type<span class="required"></span></label>
+                <select class="form-select" name="txtViewEmpBloodType" id="txtViewEmpBloodType" aria-label="Blood Type">
+                  <option selected value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label for="txtViewEmpHeight">Height<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="txtViewEmpHeight" id="txtViewEmpHeight" placeholder="Height in centimeters"
+                  aria-describedby="helpCm">
+                <span class="input-group-text" id="helpCm">cm.</span>
+              </div>
+              <label id="txtEmpHeight-error" class="error manual-error" for="txtEmpHeight"></label>
+
+            </div>
+            <div class="col-6">
+              <label for="txtViewEmpWeight">Weight<span class="required">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="txtViewEmpWeight" id="txtViewEmpWeight" placeholder="Weight in pounds">
+                <span class="input-group-text" id="helpLbs">lbs.</span>
+              </div>
+              <label id="txtEmpWeight-error" class="error manual-error" for="txtEmpWeight"></label>
+            </div>
+
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewEmpCitizenship">Citizenship<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpCitizenship" id="txtViewEmpCitizenship"placeholder="Citizenship">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewEmpMaritalStatus">Marital Status<span class="required"></span></label>
+                <select class="form-select" id="txtViewEmpMaritalStatus" name="txtViewEmpMaritalStatus"
+                  aria-label="Marital Status">
+                  <option selected value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Widowed">Widowed</option>
+                  <option value="Divorced">Divorced</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewEmpSSS">SSS Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpSSS" id="txtViewEmpSSS" placeholder="SSS Number">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewEmpPhilNum">PhilHealth Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpPhilNum" id="txtViewEmpPhilNum" placeholder="PhilHealth Number">
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewIsNurse">Registered Nurse<span class="required"></span></label>
+                <select class="form-select" name="txtViewIsNurse" id="txtViewIsNurse" aria-label="Registered Nurse">
+                  <option selected value="No">No</option>
+                  <option value="No">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="text-muted" for="txtViewLicenseNumber">License Number</label>
+                <input type="text" class="form-control" name="txtViewLicenseNumber" id="txtViewLicenseNumber" placeholder="License Number" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Contact Information -->
+
+          <h5 class="modal-title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
+          <div class="row g-3 mb-4">
+            <div class="form-group">
+              <label class="" for="txtViewEmpAddress">Address <span class="text-muted">(house number and street name)<span
+                    class="required">*</span></label>
+              <input type="text" class="form-control" name="txtViewEmpAddress" id="txtViewEmpAddress"placeholder="Address">
+
+            </div>
+          </div>
+          <div class="row gx-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewProvince">Province<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewProvince" id="txtViewProvince" placeholder="Province">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewZipCode">Zip Code<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewZipCode" id="txtViewZipCode" placeholder="Zip Code">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewCity">City<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewCity" id="txtViewCity" placeholder="City">
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="txtViewBarangay">Barangay<span class="required">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Brgy.</span>
+                <input type="text" class="form-control" id="txtViewBarangay" name="txtViewBarangay" 
+                  placeholder="Barangay Number">
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="txtViewContactNumber">Contact Number<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewContactNumber" id="txtViewContactNumber" placeholder="Contact Number">
+              </div>
+            </div>
+            <div class="col-6 mb-4">
+              <div class="form-group">
+                <label for="txtViewEmpEmail">Email Address<span class="required">*</span></label>
+                <input type="text" class="form-control" name="txtViewEmpEmail" id="txtViewEmpEmail" placeholder="Email Address">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -365,9 +595,7 @@
         noSpace: true
       },
       txtEmpMiddleName: {
-        required: true,
         lettersonly: true,
-        noSpace: true
       },
       txtEmpLastName: {
         required: true,
@@ -500,6 +728,56 @@
     $('#deleteModal').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
+  });
+
+  $('body').on('click', '.btnView', function () {
+    var employeeID = $(this).attr('data-id');
+    var personalInfoID = $(this).attr('data-id2');
+    var contactInfoID = $(this).attr('data-id3');
+    var employeeIDfinal = $(this).attr('data-id4');
+    console.log(employeeID, personalInfoID,contactInfoID, employeeIDfinal);
+    $('#viewEmployeeModal #hdnviewemployeeID').val(employeeID);
+    $('#viewEmployeeModal #hdnviewpersonalInfoID').val(personalInfoID);
+    $('#viewEmployeeModal #hdnviewcontactInfoID').val(contactInfoID);  
+    $('#viewEmployeeModal #hdnviewFinalEmployeeID').val(employeeIDfinal);  
+
+    $.ajax({
+      url: 'view-employee/' + employeeID,
+      type: "GET",
+      dataType: 'json',
+      success: function (res) {
+        let result = res.find(employee => employee.employeeID == employeeIDfinal);
+        console.log(res);
+        // let result = res.find(position => position.employeeID == employeeID);
+        $('#viewEmployeeModal').modal('show');
+        $('#viewEmployeeModal #txtViewEmpNumber').val(result.employeeNumber);
+        $('#viewEmployeeModal #txtViewEmpPosition').val(result.position);
+        $('#viewEmployeeModal #txtEmpViewFirstName').val(result.firstName);
+        $('#viewEmployeeModal #txtEmpViewMiddleName').val(result.middleName);
+        $('#viewEmployeeModal #txtEmpViewLastName').val(result.lastName);
+        $('#viewEmployeeModal #txtViewEmpBirthdate').val(result.birthDate);
+        $('#viewEmployeeModal #txtViewEmpSex').val(result.sex);
+        $('#viewEmployeeModal #txtViewEmpBloodType').val(result.bloodType);
+        $('#viewEmployeeModal #txtViewEmpHeight').val(result.height);
+        $('#viewEmployeeModal #txtViewEmpWeight').val(result.weight);
+        $('#viewEmployeeModal #txtViewEmpCitizenship').val(result.citizenship);
+        $('#viewEmployeeModal #txtViewEmpMaritalStatus').val(result.maritalStatus);
+        $('#viewEmployeeModal #txtViewEmpSSS').val(result.sssNumber);
+        $('#viewEmployeeModal #txtViewEmpPhilNum').val(result.philHealthNumber);
+        $('#viewEmployeeModal #txtViewIsNurse').val(result.isNurse);
+        $('#viewEmployeeModal #txtViewEmpAddress').val(result.address);
+        $('#viewEmployeeModal #txtViewProvince').val(result.province);
+        $('#viewEmployeeModal #txtViewZipCode').val(result.zipcode);
+        $('#viewEmployeeModal #txtViewCity').val(result.city);
+        $('#viewEmployeeModal #txtViewBarangay').val(result.barangay);
+        $('#viewEmployeeModal #txtViewContactNumber').val(result.cellphoneNumber);
+        $('#viewEmployeeModal #txtViewEmpEmail').val(result.emailAddress);
+        
+        
+      },
+      error: function (data) {
+      }
+    });
   });
 
 </script>
