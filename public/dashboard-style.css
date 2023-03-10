@@ -132,10 +132,11 @@ div.modal-header {
   background: var(--sidebar-header-color);
 }
 
-h5.modal-title-head {
+h5.modal-title {
   color: #fff;
 }
 
 .manual-error {
   display: none;
 }
+

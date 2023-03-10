@@ -64,8 +64,8 @@
                       <button class="btn btn-outline-secondary"><i class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $row->personID; ?>"
                         data-id2="<?php echo $row->personalInfoID; ?>"
-                        data-id3="<?php echo $row->contactInformationID; ?>" class="btn btn-outline-danger btnDelete"><i
-                          class="fa-solid fa-trash"></i></button>
+                        data-id3="<?php echo $row->contactInformationID; ?>" data-id4="<?php echo $row->employeeID; ?>"
+                        class="btn btn-outline-danger btnDelete"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr>
                   <?php
@@ -87,7 +87,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Employee</h5>
-        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 
@@ -313,6 +313,7 @@
       </div>
       <div class="modal-body">
         <input type="hidden" name="hdnemployeeID" id="hdnemployeeID" />
+        <input type="hidden" name="hdnrealemployeeID" id="hdnrealemployeeID" />
         <input type="hidden" name="hdnpersonalInfoID" id="hdnpersonalInfoID" />
         <input type="hidden" name="hdncontactInfoID" id="hdncontactInfoID" />
         <p>Do you want to delete the selected employee?</p>
@@ -465,9 +466,12 @@
     var employeeID = $(this).attr('data-id');
     var personalInfoID = $(this).attr('data-id2');
     var contactInfoID = $(this).attr('data-id3');
+    var employeeIDfinal = $(this).attr('data-id4');
     $('#deleteModal #hdnemployeeID').val(employeeID);
     $('#deleteModal #hdnpersonalInfoID').val(personalInfoID);
     $('#deleteModal #hdncontactInfoID').val(contactInfoID);
+    $('#deleteModal #hdnrealemployeeID').val(employeeIDfinal);
+
   });
 
 
@@ -475,6 +479,7 @@
     var employeeID = $("#hdnemployeeID").val();
     var personalInfoID = $("#hdnpersonalInfoID").val();
     var contactInfoID = $("#hdncontactInfoID").val();
+    var employeeIDfinal = $("#hdnrealemployeeID").val();
     $.ajax({
       url: '/getIDs',
       type: 'POST',
@@ -482,7 +487,7 @@
       success: function (data) {
         console.log(data);
         $.get('delete-employee/' + employeeID, function (data) {
-          $('#employeeTable tbody #' + employeeID).remove();
+          $('#employeeTable tbody #' + employeeIDfinal).remove();
         })
         alertify.alert('Confirmation', 'Employee Deleted!', function () { alertify.success('Ok'); });
       }
