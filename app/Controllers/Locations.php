@@ -31,7 +31,8 @@ class Locations extends BaseController
         $location = $db->table('tbllocations')->getWhere(['locationName' => $locationName])->getRow();
 
         if ($location) {
-            echo 'exists';
+            // echo 'exists';
+            print_r("exist");
         } else {
             $data = [
                 'locationName' => $this->request->getPost('locationName')
