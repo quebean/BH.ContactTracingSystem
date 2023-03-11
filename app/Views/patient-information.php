@@ -10,7 +10,7 @@
         <div class="bg-white m-4 p-4 rounded">
           <div class="pb-3 mb-2">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#patientModal"><i
-                class="fa-solid fa-pen me-2"></i>Create New Patient</button>
+                class="fa-solid fa-person-circle-plus me-2"></i>Create New Patient</button>
           </div>
           <div class="border p-2 rounded">
             <table id="patientTable" class="display" style="width:100%">
@@ -74,7 +74,7 @@
 
       <!-- Modal Personal Information -->
       <div class="modal-body">
-        <form action="<?php echo base_url('add-location'); ?>" class="form-group" method="post">
+        <form action="<?php echo base_url('add-patient'); ?>" class="form-group" method="post">
           <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
           <div class="row gx-3 mb-4">
             <div class="col-6">
@@ -276,7 +276,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
           </div>
         </form>
       </div>

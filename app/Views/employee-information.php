@@ -12,7 +12,7 @@
         <div class="bg-white m-4 p-4 rounded">
           <div class="pb-3 mb-2">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeModal"><i
-                class="fa-solid fa-pen me-2"></i>Create New Employee</button>
+                class="fa-solid fa-person-circle-plus me-2"></i>Create New Employee</button>
           </div>
           <div class="border p-2 rounded">
             <table id="employeeTable" class="display" style="width:100%">
@@ -86,6 +86,7 @@
 
 
 <!-- Modal Create -->
+
 <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
@@ -95,7 +96,7 @@
       </div>
 
 
-      <!-- Modal Personal Information -->
+      <!-- Modal Create Personal Information -->
       <div class="modal-body">
         <form id="addEmployee" action="<?php echo base_url('add-employee') ?>" class="form-floating" method="post">
           <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
@@ -248,7 +249,7 @@
             </div>
           </div>
 
-          <!-- Modal Contact Information -->
+          <!-- Modal Create Contact Information -->
 
           <h5 class="title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-4">
@@ -306,7 +307,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary btnAddEmployee">Save changes</button>
+            <button type="submit" class="btn btn-primary btnAddEmployee">Add Employee</button>
           </div>
         </form>
       </div>
@@ -325,7 +326,7 @@
       </div>
 
 
-      <!-- Modal Personal Information -->
+      <!-- Modal View Personal Information -->
       <div class="modal-body">
         <form id="addEmployee" class="form-floating" method="post">
           <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
@@ -557,7 +558,7 @@
   </div>
 </div>
 
-<!-- Update Modal -->
+<!--  Modal Update -->
 
 <div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -568,7 +569,7 @@
       </div>
 
 
-      <!-- Modal Personal Information -->
+      <!-- Modal Update Personal Information -->
       <div class="modal-body">
         <form id="updateEmployee" class="form-floating" method="post">
           <h5 class="title mb-2" id="exampleModalLabel">Personal Information</h5>
@@ -733,7 +734,7 @@
             </div>
           </div>
 
-          <!-- Modal Contact Information -->
+          <!-- Modal Update Contact Information -->
 
           <h5 class="title mt-5 mb-2" id="exampleModalLabel">Contact Information</h5>
           <div class="row g-3 mb-4">

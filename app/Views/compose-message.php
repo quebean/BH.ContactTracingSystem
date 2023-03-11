@@ -15,7 +15,7 @@
               <i class="fa-solid fa-envelope me-2"></i>Send Email</button>
           </div>
           <div class="border p-2 rounded">
-            <table id="employeeTable" class="display" style="width:100%">
+            <table id="composeMessageTable" class="display" style="width:100%">
               <thead>
                 <tr>
                   <th class="text-center">Message ID</th>
@@ -97,4 +97,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+    $('#composeMessageTable').DataTable();
+  });
+
+</script>
 <?php include("shared/bottom.php"); ?>
