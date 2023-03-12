@@ -33,7 +33,8 @@
                       <?php echo $row['locationName']; ?>
                     </td>
                     <td class="text-center">
-                      <button class="btn btn-outline-primary btnUpdate" data-id="<?php echo $row['locationID']; ?>"><i class="fa-solid fa-pen"></i></button>
+                      <button class="btn btn-outline-primary btnUpdate" data-id="<?php echo $row['locationID']; ?>"><i
+                          class="fa-solid fa-pen"></i></button>
                       <button class="btn btn-outline-secondary btnView" data-id="<?php echo $row['locationID']; ?>"><i
                           class="fa-solid fa-eye"></i></button>
                       <button data-bs-toggle="modal" data-bs-target="#deleteModal"
@@ -59,8 +60,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Location</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Create New Location</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="locationForm">
@@ -85,7 +86,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Location</h5>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Delete Location</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -104,7 +105,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">View Location</h5>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">View Location</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -113,7 +114,7 @@
             <input type="hidden" name="hdnlocationID" id="hdnlocationID" />
             <label for="formLocation" class="form-label">Location Name</label>
             <input type="text" class="form-control" id="formLocation" name="formLocation" disabled>
-            
+
           </div>
       </div>
       <div class="modal-footer">
@@ -128,7 +129,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Location</h5>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">Update Location</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -149,6 +150,13 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
 <script defer type="text/javascript">
 
   $(document).ready(function () {
@@ -156,21 +164,23 @@
     jQuery.validator.addMethod("noSpace", function (value, element) {
       let newValue = value.trim();
 
-      return (newValue) ? true: false;
+      return (newValue) ? true : false;
     }, "Location name is required");
 
     window.localStorage.setItem('show_popup_update', 'false');
     window.localStorage.setItem('show_popup_add', 'false');
-    });
+  });
 
 
-    if(window.localStorage.getItem('show_popup_update') == 'true') {
-      alertify.alert('Confirmation', 'Location Updated!', function(){ alertify.success('Ok'); });
-    }
+  if (window.localStorage.getItem('show_popup_update') == 'true') {
+    alertify.success('Location Updated');
 
-    if(window.localStorage.getItem('show_popup_add') == 'true') {
-      alertify.alert('Confirmation', 'Location Added!', function(){ alertify.success('Ok'); });
-    }
+  }
+
+  if (window.localStorage.getItem('show_popup_add') == 'true') {
+    alertify.success('Location Added');
+
+  }
 
 
   // delete
@@ -185,7 +195,7 @@
       $('#locationsTable tbody #' + locationID).remove();
     })
     $('#deleteModal').modal('hide');
-    alertify.alert('Confirmation', 'Location Deleted!', function(){ alertify.success('Ok'); });
+    alertify.success('Location Deleted');
   });
   // delete
 
@@ -220,10 +230,10 @@
     } else {
       $('#locationError').html('');
       $('#locationSubmit').prop('disabled', false);
-    }
+    } 
   });
 
-   $('#updateLocationForm').keyup(function (event) {
+  $('#updateLocationForm').keyup(function (event) {
     newText = event.target.value;
     if (prevText == newText && prevText != "") {
 
@@ -258,7 +268,7 @@
             $('#locationSubmit').prop('disabled', true);
           } else {
             $('#locationError').html('');
-            $('#formLocation'). val("");
+            $('#formLocation').val("");
             $('#locationSubmit').prop('disabled', false);
             $('#locationModal').modal('hide');
             window.localStorage.setItem('show_popup_add', 'true');

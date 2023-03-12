@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 09:32 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Mar 11, 2023 at 03:03 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,14 +31,22 @@ CREATE TABLE `tblcontactinformation` (
   `contactInfoID` int(11) NOT NULL,
   `cellphoneNumber` varchar(255) NOT NULL,
   `emailAddress` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tblcontactinformation`
 --
 
 INSERT INTO `tblcontactinformation` (`contactInfoID`, `cellphoneNumber`, `emailAddress`) VALUES
-(3, '3546757876', 'ajj@gmail.com');
+(3, '3546757876', 'ajj@gmail.com'),
+(13, '3434223423', 'jll@gmail.com'),
+(14, '3434223423', 'jll@gmail.com'),
+(15, '3434223423', 'johnysins@gmail.com'),
+(17, '3434223423', 'jll@gmail.com'),
+(18, '3434223423', 'jll@gmail.com'),
+(20, '3434223423', 'jll@gmail.com'),
+(24, '3434223423', 'jll@gmail.com'),
+(25, '69696969696', 'miakhalifa@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -51,7 +59,7 @@ CREATE TABLE `tbldepartment` (
   `departmentName` varchar(255) NOT NULL,
   `departmentCode` varchar(255) NOT NULL,
   `employeeID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -64,11 +72,22 @@ CREATE TABLE `tblemployeeinfo` (
   `employeeNumber` varchar(255) NOT NULL,
   `isPositive` tinyint(1) NOT NULL,
   `isArchived` tinyint(1) NOT NULL,
-  `isNurse` int(255) NOT NULL,
+  `isNurse` varchar(255) NOT NULL,
+  `nurseLicenseNumber` varchar(255) NOT NULL,
   `personID` int(11) NOT NULL,
   `personalInfoID` int(11) NOT NULL,
   `position` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblemployeeinfo`
+--
+
+INSERT INTO `tblemployeeinfo` (`employeeID`, `employeeNumber`, `isPositive`, `isArchived`, `isNurse`, `nurseLicenseNumber`, `personID`, `personalInfoID`, `position`) VALUES
+(12, '1122112', 0, 0, 'No', '', 14, 13, 'Doctor'),
+(15, '1111', 0, 0, 'No', '', 20, 19, 'Guard'),
+(19, '001', 0, 0, 'No', '', 24, 23, 'Doctor'),
+(20, '002', 0, 0, 'Yes', '696969', 25, 24, 'Nurse');
 
 -- --------------------------------------------------------
 
@@ -95,7 +114,7 @@ CREATE TABLE `tblhealthdeclaration` (
   `lossOfTaste` tinyint(1) NOT NULL,
   `diarrhea` tinyint(1) NOT NULL,
   `physicianID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -106,14 +125,16 @@ CREATE TABLE `tblhealthdeclaration` (
 CREATE TABLE `tbllocations` (
   `locationID` int(11) NOT NULL,
   `locationName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbllocations`
 --
 
 INSERT INTO `tbllocations` (`locationID`, `locationName`) VALUES
-(31, 'Bautista Hospital');
+(31, 'Bautista Hospitalsssssss'),
+(33, 'Bautista Hospitalsss'),
+(35, 'Bautista Hospital2222ddd');
 
 -- --------------------------------------------------------
 
@@ -125,7 +146,7 @@ CREATE TABLE `tblnurse` (
   `ID` int(11) NOT NULL,
   `licenseNumber` varchar(255) NOT NULL,
   `employeeID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -140,7 +161,7 @@ CREATE TABLE `tblpatient` (
   `nextConsultation` datetime NOT NULL,
   `personID` int(11) NOT NULL,
   `personalInformationID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -162,7 +183,21 @@ CREATE TABLE `tblpersonalinfo` (
   `philHealthNumber` varchar(255) NOT NULL,
   `citizenship` varchar(255) NOT NULL,
   `maritalStatus` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpersonalinfo`
+--
+
+INSERT INTO `tblpersonalinfo` (`personalInfoID`, `weight`, `height`, `address`, `barangay`, `city`, `province`, `country`, `zipcode`, `sssNumber`, `philHealthNumber`, `citizenship`, `maritalStatus`) VALUES
+(12, 123213, 12121, '269 Barlan St.', '21', 'Cavite', 'Cavite', '', '4100', '13324535343', '2344323422342', 'Filipino', 'Single'),
+(13, 123213, 12121, '269 Barlan St.', '21', 'Cavite', 'Cavite', '', '4100', '13324535343', '2344323422342', 'Filipino', 'Single'),
+(14, 11, 11, '269 Barlan St.', '21', 'Cavite', 'Cavite', '', '4100', '13324535343', '2344323422342', 'Filipino', 'Widowed'),
+(16, 12121, 1221, '269 Barlan St.', '21', 'Cavite', 'Cavite', '', '4100', '13324535343', '2344323422342', 'Filipino', 'Single'),
+(17, 123, 12121, '269 Barlan St.', '21', 'Cavite', 'Cavite', '', '4100', '13324535343', '4124232421422', 'Filipino', 'Single'),
+(19, 123213, 12121, '269 Barlan St.', '21', 'Cavite', 'Cavite', '', '5333', '13324535343', '2344323422342', 'Filipino', 'Single'),
+(23, 11, 11, '322323', '121', 'Cavite', 'Cavite', '', '4100', '232312323', '232323232443', 'wwea', 'Single'),
+(24, 169, 169, '6969 Nakikta', '696', 'Cavite', 'Cavite', '', '4169', '691691691', '691691691691', 'american', 'Single');
 
 -- --------------------------------------------------------
 
@@ -175,11 +210,25 @@ CREATE TABLE `tblpersons` (
   `firstName` varchar(100) NOT NULL,
   `middleName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
-  `birthDate` datetime NOT NULL,
+  `birthDate` date NOT NULL,
   `sex` varchar(255) NOT NULL,
   `contactInformationID` int(11) NOT NULL,
   `bloodType` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpersons`
+--
+
+INSERT INTO `tblpersons` (`personID`, `firstName`, `middleName`, `lastName`, `birthDate`, `sex`, `contactInformationID`, `bloodType`) VALUES
+(13, 'Jed Lester', 'Paras', 'Jose', '2023-03-03', 'Male', 13, 'A+'),
+(14, 'Jed Lester', 'Paras', 'Jose', '2023-03-03', 'Male', 14, 'A+'),
+(15, 'sdfsdf', 'dfs', 'sdfsdf', '2023-03-10', 'Male', 15, 'A+'),
+(17, 'Jed Lester', 'Paras', 'Jose', '2023-03-01', 'Male', 17, 'A+'),
+(18, 'Jed Lester', 'Paras', 'Jose', '2023-03-01', 'Male', 18, 'A+'),
+(20, 'Jed Lestersssss', 'Paras', 'Jose', '2023-03-30', 'Male', 20, 'A+'),
+(24, 'sdsd', 'sddsd', 'sdsdddd', '2023-03-08', 'Male', 24, 'A+'),
+(25, 'mia', '', 'khalifa', '2023-03-17', 'Female', 25, 'AB+');
 
 -- --------------------------------------------------------
 
@@ -191,7 +240,7 @@ CREATE TABLE `tblphysicians` (
   `ID` int(11) NOT NULL,
   `specialization` varchar(255) NOT NULL,
   `employeeID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -205,7 +254,7 @@ CREATE TABLE `tblvisitlogs` (
   `personID` int(11) NOT NULL,
   `healthDeclarationID` int(11) NOT NULL,
   `locationID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -287,7 +336,7 @@ ALTER TABLE `tblvisitlogs`
 -- AUTO_INCREMENT for table `tblcontactinformation`
 --
 ALTER TABLE `tblcontactinformation`
-  MODIFY `contactInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `contactInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbldepartment`
@@ -299,7 +348,7 @@ ALTER TABLE `tbldepartment`
 -- AUTO_INCREMENT for table `tblemployeeinfo`
 --
 ALTER TABLE `tblemployeeinfo`
-  MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `employeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tblhealthdeclaration`
@@ -311,7 +360,7 @@ ALTER TABLE `tblhealthdeclaration`
 -- AUTO_INCREMENT for table `tbllocations`
 --
 ALTER TABLE `tbllocations`
-  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tblnurse`
@@ -329,13 +378,13 @@ ALTER TABLE `tblpatient`
 -- AUTO_INCREMENT for table `tblpersonalinfo`
 --
 ALTER TABLE `tblpersonalinfo`
-  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `personalInfoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tblpersons`
 --
 ALTER TABLE `tblpersons`
-  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `personID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tblphysicians`

@@ -22,7 +22,8 @@ class Locations extends BaseController
         $location = $db->table('tbllocations')->getWhere(['locationName' => $locationName])->getRow();
 
         if ($location) {
-            echo 'exists';
+            // echo 'exists';
+            print_r("exist");
         } else {
             $data = [
                 'locationName' => $this->request->getPost('locationName')
@@ -88,4 +89,12 @@ class Locations extends BaseController
         $data = $query->getResultArray();
         return json_encode($data);
     }
+// public function viewLocationdata()
+// {
+//     $id = $this->input->get('id');
+//     $data = $this->Your_model->get_data($id); // Replace Your_model with your model name
+
+//     echo $data; // Return data as a string
+// }
+
 }

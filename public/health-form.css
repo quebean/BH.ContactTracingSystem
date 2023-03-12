@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* N - - - A - - - V */
+/* body {
+    background: #eee;
+  } */
+  /* .my-5 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  } */
+nav{
+    background-color: #4D9D7E;
+    height: 70px;
+}
+i{
+    color: white;
+}
+.page-1{
+    text-align: center;
+}
+ 
+.terms-text h4{
+    padding-top: 24px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.terms-text p{
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 41px;
+    text-align: justify;
+    text-indent: 10px;
+    margin-bottom: 100px;
+    padding: 24px;
+}
+.terms-text span{
+    color: #4F7FFA;
+ }
+ .termscondition{
+     font-size: 13px;
+     margin-bottom: 30px;
+ }
+ .btn.backBtn, .btn.nextBtn , .submitBtn{ 
+    background-color: #4D9D7E;
+    cursor: pointer;
+ }
+.page{
+    display: none;
+}
+.page.active{
+    display: block;
+}
+.page-2 button{
+    width: 100px;
+    margin: 15px;
+    background-color: #395934;
+    color: white;
+}
+.page-2{
+    text-align: center;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.container{
+    background-color: #EBEBEB;
+    /* margin: 10%; */
+    width: 90%;
+    height: fit-content;
+    margin: 8% auto;
+    border-radius: 20px;
+    padding: 20px;
+    
+}
+.page-3 header{
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+  
+    font-weight: bold;
+}
+.page-6 header{
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+  
+    font-weight: bold;
+}
+.input-field input{
+    height: 30px;
+    /* padding: 4px; */
+    margin: 8px ;
+    width: 95%;
+    border: 1px solid #aaa;
+}
+
+.container .nextBtn{
+    float: right;
+}
+.container .backBtn{
+    float: left;
+}
+.container .nextBtn , .backBtn {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.input-field label{
+    margin-left: 10px;
+}
+.input-field{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.employeeId{
+    text-align: center;
+    padding: 15px;
+   margin: auto;
+   margin-top: 50%;
+   font-size: 20px;
+   font-family: Jost;
+   font-weight: bold;
+
+}
+.employeeId input{
+    height: 50px;
+    padding: 7px; 
+    margin-top: 10px;  
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    margin-bottom: 200px;
+}

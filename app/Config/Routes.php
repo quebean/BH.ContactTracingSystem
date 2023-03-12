@@ -35,6 +35,8 @@ $routes->get('/visitor-information', 'VisitorInformation::index');
 $routes->get('/employee-information', 'EmployeeInformation::index');
 $routes->post('/add-employee', 'EmployeeInformation::addEmployee');
 $routes->get('/view-employee/(:num)', 'EmployeeInformation::viewEmployee/$1');
+$routes->get('/fetch-employee/(:num)', 'EmployeeInformation::fetchEmployee/$1');
+$routes->post('/update-employee', 'EmployeeInformation::updateEmployee');
 $routes->get('/delete-employee/(:num)', 'EmployeeInformation::deleteEmployee/$1');
 $routes->post('/getIDs', 'EmployeeInformation::getID');
 $routes->get('/patient-information', 'PatientInformation::index');
@@ -46,6 +48,7 @@ $routes->post('/manage-locations/update/(:num)', 'Locations::updateLocation/$1')
 $routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
 $routes->post('/check-location', 'Locations::checkLocation');
+$routes->get('/health-form', 'HealthFormMobile::index');
 
 /*
  * --------------------------------------------------------------------

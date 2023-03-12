@@ -15,7 +15,7 @@
               <i class="fa-solid fa-envelope me-2"></i>Send Email</button>
           </div>
           <div class="border p-2 rounded">
-            <table id="employeeTable" class="display" style="width:100%">
+            <table id="composeMessageTable" class="display" style="width:100%">
               <thead>
                 <tr>
                   <th class="text-center">Message ID</th>
@@ -43,8 +43,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New SMS</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">New SMS</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
@@ -59,7 +59,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Send message</button>
+            <button type="submit" class="btn btn-primary">Send Message</button>
           </div>
         </form>
       </div>
@@ -74,8 +74,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Email</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title modal-title-head" id="exampleModalLabel">New Email</h5>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
@@ -90,11 +90,18 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Send message</button>
+            <button type="submit" class="btn btn-primary">Send Email</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+    $('#composeMessageTable').DataTable();
+  });
+
+</script>
 <?php include("shared/bottom.php"); ?>

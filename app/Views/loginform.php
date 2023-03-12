@@ -46,7 +46,7 @@
         <div class="col container p-0 card-right">
           <div class="container-fluid p-0 right-top align-items-end justify-content-center d-flex">
             <h1 class="logo-bh mb-0">
-              B<img class="cross" src="/cross-logo.png" />H
+              B<img class="cross" id="logoCross" src="/cross-logo.png" />H
             </h1>
           </div>
           <div class="container-fluid p-0 right-bottom">
@@ -64,6 +64,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+  <script>
+    const cross = document.getElementById('logoCross');
+    cross.onclick = () => cross.classList.add('move');
+  </script>
 </body>
 
 </html>
