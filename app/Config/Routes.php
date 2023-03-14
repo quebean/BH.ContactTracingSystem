@@ -50,6 +50,9 @@ $routes->get('/activity-tracker', 'ActivityTracker::index');
 $routes->post('/check-location', 'Locations::checkLocation');
 $routes->get('/health-form', 'HealthFormMobile::index');
 
+
+$routes->post('/add-patient', 'PatientInformation::addPatient');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
