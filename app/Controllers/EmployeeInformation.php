@@ -220,8 +220,6 @@ class EmployeeInformation extends BaseController
         $builder->join('tblcontactinformation', 'tblcontactinformation.contactInfoID = tblpersons.contactInformationID');
         $query = $builder->get();
         $result = $query->getResultArray();
-        // $query = $db->table('tbllocations')->select('*')->get();
-        // $data = $query->getResultArray();
         return json_encode($result);
     }
 

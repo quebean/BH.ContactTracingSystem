@@ -52,6 +52,11 @@ $routes->get('/health-form', 'HealthFormMobile::index');
 
 
 $routes->post('/add-patient', 'PatientInformation::addPatient');
+$routes->post('/getPatientID', 'PatientInformation::getPatientID');
+$routes->get('/delete-patient/(:num)', 'PatientInformation::deletePatient/$1');
+$routes->get('/fetch-patient/(:num)', 'PatientInformation::fetchPatient/$1');
+$routes->post('/update-patient', 'PatientInformation::updatePatient');
+$routes->get('/view-patient/(:num)', 'PatientInformation::viewPatient/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -4,13 +4,16 @@ namespace App\Controllers;
 
 class PatientInformation extends BaseController
 {
+    private $personalInfoID;
+    private $contactInfoID;
     public function index()
     {
         $db = \Config\Database::connect();
         $builder = $db->table('tblpatient');
         $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
         $builder->join('tblpersons', 'tblpersons.personID= tblpatient.personID');
-        $builder->join('tblcontactinformation', 'tblcontactinformation.contactinfoID= tblpatient.personalInformationID');
+        $builder->join('tblcontactinformation', 'tblcontactinformation.contactinfoID= tblpersons.contactInformationID');
+        $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID= tblpatient.personalInformationID');
         $query = $builder->get();
         $result = $query->getResult();
         $data["result"] = $result;
@@ -98,28 +101,75 @@ class PatientInformation extends BaseController
         }
     }
 
-    public function getID()
+    public function getPatientID()
     {
-        $this->personalInfoID = $this->request->getVar('personalInfoID');
-        $this->contactInfoID = $this->request->getVar('contactInfoID');
+        echo $this->personalInfoID = $this->request->getVar('personalInfoID');
+        echo $this->contactInfoID = $this->request->getVar('contactInformationID');
         echo "hello";
-        $this->deleteEmployee();
+        $this->deletePatient();
     }
 
-    public function updateEmployee()
+    public function deletePatient($id = null)
+    {
+        $db = \Config\Database::connect();
+        $this->personalInfoID = $this->request->getVar('personalInfoID');
+        $this->personalInfoID;
+        $personalInfo = $this->personalInfoID;
+        $this->contactInfoID = $this->request->getVar('contactInformationID');
+        $this->contactInfoID;
+        $contactID = $this->contactInfoID;
+        echo $personalInfo;
+        echo $contactID;
+        $builder = $db->table('tblcontactinformation');
+        $builder->where('contactInfoID', $contactID)->delete();
+        $builder = $db->table('tblpersonalinfo');
+        $builder->where('personalInfoID', $personalInfo)->delete();
+        $builder = $db->table('tblpersons');
+        $builder->where('personID', $id)->delete();
+    }
+
+    public function fetchPatient()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tblpatient');
+        $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
+        $builder->join('tblpersons', 'tblpersons.personID= tblpatient.personID');
+        $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblpatient.personalInformationID');
+        $builder->join('tblcontactinformation', 'tblcontactinformation.contactinfoID= tblpersons.contactInformationID');
+        $query = $builder->get();
+        $result = $query->getResultArray();
+        return json_encode($result);
+    }
+
+    public function viewPatient()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tblpatient');
+        $builder->select('*, CONCAT(tblpersons.firstName," ", tblpersons.middleName," " ,tblpersons.lastName) as fullName', FALSE);
+        $builder->join('tblpersons', 'tblpersons.personID= tblpatient.personID');
+        $builder->join('tblpersonalinfo', 'tblpersonalinfo.personalInfoID = tblpatient.personalInformationID');
+        $builder->join('tblcontactinformation', 'tblcontactinformation.contactinfoID= tblpersons.contactInformationID');
+        $query = $builder->get();
+        $result = $query->getResultArray();
+        return json_encode($result);
+    }
+
+
+    public function updatePatient()
     {
         $db = \Config\Database::connect();
         $personalInfoID = $this->request->getVar('personalInfoID');
-        $contactInfoID = $this->request->getVar('contactInfoID');
-        $personID = $this->request->getVar('employeeID');
-        $employeeID = $this->request->getVar('employeeIDfinal');
-        $builder = $db->table('tblemployeeinfo');
-        $builder->where('employeeID', $employeeID);
+        $contactInfoID = $this->request->getVar('contactInformationID');
+        $personID = $this->request->getVar('personID');
+        $patientID = $this->request->getVar('patientID');
+        echo $contactInfoID;
+        $builder = $db->table('tblpatient');
+        $builder->where('patientID', $patientID);
         $data = [
-            'employeeNumber' => $this->request->getVar('txtNumber'),
-            'position' => $this->request->getVar('txtPosition'),
-            'isNurse' => $this->request->getVar('txtNurse') ?? 'No',
-            'nurseLicenseNumber' => $this->request->getVar('txtLicenseNum') ?? '',
+            'patientNumber' => $this->request->getVar('txtNumber'),
+            'physician' => $this->request->getVar('txtUpdatePhysician'),
+            'nextConsultation' => $this->request->getVar('txtNextPatientAppointment'),
+            'diagnoses' => $this->request->getVar('txtDiagnoses')
         ];
         $builder->update($data);
 
@@ -157,10 +207,11 @@ class PatientInformation extends BaseController
         $builder = $db->table('tblcontactinformation');
         $builder->where('contactInfoID', $contactInfoID);
         $data4 = [
-            'cellphoneNumber' => $this->request->getVar('txtContactNum'),
-            'emailAddress' => $this->request->getVar('txtEmail'),
+            'cellphoneNumber' => $this->request->getVar('txtUpdatedContactNum'),
+            'emailAddress' => $this->request->getVar('txtUpdatedEmail'),
         ];
         $builder->update($data4);
-
+     
     }
+    
 }
