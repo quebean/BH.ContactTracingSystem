@@ -10,7 +10,7 @@
         <div class="bg-white m-4 p-4 rounded">
           <div class="pb-3 mb-2">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#locationModal"><i
-                class="fa-solid fa-pen me-2"></i>Create new Location</button>
+                class="fa-solid fa-pen me-2"></i>Create New Location</button>
           </div>
           <div class="border p-2 rounded">
             <table id="locationsTable" class="display" style="width:100%">
@@ -75,7 +75,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="locationSubmit">Save changes</button>
+        <button type="submit" class="btn btn-primary" id="locationSubmit">Add Location</button>
       </div>
       </form>
     </div>
@@ -143,7 +143,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="updateLocationSubmit">Save changes</button>
+        <button type="submit" class="btn btn-primary" id="updateLocationSubmit">Update Location</button>
       </div>
       </form>
     </div>
@@ -230,7 +230,7 @@
     } else {
       $('#locationError').html('');
       $('#locationSubmit').prop('disabled', false);
-    } 
+    }
   });
 
   $('#updateLocationForm').keyup(function (event) {

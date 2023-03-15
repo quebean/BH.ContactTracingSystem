@@ -795,7 +795,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary btnUpdateEmployee">Save changes</button>
+            <button type="submit" class="btn btn-primary btnUpdateEmployee">Update Employee</button>
           </div>
         </form>
       </div>
@@ -1064,7 +1064,7 @@
         rangelength: "Please enter a valid Nurse License Number"
       },
     },
-    submitHandler: function (form){
+    submitHandler: function (form) {
       window.localStorage.setItem('show_popup_add', 'true');
       window.location.reload();
     }
