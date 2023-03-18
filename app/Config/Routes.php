@@ -49,6 +49,7 @@ $routes->post('/add-location', 'Locations::addLocation');
 $routes->get('/activity-tracker', 'ActivityTracker::index');
 $routes->post('/check-location', 'Locations::checkLocation');
 $routes->get('/health-form', 'HealthFormMobile::index');
+$routes->post('/health-form', 'HealthFormMobile::insertPersonaldata');
 
 
 $routes->post('/add-patient', 'PatientInformation::addPatient');
@@ -76,3 +77,4 @@ if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 }
 //test leo ginalaw ni leo
 //test leo ginalaw ni joshua
+//bagong gawa to 
